@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/javipons22/florida/issues"
   },
-  "homepage": "https://github.com/javipons22/florida#readme"
+  "homepage": "https://github.com/javipons22/florida#readme",
+  "dependencies": {
+    "@splidejs/splide": "^2.4.8"
+  }
 }
