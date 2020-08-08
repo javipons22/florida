@@ -1,0 +1,39 @@
+@media (min-width: 992px) {
+    body {
+        background: #fff;
+    }
+    .main-nav {
+        &__link {
+            font-size:0.75em;
+            font-weight:normal;
+            border-bottom:none;
+        }
+        &__link:active,&__link:hover {
+            font-weight:bold;
+        }
+        
+    }
+    .main-header {
+        &__logo {
+            height:150px;
+        }
+    }
+    .tiendas {
+        padding-top:0px;
+        &__header {
+            display:inline-block;
+        }
+        .category-select-button {
+            display:none;
+        }
+        &__titulo {
+            margin:5px 25px 5px 0;
+        }
+    }
+    .header-container {
+        position:relative;
+    }
+    #tienda-category-form {
+        display:inline-block;
+    }
+}

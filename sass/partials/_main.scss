@@ -1,0 +1,121 @@
+// CLASES GENERALES
+* {
+    font-family: "Montserrat";
+    color:#777;
+
+}
+
+body {
+    background: #efefef;
+}
+// HEADER
+
+.header-container {
+    position:fixed;
+    width:100%;
+    top:0;
+    background:#eee;
+    border-bottom: 1px solid #ddd;
+    -webkit-box-shadow: -1px 11px 8px -6px rgba(0,0,0,0.11);
+    -moz-box-shadow: -1px 11px 8px -6px rgba(0,0,0,0.11);
+    box-shadow: -1px 11px 8px -6px rgba(0,0,0,0.11);
+    align-items: center;
+    z-index:110;
+    
+}
+
+.main-header {
+    position:relative;
+    margin:0 auto;
+    overflow:hidden;
+    &__logo {
+        height:70px;
+        margin: 10px 0;
+    }
+    &__button:active,&__button:focus,&__button:hover {
+        outline:none;
+    }
+}
+
+.main-nav {
+    &__link {
+        font-size:0.9em;
+        font-weight:bold;
+        display:block;
+        color:$color-menu-item;
+        width:100%;
+        height:100%;
+        padding: 15px 0;
+        border-bottom: 1px solid $gris;
+        line-height:100%;
+    }
+    &__link--selected {
+        background:#add5db;
+        padding-left:10px;
+    }
+    &__link:active,&__link:hover {
+        text-decoration:none;
+        color:black;
+    }
+}
+
+.social-nav {
+    &__element {
+        font-size:0.9em; 
+    }
+    &__link {
+        color:$color-menu-item;
+        font-weight:bold;
+        &--last {
+            padding: 7px 8px;
+            background:$verde-marca;
+            color:white;
+            border-radius:7px;
+        }
+    }
+    &__link:active,&__link:hover {
+        text-decoration:none;
+        color: black;
+    }
+    &__link--last:active, &__link--last:hover {
+        color:white;
+    }
+}
+
+.tiendas {
+    position:relative;
+    margin:1em;
+    margin-top: 120px;
+    padding:1em;
+    border-radius: 8px;
+    background: #fff;
+    &__titulo {
+        font-size:1.5em;
+        display:inline-block;
+        font-weight:600;
+    }
+    &__icono {
+        width:15px;   
+    }
+}
+
+#tienda-category-form {
+    display:none;
+    .button {
+        padding:3px 10px;
+        font-size:0.8em;
+        margin: 7px 7px 7px 0;
+        border:1px solid #999;
+        border-radius:5px;
+    }
+    .button--selected {
+        border:2px solid black;
+    }
+
+}
+
+.button--selected {
+    background: #e3392d;
+    font-weight:bold;
+    color: #fff;
+}
