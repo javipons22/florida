@@ -238,7 +238,7 @@ body {
 
   .main-nav__link {
     font-size: 0.75em;
-    font-weight: normal;
+    font-weight: 500;
     border-bottom: none;
   }
   .main-nav__link:active, .main-nav__link:hover {
