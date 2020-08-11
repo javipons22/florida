@@ -1,6 +1,3 @@
-if (initialHeight) {
-    window.scrollTo(0, initialHeight); 
-}
 
 
 jQuery( "#tienda-category-form" ).submit(function(e) {
@@ -20,7 +17,17 @@ let padding = {
 }
 
 document.addEventListener( 'DOMContentLoaded', function () {
-    splide = new Splide( '.splide', {
+    
+    let splide2 = new Splide( '#banner-slider', {
+        width : '100vw',
+        height: '80vh',
+        type:'loop',
+        perPage:1,
+        autoplay:true,
+        pauseOnHover: false,
+        interval: 6000
+    });
+    splide = new Splide( '#marcas-slider', {
         type   :'loop',
         padding: {
             right:'5rem',
@@ -43,11 +50,10 @@ document.addEventListener( 'DOMContentLoaded', function () {
         splide.options = { perPage: 4, gap: '0.5em'};
     }
     splide.mount();
+    splide2.mount();
+    window.scrollTo(0, initialHeight); 
 });
 
-const run = (element) => {
-    console.log(element);
-}
 
 const changeSize = () => {
     if (window.innerWidth < 576) {
@@ -85,6 +91,7 @@ jQuery(document).ready(function($){
         //$('nav').slideToggle();
         //$('nav').animate({width:'toggle'},350);
     });
+    
     //$('.fondo').css('height',10 + 'px');
 });
 

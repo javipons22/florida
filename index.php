@@ -1,4 +1,21 @@
 <?php get_header(); ?>
+<section class="banner">
+    <div id="banner-slider" class="splide">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <li class="splide__slide">
+                    <img src="https://loremflickr.com/1920/1080?random=1" />
+                </li>
+                <li class="splide__slide">
+                    <img src="https://loremflickr.com/1920/1080?random=2" />
+                </li>
+                <li class="splide__slide">
+                    <img src="https://loremflickr.com/1920/1080?random=3" />>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
 <section class="tiendas">
     <div class="container">
         <div class="tiendas__header-container d-lg-flex align-items-center">
@@ -31,7 +48,7 @@
                         <?php endif; ?>
             </form>
         </div>
-        <div class="splide">
+        <div id="marcas-slider" class="splide">
             <div class="splide__track">
                 <ul class="splide__list">
                     <?php $args_slide_1 = array(
@@ -65,6 +82,7 @@
     </div>
 </section>
     <script type="text/javascript"> 
-        const initialHeight = '<?php echo $_POST['scroll']?>'
+        const initialHeight = '<?php echo $_POST['scroll']?>';
+        console.log(initialHeight);
     </script>
 <?php get_footer(); ?>
