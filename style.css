@@ -46,7 +46,7 @@ button {
   border-radius: 50%;
 }
 #marcas-slider .splide__arrow svg, #comidas-slider .splide__arrow svg {
-  fill: #acd658;
+  fill: #19590b;
   width: 25px;
   height: 25px;
 }
@@ -57,7 +57,7 @@ button {
   right: 0;
 }
 #marcas-slider .splide__pagination li .is-active, #comidas-slider .splide__pagination li .is-active {
-  background: #acd658;
+  background: #19590b;
 }
 #marcas-slider .splide__slide__container img, #comidas-slider .splide__slide__container img {
   transition: 0.5s ease-in-out;
@@ -84,8 +84,8 @@ button {
 #marcas-slider .text, #comidas-slider .text {
   width: 100%;
   font-weight: bold;
-  background-color: #acd658;
-  color: #44662a;
+  background-color: #19590b;
+  color: #fff;
   font-size: 12px;
   padding: 16px 32px;
   border-radius: 7px;
@@ -129,7 +129,7 @@ button {
 }
 
 body {
-  background: #efefef;
+  background: #eee;
 }
 
 .header-container {
@@ -231,15 +231,45 @@ body {
 }
 
 .button--selected {
-  background: #acd658;
+  background: #19590b;
   font-weight: bold;
-  color: #44662a;
+  color: #fff;
+}
+
+.footer {
+  background: #19590b;
+  padding: 45px 0;
+}
+.footer .logo-footer__imagen {
+  max-width: 150px;
+}
+.footer .footer-info {
+  text-align: center;
+  border-top: 1px solid #fff;
+  margin-top: 30px;
+}
+.footer .footer-info__contacto, .footer .footer-info__copyright {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.footer .footer-info__contacto p, .footer .footer-info__copyright p {
+  color: #fff;
+  margin-bottom: 3px;
+  font-size: 0.7em;
+}
+.footer .footer-info__contacto {
+  padding-top: 25px;
 }
 
 @media (min-width: 576px) {
   #marcas-slider, #comidas-slider {
     padding: 3em;
     padding-top: 10px;
+  }
+
+  .footer-info {
+    font-size: 1.1em;
   }
 }
 @media (min-width: 768px) {
