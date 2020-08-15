@@ -20,13 +20,13 @@ button {
   background: none;
 }
 
-#marcas-slider {
+#marcas-slider, #comidas-slider {
   padding: 3em;
   padding-top: 10px;
   position: relative;
   /*******************/
 }
-#marcas-slider .splide__slide__container {
+#marcas-slider .splide__slide__container, #comidas-slider .splide__slide__container {
   min-height: 150px;
   max-height: 150px;
   cursor: pointer;
@@ -35,33 +35,36 @@ button {
   display: flex;
   align-items: center;
 }
-#marcas-slider .splide__slide__container img {
+#marcas-slider .splide__slide__container img, #comidas-slider .splide__slide__container img {
   width: 100%;
   max-height: 150px;
   object-fit: contain;
 }
-#marcas-slider .splide__pagination__page {
+#marcas-slider .splide__pagination__page, #comidas-slider .splide__pagination__page {
   width: 15px;
   height: 15px;
   border-radius: 50%;
 }
-#marcas-slider .splide__arrow svg {
-  fill: red;
+#marcas-slider .splide__arrow svg, #comidas-slider .splide__arrow svg {
+  fill: #acd658;
+  width: 25px;
+  height: 25px;
 }
-#marcas-slider .splide__arrow--prev {
+#marcas-slider .splide__arrow--prev, #comidas-slider .splide__arrow--prev {
   left: 0;
 }
-#marcas-slider .splide__arrow--next {
+#marcas-slider .splide__arrow--next, #comidas-slider .splide__arrow--next {
   right: 0;
 }
-#marcas-slider .splide__pagination li .is-active {
-  background: red;
+#marcas-slider .splide__pagination li .is-active, #comidas-slider .splide__pagination li .is-active {
+  background: #acd658;
 }
-#marcas-slider .splide__slide__container img {
+#marcas-slider .splide__slide__container img, #comidas-slider .splide__slide__container img {
   transition: 0.5s ease-in-out;
   backface-visibility: hidden;
 }
-#marcas-slider .middle {
+#marcas-slider .middle, #comidas-slider .middle {
+  width: 100%;
   transition: 0.5s ease;
   opacity: 0;
   position: absolute;
@@ -72,19 +75,26 @@ button {
   text-align: center;
   border-radius: 20px;
 }
-#marcas-slider .splide__slide__container:hover img, #marcas-slider .splide__slide:hover img {
+#marcas-slider .splide__slide__container:hover img, #marcas-slider .splide__slide:hover img, #comidas-slider .splide__slide__container:hover img, #comidas-slider .splide__slide:hover img {
   opacity: 0.3;
 }
-#marcas-slider .splide__slide:hover .middle {
+#marcas-slider .splide__slide:hover .middle, #comidas-slider .splide__slide:hover .middle {
   opacity: 1;
 }
-#marcas-slider .text {
-  background-color: red;
-  color: white;
-  font-size: 16px;
+#marcas-slider .text, #comidas-slider .text {
+  width: 100%;
+  font-weight: bold;
+  background-color: #acd658;
+  color: #44662a;
+  font-size: 12px;
   padding: 16px 32px;
   border-radius: 7px;
   cursor: pointer;
+}
+
+#marcas-slider, #comidas-slider {
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #banner-slider {
@@ -108,7 +118,7 @@ button {
 }
 
 @media (min-width: 992px) {
-  #marcas-slider .splide__slide__container {
+  #marcas-slider .splide__slide__container, #comidas-slider .splide__slide__container {
     min-height: 200px;
     max-height: 200px;
   }
@@ -189,43 +199,49 @@ body {
   color: white;
 }
 
-.tiendas {
+.tiendas, .comidas {
   position: relative;
   margin: 1em;
-  margin-top: 120px;
+  margin-top: 30px;
   padding: 1em;
   border-radius: 8px;
   background: #fff;
 }
-.tiendas__titulo {
+.tiendas__titulo, .comidas__titulo {
   font-size: 1.5em;
   display: inline-block;
   font-weight: 600;
 }
-.tiendas__icono {
+.tiendas__icono, .comidas__icono {
   width: 15px;
 }
 
-#tienda-category-form {
+#tienda-category-form, #tienda-category-form-2 {
   display: none;
 }
-#tienda-category-form .button {
+#tienda-category-form .button, #tienda-category-form-2 .button {
   padding: 3px 10px;
   font-size: 0.8em;
   margin: 7px 7px 7px 0;
   border: 1px solid #999;
   border-radius: 5px;
 }
-#tienda-category-form .button--selected {
-  border: 2px solid black;
+#tienda-category-form .button--selected, #tienda-category-form-2 .button--selected {
+  border: 2px solid #44662a;
 }
 
 .button--selected {
-  background: #e3392d;
+  background: #acd658;
   font-weight: bold;
-  color: #fff;
+  color: #44662a;
 }
 
+@media (min-width: 576px) {
+  #marcas-slider, #comidas-slider {
+    padding: 3em;
+    padding-top: 10px;
+  }
+}
 @media (min-width: 768px) {
   .tiendas__titulo {
     margin-right: 25px;
@@ -266,8 +282,12 @@ body {
     position: relative;
   }
 
-  #tienda-category-form {
-    display: inline-block;
+  #tienda-category-form-2, #tienda-category-form {
+    display: block;
+  }
+
+  #banner-slider {
+    margin-bottom: 80px;
   }
 }
 @media (min-width: 1200px) {

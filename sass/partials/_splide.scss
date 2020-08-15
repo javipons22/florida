@@ -1,4 +1,6 @@
-#marcas-slider{
+
+
+#marcas-slider, #comidas-slider{
     padding: 3em;
     padding-top: 10px;
     position:relative;
@@ -28,7 +30,9 @@
 
 
 .splide__arrow svg {
-    fill: red;
+    fill: $verde;
+    width: 25px;
+    height: 25px;
 }
 
 .splide__arrow--prev {
@@ -40,7 +44,7 @@
 
 
 .splide__pagination li .is-active {
-    background:red;
+    background:$verde;
 }
 
 /*******************/
@@ -51,6 +55,7 @@
 }
   
   .middle {
+    width:100%;
     transition: .5s ease;
     opacity: 0;
     position: absolute;
@@ -71,17 +76,24 @@
   }
   
   .text {
-    background-color: red;
-    color: white;
-    font-size: 16px;
+    width:100%;
+    font-weight:bold;
+    background-color: $verde;
+    color: $verde-oscuro;
+    font-size: 12px;
     padding: 16px 32px;
     border-radius: 7px;
     cursor:pointer;
   }
 
-  }
+}
 
-  #banner-slider {
+#marcas-slider,#comidas-slider {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#banner-slider {
     
     padding:0;
     margin:0;
@@ -109,7 +121,7 @@
     }
     
     @media (min-width: 992px) { 
-      #marcas-slider {
+      #marcas-slider, #comidas-slider {
         .splide__slide__container {
           min-height:200px;
           max-height:200px;

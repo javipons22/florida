@@ -33,7 +33,10 @@
     .header-container {
         position:relative;
     }
-    #tienda-category-form {
-        display:inline-block;
+    #tienda-category-form-2 ,#tienda-category-form {
+        display:block;
+    }
+    #banner-slider {
+        margin-bottom: 80px;
     }
 }

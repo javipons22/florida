@@ -29,8 +29,8 @@
                     <nav class="main-nav col-12 col-lg-12 d-lg-flex align-items-center justify-content-lg-center mt-3 mb-5 mb-lg-0 mt-lg-0 p-lg-0 pl-xl-0">
                         <ul class="list-unstyled w-100 d-lg-flex mb-0 align-items-center justify-content-lg-around">
                             <li class="main-nav__element d-lg-inline-block pr-lg-3 px-xl-4 pl-lg-0"><a class="main-nav__link" href="/soluciones">INICIO</a></li>
-                            <li class="main-nav__element d-lg-inline-block px-lg-3 px-xl-4"><a class="main-nav__link" href="/tecnologia/">MARCAS</a></li>
-                            <li class="main-nav__element d-lg-inline-block px-lg-3 px-xl-4"><a class="main-nav__link" href="/empresa/">PLAZOLETA DE COMIDAS</a></li>
+                            <li class="main-nav__element d-lg-inline-block px-lg-3 px-xl-4"><a class="main-nav__link" href="#marcas">MARCAS</a></li>
+                            <li class="main-nav__element d-lg-inline-block px-lg-3 px-xl-4"><a class="main-nav__link" href="#comidas">PLAZOLETA DE COMIDAS</a></li>
                             <li class="main-nav__element d-lg-inline-block px-lg-3 px-xl-4"><a class="main-nav__link" href="/empresa/">CARTELERA DE CINE</a></li>
                             <li class="main-nav__element d-lg-inline-block px-lg-3 px-xl-4"><a class="main-nav__link" href="/empresa/">AGENDA</a></li>
                             <li class="main-nav__element d-lg-inline-block px-lg-3 px-xl-4"><a class="main-nav__link" href="/empresa/">HORARIOS Y SERVICIOS</a></li>
