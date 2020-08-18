@@ -20,50 +20,49 @@ button {
   background: none;
 }
 
-#marcas-slider, #comidas-slider {
+#marcas-slider, #comidas-slider, #agendas-slider, #cartelera-slider {
   padding: 3em;
   padding-top: 10px;
   position: relative;
   /*******************/
 }
-#marcas-slider .splide__slide__container, #comidas-slider .splide__slide__container {
-  min-height: 150px;
-  max-height: 150px;
+#marcas-slider .splide__slide__container, #comidas-slider .splide__slide__container, #agendas-slider .splide__slide__container, #cartelera-slider .splide__slide__container {
   cursor: pointer;
   overflow: hidden;
   border-radius: 15px;
   display: flex;
   align-items: center;
+  min-height: 140px;
 }
-#marcas-slider .splide__slide__container img, #comidas-slider .splide__slide__container img {
+#marcas-slider .splide__slide__container img, #comidas-slider .splide__slide__container img, #agendas-slider .splide__slide__container img, #cartelera-slider .splide__slide__container img {
   width: 100%;
   max-height: 150px;
   object-fit: contain;
 }
-#marcas-slider .splide__pagination__page, #comidas-slider .splide__pagination__page {
+#marcas-slider .splide__pagination__page, #comidas-slider .splide__pagination__page, #agendas-slider .splide__pagination__page, #cartelera-slider .splide__pagination__page {
   width: 15px;
   height: 15px;
   border-radius: 50%;
 }
-#marcas-slider .splide__arrow svg, #comidas-slider .splide__arrow svg {
-  fill: #19590b;
+#marcas-slider .splide__arrow svg, #comidas-slider .splide__arrow svg, #agendas-slider .splide__arrow svg, #cartelera-slider .splide__arrow svg {
+  fill: #0b7f43;
   width: 25px;
   height: 25px;
 }
-#marcas-slider .splide__arrow--prev, #comidas-slider .splide__arrow--prev {
+#marcas-slider .splide__arrow--prev, #comidas-slider .splide__arrow--prev, #agendas-slider .splide__arrow--prev, #cartelera-slider .splide__arrow--prev {
   left: 0;
 }
-#marcas-slider .splide__arrow--next, #comidas-slider .splide__arrow--next {
+#marcas-slider .splide__arrow--next, #comidas-slider .splide__arrow--next, #agendas-slider .splide__arrow--next, #cartelera-slider .splide__arrow--next {
   right: 0;
 }
-#marcas-slider .splide__pagination li .is-active, #comidas-slider .splide__pagination li .is-active {
-  background: #19590b;
+#marcas-slider .splide__pagination li .is-active, #comidas-slider .splide__pagination li .is-active, #agendas-slider .splide__pagination li .is-active, #cartelera-slider .splide__pagination li .is-active {
+  background: #0b7f43;
 }
-#marcas-slider .splide__slide__container img, #comidas-slider .splide__slide__container img {
+#marcas-slider .splide__slide__container img, #comidas-slider .splide__slide__container img, #agendas-slider .splide__slide__container img, #cartelera-slider .splide__slide__container img {
   transition: 0.5s ease-in-out;
   backface-visibility: hidden;
 }
-#marcas-slider .middle, #comidas-slider .middle {
+#marcas-slider .middle, #comidas-slider .middle, #agendas-slider .middle, #cartelera-slider .middle {
   width: 100%;
   transition: 0.5s ease;
   opacity: 0;
@@ -75,16 +74,16 @@ button {
   text-align: center;
   border-radius: 20px;
 }
-#marcas-slider .splide__slide__container:hover img, #marcas-slider .splide__slide:hover img, #comidas-slider .splide__slide__container:hover img, #comidas-slider .splide__slide:hover img {
+#marcas-slider .splide__slide__container:hover img, #marcas-slider .splide__slide:hover img, #comidas-slider .splide__slide__container:hover img, #comidas-slider .splide__slide:hover img, #agendas-slider .splide__slide__container:hover img, #agendas-slider .splide__slide:hover img, #cartelera-slider .splide__slide__container:hover img, #cartelera-slider .splide__slide:hover img {
   opacity: 0.3;
 }
-#marcas-slider .splide__slide:hover .middle, #comidas-slider .splide__slide:hover .middle {
+#marcas-slider .splide__slide:hover .middle, #comidas-slider .splide__slide:hover .middle, #agendas-slider .splide__slide:hover .middle, #cartelera-slider .splide__slide:hover .middle {
   opacity: 1;
 }
-#marcas-slider .text, #comidas-slider .text {
+#marcas-slider .text, #comidas-slider .text, #agendas-slider .text, #cartelera-slider .text {
   width: 100%;
   font-weight: bold;
-  background-color: #19590b;
+  background-color: #0b7f43;
   color: #fff;
   font-size: 12px;
   padding: 16px 32px;
@@ -92,9 +91,28 @@ button {
   cursor: pointer;
 }
 
-#marcas-slider, #comidas-slider {
+#marcas-slider, #comidas-slider, #agendas-slider, #cartelera-slider {
   padding-left: 5px;
   padding-right: 5px;
+}
+
+#cartelera-slider .splide__slide__container {
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 70%;
+  max-height: 100%;
+  margin: 0 auto;
+}
+#cartelera-slider .splide__slide__container img {
+  width: 100%;
+  max-height: none;
+  object-fit: contain;
 }
 
 #banner-slider {
@@ -107,9 +125,20 @@ button {
   object-fit: cover;
 }
 #banner-slider .splide__pagination__page {
-  width: 15px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
+  border: 2px solid white;
+}
+#banner-slider .splide__pagination li .is-active {
+  background: #0b7f43;
+}
+#banner-slider .splide__arrow svg {
+  fill: #0b7f43;
+  stroke: white;
+  stroke-width: 2;
+  width: 45px;
+  height: 45px;
 }
 @media (max-width: 992px) {
   #banner-slider {
@@ -118,9 +147,9 @@ button {
 }
 
 @media (min-width: 992px) {
-  #marcas-slider .splide__slide__container, #comidas-slider .splide__slide__container {
-    min-height: 200px;
-    max-height: 200px;
+  #marcas-slider .splide__slide__container, #comidas-slider .splide__slide__container, #agendas-slider .splide__slide__container {
+    min-height: 150px;
+    max-height: 150px;
   }
 }
 * {
@@ -211,33 +240,53 @@ body {
   font-size: 1.5em;
   display: inline-block;
   font-weight: 600;
+  max-width: 50%;
+}
+.tiendas__titulo--cartelera, .comidas__titulo--cartelera {
+  max-width: 100%;
 }
 .tiendas__icono, .comidas__icono {
   width: 15px;
 }
+.tiendas .category-select-button, .comidas .category-select-button {
+  font-size: 0.9em;
+}
+.tiendas__cartelera-info, .comidas__cartelera-info {
+  font-size: 0.8em;
+}
+.tiendas__cartelera-info h4, .comidas__cartelera-info h4 {
+  font-size: 1.5em;
+}
+.tiendas__cartelera-info h5, .comidas__cartelera-info h5 {
+  font-size: 1.2em;
+}
 
-#tienda-category-form, #tienda-category-form-2 {
+#comidas {
+  font-size: 1em;
+}
+
+#tienda-category-form, #tienda-category-form-2, #tienda-category-form-3 {
   display: none;
 }
-#tienda-category-form .button, #tienda-category-form-2 .button {
+#tienda-category-form .button, #tienda-category-form-2 .button, #tienda-category-form-3 .button {
   padding: 3px 10px;
   font-size: 0.8em;
   margin: 7px 7px 7px 0;
   border: 1px solid #999;
   border-radius: 5px;
 }
-#tienda-category-form .button--selected, #tienda-category-form-2 .button--selected {
+#tienda-category-form .button--selected, #tienda-category-form-2 .button--selected, #tienda-category-form-3 .button--selected {
   border: 2px solid #44662a;
 }
 
 .button--selected {
-  background: #19590b;
+  background: #0b7f43;
   font-weight: bold;
   color: #fff;
 }
 
 .footer {
-  background: #19590b;
+  background: #0b7f43;
   padding: 45px 0;
 }
 .footer .logo-footer__imagen {
@@ -263,7 +312,7 @@ body {
 }
 
 @media (min-width: 576px) {
-  #marcas-slider, #comidas-slider {
+  #marcas-slider, #comidas-slider, #agendas-slider {
     padding: 3em;
     padding-top: 10px;
   }
@@ -271,10 +320,18 @@ body {
   .footer-info {
     font-size: 1.1em;
   }
+
+  #cartelera-slider .splide__slide__container {
+    max-width: 100%;
+  }
 }
 @media (min-width: 768px) {
   .tiendas__titulo {
     margin-right: 25px;
+  }
+
+  #cartelera-slider .splide__slide__container {
+    max-width: 100%;
   }
 }
 @media (min-width: 992px) {
@@ -289,6 +346,7 @@ body {
   }
   .main-nav__link:active, .main-nav__link:hover {
     font-weight: bold;
+    padding: 0 -5px;
   }
 
   .main-header__logo {
@@ -312,12 +370,39 @@ body {
     position: relative;
   }
 
-  #tienda-category-form-2, #tienda-category-form {
+  #tienda-category-form-2, #tienda-category-form, #tienda-category-form-3 {
     display: block;
   }
 
   #banner-slider {
     margin-bottom: 80px;
+  }
+
+  #marcas-slider .splide__slide__container, #comidas-slider .splide__slide__container, #agendas-slider .splide__slide__container {
+    margin: 10px;
+    border-radius: 5px;
+    -webkit-box-shadow: -1px 1px 5px 5px rgba(0, 0, 0, 0.12);
+    -moz-box-shadow: -1px 1px 5px 5px rgba(0, 0, 0, 0.12);
+    box-shadow: -1px 1px 5px 5px rgba(0, 0, 0, 0.12);
+  }
+
+  .tiendas, .comidas {
+    position: relative;
+    margin: 1em;
+    margin-top: 30px;
+    padding: 1em;
+    border-radius: 8px;
+    background: #fff;
+  }
+  .tiendas__titulo, .comidas__titulo {
+    font-size: 1.5em;
+    display: inline-block;
+    font-weight: 600;
+    max-width: 100%;
+  }
+
+  #comidas {
+    font-size: 1.5em;
   }
 }
 @media (min-width: 1200px) {

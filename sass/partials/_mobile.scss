@@ -1,9 +1,14 @@
 @media (min-width: 576px) {
-    #marcas-slider, #comidas-slider{
+    #marcas-slider, #comidas-slider,#agendas-slider{
         padding: 3em;
         padding-top: 10px;
     }  
     .footer-info {
         font-size:1.1em;
     }  
+    #cartelera-slider {
+        .splide__slide__container {
+          max-width:100%;
+        }
+    }
 }

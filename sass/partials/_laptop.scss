@@ -10,6 +10,7 @@
         }
         &__link:active,&__link:hover {
             font-weight:bold;
+            padding:0 -5px;
         }
         
     }
@@ -33,10 +34,39 @@
     .header-container {
         position:relative;
     }
-    #tienda-category-form-2 ,#tienda-category-form {
+    #tienda-category-form-2 ,#tienda-category-form , #tienda-category-form-3{
         display:block;
     }
     #banner-slider {
         margin-bottom: 80px;
     }
+    #marcas-slider, #comidas-slider,#agendas-slider {
+        .splide__slide__container {
+            margin: 10px;
+            border-radius: 5px;
+            -webkit-box-shadow: -1px 1px 5px 5px rgba(0,0,0,0.12);
+            -moz-box-shadow: -1px 1px 5px 5px rgba(0,0,0,0.12);
+            box-shadow: -1px 1px 5px 5px rgba(0,0,0,0.12);
+        }
+    }
+    .tiendas,.comidas {
+        position:relative;
+        margin:1em;
+        margin-top: 30px;
+        padding:1em;
+        border-radius: 8px;
+        background: #fff;
+        &__titulo {
+            font-size:1.5em;
+            display:inline-block;
+            font-weight:600;
+            max-width:100%;
+        }
+    }
+    
+    #comidas {
+        font-size:1.5em;
+    }
+    
 }
+    

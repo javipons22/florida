@@ -94,13 +94,34 @@ body {
         font-size:1.5em;
         display:inline-block;
         font-weight:600;
+        max-width:50%;
+        &--cartelera {
+            max-width:100%;
+        }
     }
     &__icono {
         width:15px;   
     }
+    .category-select-button {
+        font-size:0.9em;
+    }
+
+    &__cartelera-info {
+        font-size: 0.8em;
+        h4{
+            font-size:1.5em;
+        }
+        h5 {
+            font-size:1.2em;
+        }
+    }
 }
 
-#tienda-category-form,#tienda-category-form-2 {
+#comidas {
+    font-size:1em;
+}
+
+#tienda-category-form,#tienda-category-form-2 ,#tienda-category-form-3 {
     display:none;
     .button {
         padding:3px 10px;

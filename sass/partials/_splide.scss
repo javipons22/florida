@@ -1,18 +1,17 @@
 
 
-#marcas-slider, #comidas-slider{
+#marcas-slider, #comidas-slider, #agendas-slider ,#cartelera-slider{
     padding: 3em;
     padding-top: 10px;
     position:relative;
 
   .splide__slide__container {
-    min-height:150px;
-    max-height:150px;
     cursor: pointer;
     overflow: hidden;
     border-radius: 15px;
     display:flex;
     align-items: center;
+    min-height: 140px;
 }
 
 .splide__slide__container img {
@@ -88,9 +87,30 @@
 
 }
 
-#marcas-slider,#comidas-slider {
+#marcas-slider,#comidas-slider,#agendas-slider,#cartelera-slider {
   padding-left: 5px;
   padding-right: 5px;
+}
+
+#cartelera-slider {
+  .splide__slide__container {
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 15px;
+    display:flex;
+    align-items: center;
+    margin:0;
+    padding:0;
+    width: 100%;
+    max-width:70%;
+    max-height:100%;
+    margin:0 auto;
+  }
+  .splide__slide__container img {
+    width:100%;
+    max-height: none;
+    object-fit: contain;
+  }
 }
 
 #banner-slider {
@@ -103,9 +123,20 @@
       object-fit: cover;
     }
     .splide__pagination__page {
-      width:15px;
-      height:15px;
+      width:18px;
+      height:18px;
       border-radius:50%;
+      border:2px solid white;
+    }
+    .splide__pagination li .is-active {
+      background:$verde;
+    }
+    .splide__arrow svg {
+      fill: $verde;
+      stroke:white;
+      stroke-width: 2;
+      width: 45px;
+      height: 45px;
     }
     @media (max-width: 992px) { 
       margin-top:91px;
@@ -121,10 +152,10 @@
     }
     
     @media (min-width: 992px) { 
-      #marcas-slider, #comidas-slider {
+      #marcas-slider, #comidas-slider,#agendas-slider {
         .splide__slide__container {
-          min-height:200px;
-          max-height:200px;
+          min-height:150px;
+          max-height:150px;
         }
       }
       
