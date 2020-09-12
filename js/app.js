@@ -8,6 +8,7 @@ jQuery( "#tienda-category-form" ).submit(function(e) {
     jQuery("<input name='category_1'/>").attr("type", "hidden").val(val).appendTo("#tienda-category-form");
     jQuery("<input name='category_2'/>").attr("type", "hidden").val(category2).appendTo("#tienda-category-form");
     jQuery("<input name='category_3'/>").attr("type", "hidden").val(category3).appendTo("#tienda-category-form");
+    jQuery("<input name='category_4'/>").attr("type", "hidden").val(category4).appendTo("#tienda-category-form");
     e.currentTarget.submit();
 });
 
@@ -19,6 +20,7 @@ jQuery( "#tienda-category-form-2" ).submit(function(e) {
     jQuery("<input name='category_1'/>").attr("type", "hidden").val(category1).appendTo("#tienda-category-form-2");
     jQuery("<input name='category_2'/>").attr("type", "hidden").val(val).appendTo("#tienda-category-form-2");
     jQuery("<input name='category_3'/>").attr("type", "hidden").val(category3).appendTo("#tienda-category-form-2");
+    jQuery("<input name='category_4'/>").attr("type", "hidden").val(category4).appendTo("#tienda-category-form-2");
     e.currentTarget.submit();
 });
 
@@ -30,11 +32,31 @@ jQuery( "#tienda-category-form-3" ).submit(function(e) {
     jQuery("<input name='category_1'/>").attr("type", "hidden").val(category1).appendTo("#tienda-category-form-3");
     jQuery("<input name='category_2'/>").attr("type", "hidden").val(category2).appendTo("#tienda-category-form-3");
     jQuery("<input name='category_3'/>").attr("type", "hidden").val(val).appendTo("#tienda-category-form-3");
+    jQuery("<input name='category_4'/>").attr("type", "hidden").val(category4).appendTo("#tienda-category-form-3");
+    e.currentTarget.submit();
+});
+
+jQuery( "#tienda-category-form-4" ).submit(function(e) {
+    e.preventDefault();
+    var val = jQuery(document.activeElement).val();
+    var tabIndex = jQuery(document.activeElement).attr("movie");
+    var scroll = jQuery(window).scrollTop();
+    jQuery("<input name='scroll'/>").attr("type", "hidden").val(scroll).appendTo("#tienda-category-form-4");
+    jQuery("<input name='category_1'/>").attr("type", "hidden").val(category1).appendTo("#tienda-category-form-4");
+    jQuery("<input name='category_2'/>").attr("type", "hidden").val(category2).appendTo("#tienda-category-form-4");
+    jQuery("<input name='category_3'/>").attr("type", "hidden").val(category3).appendTo("#tienda-category-form-4");
+    jQuery("<input name='category_4'/>").attr("type", "hidden").val(val).appendTo("#tienda-category-form-4");
+    jQuery("<input name='current_movie'/>").attr("type", "hidden").val(tabIndex).appendTo("#tienda-category-form-4");
     e.currentTarget.submit();
 });
 
 let splide;
 let padding = {
+    right:'1.2rem',
+    left :'1.2rem',
+}
+
+let padding2 = {
     right:'5rem',
     left :'5rem',
 }
@@ -71,16 +93,18 @@ document.addEventListener( 'DOMContentLoaded', function () {
         pauseOnHover:true,
         pagination:true,
     });
-    splide4 = new Splide( '#agendas-slider', {
-        type   :'loop',
-        padding: {
-            right:'5rem',
-            left :'5rem',
-        },
-        autoplay:true,
-        pauseOnHover:true,
-        pagination:true,
-    });
+    // splide4 = new Splide( '#agendas-slider', {
+    //     type   :'loop',
+    //     padding: {
+    //         right:'5rem',
+    //         left :'5rem',
+    //     },
+    //     autoplay:true,
+    //     pauseOnHover:true,
+    //     pagination:true,
+    // });
+
+    splide4 = {};
 
     splide5 = new Splide( '#cartelera-slider', {
         padding: {
@@ -127,8 +151,14 @@ document.addEventListener( 'DOMContentLoaded', function () {
     splide.mount();
     splide2.mount();
     splide3.mount();
-    splide4.mount();
+    // splide4.mount();
     splide5.mount();
+    if (window.innerWidth < 576) {
+        if (currMovie > 0) {
+            splide5.go('+' + currMovie,false);
+        }
+        
+    }
     window.scrollTo(0, initialHeight); 
 });
 
@@ -189,10 +219,10 @@ const changeSize = () => {
         splide5.options.padding = padding;
     } else if (window.innerWidth > 1200) {
         splide.options = { perPage: 4, gap: '0em'};
-        splide.options.padding = padding;
+        splide.options.padding = padding2;
 
         splide3.options = { perPage: 4, gap: '0em'};
-        splide3.options.padding = padding;
+        splide3.options.padding = padding2;
 
         splide4.options = { perPage: 4, gap: '0em'};
         splide4.options.padding = padding;
@@ -218,6 +248,9 @@ jQuery(document).ready(function($){
     $('.category-select-button--3').on('click', function() {
         $('#tienda-category-form-3').slideToggle();
     });
+    if (window.innerWidth > 576) {
+        $(".splide__slide--selected").prependTo(".cartelera__list");
+    }
     
     //$('.fondo').css('height',10 + 'px');
 });

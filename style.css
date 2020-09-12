@@ -108,8 +108,10 @@ button {
   max-width: 70%;
   max-height: 100%;
   margin: 0 auto;
+  box-sizing: content-box;
+  position: relative;
 }
-#cartelera-slider .splide__slide__container img {
+#cartelera-slider .splide__slide__container .movie-image {
   width: 100%;
   max-height: none;
   object-fit: contain;
@@ -285,6 +287,15 @@ body {
   color: #fff;
 }
 
+.hand-image {
+  display: block;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  right: -70px;
+  bottom: -5px;
+}
+
 .footer {
   background: #0b7f43;
   padding: 45px 0;
@@ -332,6 +343,13 @@ body {
 
   #cartelera-slider .splide__slide__container {
     max-width: 100%;
+  }
+  #cartelera-slider .splide__slide__container--selected {
+    border: 10px solid #0b7f43;
+  }
+
+  .hand-image {
+    display: none;
   }
 }
 @media (min-width: 992px) {

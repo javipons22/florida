@@ -5,13 +5,13 @@
             <div class="splide__track">
                 <ul class="splide__list">
                     <li class="splide__slide">
-                        <img src="https://loremflickr.com/1920/1080?random=1" />
+                        <img src="<?php echo get_template_directory_uri();?>/img/banner1.png" />
                     </li>
                     <li class="splide__slide">
-                        <img src="https://loremflickr.com/1920/1080?random=2" />
+                        <img src="<?php echo get_template_directory_uri();?>/img/banner2.png" />
                     </li>
                     <li class="splide__slide">
-                        <img src="https://loremflickr.com/1920/1080?random=3" />>
+                        <img src="<?php echo get_template_directory_uri();?>/img/banner3.png" />
                     </li>
                 </ul>
             </div>
@@ -148,7 +148,7 @@
             </div>
         </div>
     </section>
-
+<!-- 
     <section class="tiendas" >
         <div class="container">
             <div class="tiendas__header-container d-lg-flex flex-lg-column align-items-center align-items-lg-start">
@@ -213,9 +213,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <section class="tiendas" >
+    <section class="tiendas my-lg-5" >
         <div class="container">
             
             <div class="row">
@@ -224,56 +224,100 @@
                         <h1 class="tiendas__titulo tiendas__titulo--cartelera mb-4" id="marcas">CARTELERA DE CINE</h1>
                         <div class="tiendas__cartelera-info">
                             <div class="row">
-                                <h4 class="mb-3 col-12">Joker (2020)</h4>
+                            <?php $args_slide_5 = array(
+                                    'numberposts'	=> 1,
+                                    'post_type' => 'peliculas',
+                                    'orderby' => 'date',
+                                    'order' => 'ASC',
+                                    );
+                                $query_slide_5 = new WP_Query($args_slide_5);
+                                
+                                if ( $query_slide_5->have_posts() ) : while ( $query_slide_5->have_posts() ) : $query_slide_5->the_post();
+                                    $first_post = get_the_ID();
+                                endwhile; else : ?>
+                                <p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
+                                <?php endif; wp_reset_postdata(); ?>
+
+                                <?php 
+
+                                if( isset($_POST['category_4']))
+                                {
+                                    $post_pelicula = $_POST['category_4'];
+                                } else {
+                                    $post_pelicula = $first_post;
+                                }
+                                ?>
+                                <h4 class="mb-3 col-12"><?php echo get_the_title($post_pelicula);?></h4>
                                 <div class="col-6 col-lg-12">
                                     <h5>Clasificación</h5>
-                                    <p>Todos (15 años)</p>
+                                    <p><?php the_field('clasificacion', $post_pelicula);?></p>
                                 </div>
                                 <div class="col-6 col-lg-12">
                                     <h5>Género</h5>
-                                    <p>Comic</p>
+                                    <p><?php the_field('genero', $post_pelicula);?></p>
                                 </div>
                                 <div class="col-6 col-lg-12">
                                     <h5>Horarios</h5>
-                                    <p>5:20 p.m, 10:00 p.m</p>
+                                    <p><?php the_field('horarios', $post_pelicula);?></p>
                                 </div>
                                 <div class="col-6 col-lg-12">
-                                    <h5>Sala 1</h5>
+                                    <h5>Sala <?php the_field('sala', $post_pelicula);?></h5>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div id="cartelera-slider" class="splide col-12 col-lg-8 ">
+                    <form id="tienda-category-form-4" method="POST">
                     <div class="splide__track">
-                        <ul class="splide__list d-flex align-items-center">
-                            <?php $args_slide_4 = array(
-                                'numberposts'	=> -1,
-                                'post_type' => 'peliculas'
-                                );
-                            if( isset($_POST['category_4']) && $_POST['category_4'] != 'all')
-                            {
-                                $args_slide_4['meta_key'] = 'category';
-                                $args_slide_4['meta_value'] = $_POST['category_4'];
-                            }
-                            $query_slide_4 = new WP_Query($args_slide_4);
-                            
-                            if ( $query_slide_4->have_posts() ) : while ( $query_slide_4->have_posts() ) : $query_slide_4->the_post(); ?>
+                        
+                            <ul class="splide__list cartelera__list d-flex align-items-center">
+                                <?php $args_slide_4 = array(
+                                    'numberposts'	=> -1,
+                                    'post_type' => 'peliculas',
+                                    'orderby' => 'date',
+                                    'order' => 'DESC',
+                                    );
+                                    $i = 0;
+                                if( isset($_POST['category_4']))
+                                {
+                                    $current_pelicula = $_POST['category_4'];
+                                } else {
+                                    $current_pelicula = 0;
+                                }
+                                $query_slide_4 = new WP_Query($args_slide_4);
+                                
+                                if ( $query_slide_4->have_posts() ) : while ( $query_slide_4->have_posts() ) : $query_slide_4->the_post(); ?>
+                                    <?php if ( get_the_ID() == $current_pelicula || $current_pelicula == 0 ): ?>
+                                    <li class="splide__slide splide__slide--selected">
+                                    <?php else: ?>
+                                    <li class="splide__slide">
+                                    <?php endif; ?>
+                                        <button type="submit" value="<?php echo get_the_ID();?>" movie="<?php echo $i;?>">
+                                            <?php if ( get_the_ID() == $current_pelicula || $current_pelicula == 0 ): ?>
+                                            <div class="splide__slide__container splide__slide__container--selected">
+                                            <?php if ($current_pelicula == 0) : $current_pelicula++; endif;?>
+                                            <?php else: ?>
+                                            <div class="splide__slide__container"> 
+                                            <?php endif;?>
+                                                <img class="movie-image" src="<?php the_field('imagen'); ?>" alt="<?php echo get_the_title();?> logo">
+                                                <img class="hand-image" src="<?php echo get_template_directory_uri();?>/img/hand.png">
+                                            </div>
+                                            <div class="middle">
+                                                <div class="text">Ver más!<br> <?php echo get_the_title();?></div>
+                                            </div>
+                                        </button>
+                                    </li>
+                                    <?php $i++;?>
+                                    
 
-                                <li class="splide__slide" onclick="run(this);">
-                                    <div class="splide__slide__container">
-                                        <img src="<?php the_field('imagen'); ?>" alt="<?php echo get_the_title();?> logo">
-                                    </div>
-                                    <div class="middle">
-                                        <div class="text">Ver más!<br> <?php echo get_the_title();?></div>
-                                    </div>
-                                </li>
-
-                            <?php endwhile; else : ?>
-                            <p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
-                            <?php endif; wp_reset_postdata(); ?>
-                        </ul>
+                                <?php endwhile; else : ?>
+                                <p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
+                                <?php endif; wp_reset_postdata(); ?>
+                            </ul>
+                        
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -286,6 +330,8 @@
         const category1 = ('<?php echo $_POST['category_1']?>' !== '') ? '<?php echo $_POST['category_1']?>' : 'all';
         const category2 = ('<?php echo $_POST['category_2']?>' !== '')  ? '<?php echo $_POST['category_2']?>' : 'all';
         const category3 = ('<?php echo $_POST['category_3']?>' !== '')  ? '<?php echo $_POST['category_3']?>' : 'all';
-        const category4 = ('<?php echo $_POST['category_4']?>' !== '')  ? '<?php echo $_POST['category_4']?>' : 'all';
+        const category4 = ('<?php echo $_POST['category_4']?>' !== '')  ? '<?php echo $_POST['category_4']?>' : 0;
+        const currMovie = ('<?php echo $_POST['current_movie']?>' !== '')  ? '<?php echo $_POST['current_movie']?>' : 0;
+        console.log(currMovie);
     </script>
 <?php get_footer(); ?>

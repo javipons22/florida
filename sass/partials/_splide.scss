@@ -105,8 +105,10 @@
     max-width:70%;
     max-height:100%;
     margin:0 auto;
+    box-sizing: content-box;
+    position:relative;
   }
-  .splide__slide__container img {
+  .splide__slide__container .movie-image {
     width:100%;
     max-height: none;
     object-fit: contain;
