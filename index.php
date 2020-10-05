@@ -87,7 +87,7 @@
         <div class="container">
             <div class="tiendas__header-container d-lg-flex flex-lg-column align-items-center align-items-lg-start">
                 <div class="tiendas__header d-flex d-lg-inline justify-content-between justify-content-md-start">
-                    <h1 class="tiendas__titulo" id="comidas">PLAZOLETA DE COMIDAS</h1>
+                    <h1 class="tiendas__titulo" id="comidas">COMIDAS</h1>
                     <button name="category_select_button" class="category-select-button category-select-button--2">categorías <img class="tiendas__icono" src="<?php echo get_template_directory_uri(); ?>/img/arrowdown.svg" alt="flecha select"></button>
                 </div>
                 <form id="tienda-category-form-2" method="POST">
@@ -219,55 +219,37 @@
         <div class="container">
             
             <div class="row">
-                <div class="col-12 col-lg-4 tiendas__header-container d-lg-flex flex-row align-items-start">
-                    <div class="tiendas__header d-flex flex-column">
-                        <h1 class="tiendas__titulo tiendas__titulo--cartelera mb-4" id="marcas">CARTELERA DE CINE</h1>
-                        <div class="tiendas__cartelera-info">
-                            <div class="row">
-                            <?php $args_slide_5 = array(
-                                    'numberposts'	=> 1,
-                                    'post_type' => 'peliculas',
-                                    'orderby' => 'date',
-                                    'order' => 'ASC',
-                                    );
-                                $query_slide_5 = new WP_Query($args_slide_5);
+                <div class="tiendas__header-container d-lg-flex flex-lg-column align-items-center align-items-lg-start">
+                    <div class="tiendas__header d-flex d-lg-inline justify-content-between justify-content-md-start">
+                        <h1 class="tiendas__titulo" id="comidas">CARTELERA DE CINE</h1>
+                        <button name="category_select_button" class="category-select-button category-select-button--2">categorías <img class="tiendas__icono" src="<?php echo get_template_directory_uri(); ?>/img/arrowdown.svg" alt="flecha select"></button>
+                    </div>
+                    <form id="tienda-category-form-4" method="POST">
+                    <?php if( isset($_POST['category_4']) && $_POST['category_4'] != 'all'):?>
+                        <button name="category_4" class="button" value="all" type="submit">Todo</button>
+                    <?php else:?>
+                        <button name="category_4" class="button button--selected" value="all" type="submit">Todo</button>
+                    <?php endif;?>
+                    <?php 
+                    $args_categories_4 = array('numberposts'	=> -1,'post_type' => 'categorias_peliculas');
+                    $query_categories_4 = new WP_Query($args_categories_4);
                                 
-                                if ( $query_slide_5->have_posts() ) : while ( $query_slide_5->have_posts() ) : $query_slide_5->the_post();
-                                    $first_post = get_the_ID();
-                                endwhile; else : ?>
+                                if ( $query_categories_4->have_posts() ) : while ( $query_categories_4->have_posts() ) : $query_categories_4->the_post(); ?>
+                                <?php $id = get_the_ID(); ?>
+                                <?php if( isset($_POST['category_4']) && $_POST['category_4'] == $id):?>
+                                    <button name="category_4" class="button button--selected" value="<?php echo $id;?>" type="submit"><?php the_field('name');?></button>
+                                <?php else: ?>
+                                    <button name="category_4" class="button" value="<?php echo $id;?>" type="submit"><?php the_field('name');?></button>
+                                <?php endif;?>
+                                
+                                
+
+                                <?php endwhile; else : ?>
                                 <p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
                                 <?php endif; wp_reset_postdata(); ?>
-
-                                <?php 
-
-                                if( isset($_POST['category_4']))
-                                {
-                                    $post_pelicula = $_POST['category_4'];
-                                } else {
-                                    $post_pelicula = $first_post;
-                                }
-                                ?>
-                                <h4 class="mb-3 col-12"><?php echo get_the_title($post_pelicula);?></h4>
-                                <div class="col-6 col-lg-12">
-                                    <h5>Clasificación</h5>
-                                    <p><?php the_field('clasificacion', $post_pelicula);?></p>
-                                </div>
-                                <div class="col-6 col-lg-12">
-                                    <h5>Género</h5>
-                                    <p><?php the_field('genero', $post_pelicula);?></p>
-                                </div>
-                                <div class="col-6 col-lg-12">
-                                    <h5>Horarios</h5>
-                                    <p><?php the_field('horarios', $post_pelicula);?></p>
-                                </div>
-                                <div class="col-6 col-lg-12">
-                                    <h5>Sala <?php the_field('sala', $post_pelicula);?></h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
-                <div id="cartelera-slider" class="splide col-12 col-lg-8 ">
+                <div id="cartelera-slider" class="splide col-12 col-lg-12 ">
                     <form id="tienda-category-form-4" method="POST">
                     <div class="splide__track">
                         
@@ -284,6 +266,11 @@
                                     $current_pelicula = $_POST['category_4'];
                                 } else {
                                     $current_pelicula = 0;
+                                }
+                                if( isset($_POST['category_4']) && $_POST['category_4'] != 'all')
+                                {
+                                    $args_slide_4['meta_key'] = 'genero';
+                                    $args_slide_4['meta_value'] = $_POST['category_4'];
                                 }
                                 $query_slide_4 = new WP_Query($args_slide_4);
                                 
@@ -309,6 +296,7 @@
                                         </button>
                                     </li>
                                     <?php $i++;?>
+
                                     
 
                                 <?php endwhile; else : ?>

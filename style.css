@@ -267,17 +267,17 @@ body {
   font-size: 1em;
 }
 
-#tienda-category-form, #tienda-category-form-2, #tienda-category-form-3 {
+#tienda-category-form, #tienda-category-form-2, #tienda-category-form-3, #tienda-category-form-4 {
   display: none;
 }
-#tienda-category-form .button, #tienda-category-form-2 .button, #tienda-category-form-3 .button {
+#tienda-category-form .button, #tienda-category-form-2 .button, #tienda-category-form-3 .button, #tienda-category-form-4 .button {
   padding: 3px 10px;
   font-size: 0.8em;
   margin: 7px 7px 7px 0;
   border: 1px solid #999;
   border-radius: 5px;
 }
-#tienda-category-form .button--selected, #tienda-category-form-2 .button--selected, #tienda-category-form-3 .button--selected {
+#tienda-category-form .button--selected, #tienda-category-form-2 .button--selected, #tienda-category-form-3 .button--selected, #tienda-category-form-4 .button--selected {
   border: 2px solid #44662a;
 }
 
@@ -321,6 +321,13 @@ body {
 .footer .footer-info__contacto {
   padding-top: 25px;
 }
+.footer .splide__slide__container {
+  margin: 10px;
+  border-radius: 5px;
+  -webkit-box-shadow: -1px 1px 5px 5px rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: -1px 1px 5px 5px rgba(0, 0, 0, 0.12);
+  box-shadow: -1px 1px 5px 5px rgba(0, 0, 0, 0.12);
+}
 
 @media (min-width: 576px) {
   #marcas-slider, #comidas-slider, #agendas-slider {
@@ -343,9 +350,6 @@ body {
 
   #cartelera-slider .splide__slide__container {
     max-width: 100%;
-  }
-  #cartelera-slider .splide__slide__container--selected {
-    border: 10px solid #0b7f43;
   }
 
   .hand-image {
@@ -388,7 +392,7 @@ body {
     position: relative;
   }
 
-  #tienda-category-form-2, #tienda-category-form, #tienda-category-form-3 {
+  #tienda-category-form-2, #tienda-category-form, #tienda-category-form-3, #tienda-category-form-4 {
     display: block;
   }
 

@@ -39,14 +39,12 @@ jQuery( "#tienda-category-form-3" ).submit(function(e) {
 jQuery( "#tienda-category-form-4" ).submit(function(e) {
     e.preventDefault();
     var val = jQuery(document.activeElement).val();
-    var tabIndex = jQuery(document.activeElement).attr("movie");
     var scroll = jQuery(window).scrollTop();
     jQuery("<input name='scroll'/>").attr("type", "hidden").val(scroll).appendTo("#tienda-category-form-4");
     jQuery("<input name='category_1'/>").attr("type", "hidden").val(category1).appendTo("#tienda-category-form-4");
     jQuery("<input name='category_2'/>").attr("type", "hidden").val(category2).appendTo("#tienda-category-form-4");
     jQuery("<input name='category_3'/>").attr("type", "hidden").val(category3).appendTo("#tienda-category-form-4");
     jQuery("<input name='category_4'/>").attr("type", "hidden").val(val).appendTo("#tienda-category-form-4");
-    jQuery("<input name='current_movie'/>").attr("type", "hidden").val(tabIndex).appendTo("#tienda-category-form-4");
     e.currentTarget.submit();
 });
 
@@ -141,12 +139,12 @@ document.addEventListener( 'DOMContentLoaded', function () {
         splide.options = { perPage: 3, gap: '0.5em'}; 
         splide3.options = { perPage: 3, gap: '0.5em'};
         splide4.options = { perPage: 3, gap: '0.5em'};
-        splide5.options = { perPage: 3, gap: '1.5em'}; 
+        splide5.options = { perPage: 4, gap: '1.5em'}; 
     } else if (window.innerWidth > 1200) {
         splide.options = { perPage: 4, gap: '0.5em'};
         splide3.options = { perPage: 4, gap: '0.5em'};
         splide4.options = { perPage: 4, gap: '0.5em'};
-        splide5.options = { perPage: 3, gap: '1.5em'};
+        splide5.options = { perPage: 4, gap: '1.5em'};
     }
     splide.mount();
     splide2.mount();

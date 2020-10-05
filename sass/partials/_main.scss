@@ -121,7 +121,7 @@ body {
     font-size:1em;
 }
 
-#tienda-category-form,#tienda-category-form-2 ,#tienda-category-form-3 {
+#tienda-category-form,#tienda-category-form-2 ,#tienda-category-form-3, #tienda-category-form-4 {
     display:none;
     .button {
         padding:3px 10px;
@@ -177,5 +177,12 @@ body {
         &__contacto {
             padding-top:25px;
         }
+    }
+    .splide__slide__container {
+        margin: 10px;
+        border-radius: 5px;
+        -webkit-box-shadow: -1px 1px 5px 5px rgba(0,0,0,0.12);
+        -moz-box-shadow: -1px 1px 5px 5px rgba(0,0,0,0.12);
+        box-shadow: -1px 1px 5px 5px rgba(0,0,0,0.12);
     }
 }
