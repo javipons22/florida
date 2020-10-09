@@ -85,8 +85,6 @@ button {
   font-weight: bold;
   background-color: #0b7f43;
   color: #fff;
-  font-size: 12px;
-  padding: 16px 32px;
   border-radius: 7px;
   cursor: pointer;
 }
@@ -117,25 +115,25 @@ button {
   object-fit: contain;
 }
 
-#banner-slider {
+#banner-slider, #banner-slider-2 {
   padding: 0;
   margin: 0;
   background-color: white;
 }
-#banner-slider .splide__slide img {
+#banner-slider .splide__slide img, #banner-slider-2 .splide__slide img {
   width: 100%;
   object-fit: cover;
 }
-#banner-slider .splide__pagination__page {
+#banner-slider .splide__pagination__page, #banner-slider-2 .splide__pagination__page {
   width: 18px;
   height: 18px;
   border-radius: 50%;
   border: 2px solid white;
 }
-#banner-slider .splide__pagination li .is-active {
+#banner-slider .splide__pagination li .is-active, #banner-slider-2 .splide__pagination li .is-active {
   background: #0b7f43;
 }
-#banner-slider .splide__arrow svg {
+#banner-slider .splide__arrow svg, #banner-slider-2 .splide__arrow svg {
   fill: #0b7f43;
   stroke: white;
   stroke-width: 2;
@@ -143,7 +141,7 @@ button {
   height: 45px;
 }
 @media (max-width: 992px) {
-  #banner-slider {
+  #banner-slider, #banner-slider-2 {
     margin-top: 91px;
   }
 }
@@ -156,11 +154,11 @@ button {
 }
 * {
   font-family: "Montserrat";
-  color: #777;
 }
 
 body {
   background: #eee;
+  color: #777;
 }
 
 .header-container {
@@ -263,10 +261,6 @@ body {
   font-size: 1.2em;
 }
 
-#comidas {
-  font-size: 1em;
-}
-
 #tienda-category-form, #tienda-category-form-2, #tienda-category-form-3, #tienda-category-form-4 {
   display: none;
 }
@@ -329,6 +323,44 @@ body {
   box-shadow: -1px 1px 5px 5px rgba(0, 0, 0, 0.12);
 }
 
+.info-pelicula {
+  color: #fff;
+  font-size: 0.7em;
+  padding: 15px 0;
+}
+.info-pelicula__titulo {
+  font-size: 1.1em;
+}
+.info-pelicula__label {
+  font-size: 0.9em;
+  margin: 9px 0 0 0;
+}
+.info-pelicula__value {
+  font-size: 0.95em;
+}
+
+.local-info {
+  font-size: 0.7em;
+  padding: 15px 0;
+}
+.local-info__main-title {
+  font-size: 1.3em;
+}
+.local-info__info-title {
+  font-size: 0.95em;
+}
+.local-info__info-text {
+  font-size: 1.05em;
+}
+
+.splide--big {
+  display: none;
+}
+
+.splide--small {
+  display: block;
+}
+
 @media (min-width: 576px) {
   #marcas-slider, #comidas-slider, #agendas-slider {
     padding: 3em;
@@ -342,6 +374,19 @@ body {
   #cartelera-slider .splide__slide__container {
     max-width: 100%;
   }
+
+  .info-pelicula {
+    color: #fff;
+  }
+  .info-pelicula__titulo {
+    font-size: 1.25em;
+  }
+  .info-pelicula__label {
+    margin: 11px 0 0 0;
+  }
+  .info-pelicula__value {
+    font-size: 1em;
+  }
 }
 @media (min-width: 768px) {
   .tiendas__titulo {
@@ -354,6 +399,14 @@ body {
 
   .hand-image {
     display: none;
+  }
+
+  .splide--small {
+    display: none;
+  }
+
+  .splide--big {
+    display: block;
   }
 }
 @media (min-width: 992px) {
@@ -396,7 +449,7 @@ body {
     display: block;
   }
 
-  #banner-slider {
+  #banner-slider, #banner-slider-2 {
     margin-bottom: 80px;
   }
 

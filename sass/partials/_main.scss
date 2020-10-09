@@ -1,12 +1,12 @@
 // CLASES GENERALES
 * {
     font-family: "Montserrat";
-    color:#777;
 
 }
 
 body {
     background: #eee;
+    color:#777;
 }
 
 // HEADER
@@ -117,9 +117,6 @@ body {
     }
 }
 
-#comidas {
-    font-size:1em;
-}
 
 #tienda-category-form,#tienda-category-form-2 ,#tienda-category-form-3, #tienda-category-form-4 {
     display:none;
@@ -184,5 +181,42 @@ body {
         -webkit-box-shadow: -1px 1px 5px 5px rgba(0,0,0,0.12);
         -moz-box-shadow: -1px 1px 5px 5px rgba(0,0,0,0.12);
         box-shadow: -1px 1px 5px 5px rgba(0,0,0,0.12);
+    }  
+}
+
+.info-pelicula {
+    color:#fff;
+    font-size:0.7em;
+    padding:15px 0;
+    &__titulo {
+        font-size: 1.1em;
     }
+    &__label {
+        font-size:0.9em;
+        margin: 9px 0 0 0;
+    }
+    &__value {
+        font-size:0.95em;
+    }
+}
+
+.local-info {
+    font-size:0.7em;
+    padding:15px 0;
+    &__main-title {
+        font-size:1.3em;
+    }
+    &__info-title {
+        font-size:0.95em;
+    }
+    &__info-text {
+        font-size:1.05em;
+    }
+}
+
+.splide--big {
+    display:none;
+}
+.splide--small {
+    display:block;
 }

@@ -70,6 +70,15 @@ document.addEventListener( 'DOMContentLoaded', function () {
         pauseOnHover: false,
         interval: 6000
     });
+    let splide6 = new Splide( '#banner-slider-2', {
+        width : '100vw',
+        height: '65vh',
+        type:'loop',
+        perPage:1,
+        autoplay:true,
+        pauseOnHover: false,
+        interval: 6000
+    });
     splide = new Splide( '#marcas-slider', {
         type   :'loop',
         padding: {
@@ -151,6 +160,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
     splide3.mount();
     // splide4.mount();
     splide5.mount();
+    splide6.mount();
     if (window.innerWidth < 576) {
         if (currMovie > 0) {
             splide5.go('+' + currMovie,false);
@@ -245,6 +255,10 @@ jQuery(document).ready(function($){
     });
     $('.category-select-button--3').on('click', function() {
         $('#tienda-category-form-3').slideToggle();
+    });
+    $('.category-select-button--4').on('click', function() {
+        console.log("OK")
+        $('#tienda-category-form-4').slideToggle();
     });
     if (window.innerWidth > 576) {
         $(".splide__slide--selected").prependTo(".cartelera__list");

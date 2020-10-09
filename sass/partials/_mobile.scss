@@ -11,4 +11,16 @@
           max-width:100%;
         }
     }
+    .info-pelicula {
+        color:#fff;
+        &__titulo {
+            font-size: 1.25em;
+        }
+        &__label {
+            margin: 11px 0 0 0;
+        }
+        &__value {
+            font-size: 1em;
+        }
+    }
 }
