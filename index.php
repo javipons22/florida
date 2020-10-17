@@ -1,5 +1,7 @@
 <?php get_header(); ?>
-
+<div class="loader-container align-items-center justify-content-center">
+    <div class="loader"></div>
+</div>
 <main>
     <section class="banner">
         <div id="banner-slider" class="splide splide--big">

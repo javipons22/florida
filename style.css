@@ -374,6 +374,43 @@ body {
   margin: 0;
 }
 
+.loader-container {
+  display: flex;
+  position: fixed;
+  background: white;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+
+.loader {
+  border: 12px solid #f3f3f3;
+  /* Light grey */
+  border-top: 12px solid #0b7f43;
+  /* Blue */
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  animation: spin 1s linear infinite;
+}
+
+.logo-loader {
+  width: 50px;
+}
+.logo-loader img {
+  width: 100%;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 @media (min-width: 576px) {
   #marcas-slider, #comidas-slider, #agendas-slider {
     padding: 3em;

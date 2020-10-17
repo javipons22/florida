@@ -174,6 +174,9 @@ function upload_image($name, $path) {
     $uploaddir = wp_upload_dir();
     $uploadfile = $uploaddir['path'] . '/' . $filename;
     
+    error_reporting(E_ALL);
+    ini_set('display_errors', 'On');
+
     $contents= file_get_contents($path . $filename);
     $savefile = fopen($uploadfile, 'w');
     fwrite($savefile, $contents);
