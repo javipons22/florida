@@ -7,7 +7,7 @@
                 <ul class="splide__list">
                     <?php 
                     $args_slide_banner_1 = array(
-                        'numberposts'	=> -1,
+                        'posts_per_page'	=> -1,
                         'post_type' => 'banners_pc'
                     );
                         
@@ -81,7 +81,7 @@
                 <div class="splide__track">
                     <ul class="splide__list">
                         <?php $args_slide_1 = array(
-                            'numberposts'	=> -1,
+                            'posts_per_page'	=> -1,
                             'post_type' => 'marcas'
                             );
                         if( isset($_POST['category_1']) && $_POST['category_1'] != 'all')
@@ -93,9 +93,9 @@
                         
                         if ( $query_slide_1->have_posts() ) : while ( $query_slide_1->have_posts() ) : $query_slide_1->the_post(); ?>
 
-                            <li class="splide__slide" onclick="run(this);">
+                            <li class="splide__slide">
                                 <div class="splide__slide__container">
-                                    <img src="<?php the_field('image'); ?>" alt="<?php echo get_the_title();?> logo">
+                                    <img src="<?php the_field('imagena'); ?>" alt="<?php echo get_the_title();?> logo">
                                 </div>
                                 <div class="middle d-flex align-items-center justify-content-center">
                                     <div class="text local-info row d-flex flex-column">
@@ -130,7 +130,7 @@
                             </li>
 
                         <?php endwhile; else : ?>
-                        <p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
+                        <p><?php esc_html_e( 'No existen Marcas aún.' ); ?></p>
                         <?php endif; wp_reset_postdata(); ?>
                     </ul>
                 </div>
@@ -174,7 +174,7 @@
                 <div class="splide__track">
                     <ul class="splide__list">
                         <?php $args_slide_2 = array(
-                            'numberposts'	=> -1,
+                            'posts_per_page'	=> -1,
                             'post_type' => 'comidas'
                             );
                         if( isset($_POST['category_2']) && $_POST['category_2'] != 'all')
@@ -186,7 +186,7 @@
                         
                         if ( $query_slide_2->have_posts() ) : while ( $query_slide_2->have_posts() ) : $query_slide_2->the_post(); ?>
 
-                            <li class="splide__slide" onclick="run(this);">
+                            <li class="splide__slide"">
                                 <div class="splide__slide__container">
                                     <img src="<?php the_field('image'); ?>" alt="<?php echo get_the_title();?> logo">
                                 </div>
@@ -240,7 +240,7 @@
                 <div class="splide__track">
                     <ul class="splide__list">
                         <?php $args_slide_3 = array(
-                            'numberposts'	=> -1,
+                            'posts_per_page'	=> -1,
                             'post_type' => 'agendas'
                             );
                         if( isset($_POST['category_3']) && $_POST['category_3'] != 'all')
@@ -308,7 +308,7 @@
                     <div class="splide__track">
                         <ul class="splide__list cartelera__list d-flex align-items-center">
                             <?php $args_slide_4 = array(
-                                'numberposts'	=> -1,
+                                'posts_per_page'	=> -1,
                                 'post_type' => 'peliculas',
                                 'orderby' => 'date',
                                 'order' => 'DESC',
@@ -340,7 +340,6 @@
                                     <div class="splide__slide__container"> 
                                     <?php endif;?>
                                         <img class="movie-image" src="<?php the_field('imagen'); ?>" alt="<?php echo get_the_title();?> logo">
-                                        <img class="hand-image" src="<?php echo get_template_directory_uri();?>/img/hand.png">
                                     </div>
                                     <div class="middle">
                                         <div class="info-pelicula text" id="text">

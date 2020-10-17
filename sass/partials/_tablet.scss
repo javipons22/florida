@@ -18,4 +18,18 @@
   .splide--big {
       display:block;
   }
+  #marcas-slider, #comidas-slider,#agendas-slider {
+    .splide__slide__container {
+        margin: 10px;
+        border-radius: 5px;
+        -webkit-box-shadow: -1px 1px 5px 5px rgba(0,0,0,0.12);
+        -moz-box-shadow: -1px 1px 5px 5px rgba(0,0,0,0.12);
+        box-shadow: -1px 1px 5px 5px rgba(0,0,0,0.12);
+    }
+  }
+
+  .splide__slide {
+    padding:0;
+    margin:0;
+  }
 }

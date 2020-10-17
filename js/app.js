@@ -72,7 +72,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
     });
     let splide6 = new Splide( '#banner-slider-2', {
         width : '100vw',
-        height: '65vh',
+        height: '100vw',
         type:'loop',
         perPage:1,
         autoplay:true,
@@ -80,14 +80,14 @@ document.addEventListener( 'DOMContentLoaded', function () {
         interval: 6000
     });
     splide = new Splide( '#marcas-slider', {
-        type   :'loop',
+        type   :'loop',  
         padding: {
             right:'5rem',
             left :'5rem',
         },
         autoplay:true,
         pauseOnHover:true,
-        pagination:true,
+        pagination:false,
     });
 
     splide3 = new Splide( '#comidas-slider', {
@@ -140,8 +140,8 @@ document.addEventListener( 'DOMContentLoaded', function () {
         splide4.options = { perPage: 2, gap: '0.5em'};
         splide5.options = { perPage: 2, gap: '1.2em'};
     } else if (window.innerWidth > 768 && window.innerWidth < 992) {
-        splide.options = { perPage: 3, gap: '0.5em'};
-        splide3.options = { perPage: 3, gap: '0.5em'};
+        splide.options = { perPage: 2, gap: '0.5em'};
+        splide3.options = { perPage: 2, gap: '0.5em'};
         splide4.options = { perPage: 3, gap: '0.5em'};
         splide5.options = { perPage: 3, gap: '1.5em'};
     } else if (window.innerWidth > 992 && window.innerWidth < 1200) {
@@ -202,10 +202,10 @@ const changeSize = () => {
         splide5.options = { perPage: 2, gap: '1.5em'};
         splide5.options.padding = padding;
     } else if (window.innerWidth > 768 && window.innerWidth < 992) {
-        splide.options = { perPage: 3, gap: '0.5em'};
+        splide.options = { perPage: 2, gap: '0.5em'};
         splide.options.padding = padding;
 
-        splide3.options = { perPage: 3, gap: '0.5em'};
+        splide3.options = { perPage: 2, gap: '0.5em'};
         splide3.options.padding = padding;
 
         splide4.options = { perPage: 3, gap: '0.5em'};
