@@ -37,7 +37,7 @@
                     $imagen_numero_2 = 1;
                         
                     if ( $query_slide_banner_2->have_posts() ) : while ( $query_slide_banner_2->have_posts() ) : $query_slide_banner_2->the_post(); ?>
-                        <li class="splide__slide">
+                        <li class="splide__slide splide__slide--banner">
                             <img src="<?php the_field('imagen');?>" alt="Imagen Banner <?php echo $imagen_numero_2; ?>" />
                         </li>
                     <?php $imagen_numero_2++; endwhile; endif; ?>
@@ -59,22 +59,28 @@
                     <button name="category_1" class="button button--selected" value="all" type="submit">Todo</button>
                 <?php endif;?>
                 <?php 
-                $args_categories_1 = array('numberposts'	=> -1,'post_type' => 'categorias_marcas');
+                $categorias_marcas = [];
+                $args_categories_1 = array('posts_per_page'	=> -1,'post_type' => 'marcas');
                 $query_categories_1 = new WP_Query($args_categories_1);
                             
-                            if ( $query_categories_1->have_posts() ) : while ( $query_categories_1->have_posts() ) : $query_categories_1->the_post(); ?>
-                            <?php $id = get_the_ID(); ?>
-                            <?php if( isset($_POST['category_1']) && $_POST['category_1'] == $id):?>
-                                <button name="category_1" class="button button--selected" value="<?php echo $id;?>" type="submit"><?php the_field('name');?></button>
-                            <?php else: ?>
-                                <button name="category_1" class="button" value="<?php echo $id;?>" type="submit"><?php the_field('name');?></button>
-                            <?php endif;?>
-                            
-                            
+                if ( $query_categories_1->have_posts() ) : while ( $query_categories_1->have_posts() ) : $query_categories_1->the_post();
+                
+                $categoria = get_field('category');
+                if (!in_array($categoria, $categorias_marcas)) {
+                    array_push($categorias_marcas, $categoria);
+                }
 
-                            <?php endwhile; else : ?>
-                            <p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
-                            <?php endif; wp_reset_postdata(); ?>
+                endwhile; else : ?>
+                <p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
+                <?php endif; wp_reset_postdata(); ?>
+                <?php foreach ($categorias_marcas as $categoria): ?>
+                    <?php if( isset($_POST['category_1']) && $_POST['category_1'] == $categoria):?>
+                        <button name="category_1" class="button button--selected" value="<?php echo $categoria;?>" type="submit"><?php echo $categoria;?></button>
+                    <?php else: ?>
+                        <button name="category_1" class="button" value="<?php echo $categoria;?>" type="submit"><?php echo $categoria;?></button>
+                    <?php endif;?>
+                <?php endforeach;?>
+                
                 </form>
             </div>
             <div id="marcas-slider" class="splide">
