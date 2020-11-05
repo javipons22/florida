@@ -49,6 +49,7 @@ body {
         padding: 15px 0;
         border-bottom: 1px solid $gris;
         line-height:100%;
+        cursor:pointer;
     }
     &__link--selected {
         background:#add5db;
@@ -104,6 +105,7 @@ body {
     }
     .category-select-button {
         font-size:0.9em;
+        color: #444;
     }
 
     &__cartelera-info {
@@ -126,9 +128,12 @@ body {
         margin: 7px 7px 7px 0;
         border:1px solid #999;
         border-radius:5px;
+        color: #444;
     }
     .button--selected {
-        border:2px solid $verde-oscuro;
+        color: white;
+        border:none;
+        padding: 5px 15px;
     }
 
 }
@@ -184,6 +189,21 @@ body {
     -webkit-box-shadow: -1px 1px 5px 5px rgba(0,0,0,0.12);
     -moz-box-shadow: -1px 1px 5px 5px rgba(0,0,0,0.12);
     box-shadow: -1px 1px 5px 5px rgba(0,0,0,0.12);
+    position:relative;
+    .marca-default {
+        font-weight:bold;
+        padding: 0 10px;
+        color:white;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        text-align:center;
+        position:absolute;
+        top: 0;
+        right: 0;
+        left:0;
+        bottom:0;
+    }
 } 
 
 .info-pelicula {
@@ -245,8 +265,8 @@ body {
 }
 
 .loader {
-    border: 12px solid #f3f3f3; /* Light grey */
-    border-top: 12px solid $verde; /* Blue */
+    border: 6px solid #f3f3f3; /* Light grey */
+    border-top: 6px solid $verde; /* Blue */
     border-radius: 50%;
     width: 90px;
     height: 90px;

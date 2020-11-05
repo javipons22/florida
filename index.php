@@ -47,7 +47,7 @@
             </div>
         </div>
     </section>
-    <section class="tiendas" >
+    <section class="tiendas" id="marcas-anchor">
         <div class="container">
             <div class="tiendas__header-container d-lg-flex flex-lg-column align-items-center align-items-lg-start">
                 <div class="tiendas__header d-flex d-lg-inline justify-content-between justify-content-md-start">
@@ -103,7 +103,12 @@
 
                             <li class="splide__slide">
                                 <div class="splide__slide__container">
-                                    <img src="<?php the_field('imagena'); ?>" alt="<?php echo get_the_title();?> logo">
+                                    <?php if (get_field('imagena') != ''): ?>
+                                        <img src="<?php the_field('imagena'); ?>" alt="<?php echo get_the_title();?> logo">
+                                    <?php else: ?>
+                                        <span class="marca-default"><?php echo get_the_title();?></span>
+                                        <img src="<?php echo get_template_directory_uri(); ?>/img/default.jpg" alt="<?php echo get_the_title();?> logo">
+                                    <?php endif; ?>
                                 </div>
                                 <div class="middle d-flex align-items-center justify-content-center">
                                     <div class="text local-info row d-flex flex-column">
@@ -112,6 +117,7 @@
                                                 <?php echo get_the_title();?>
                                             </div>                                            
                                         </div>
+                                        <?php if(get_field('telefono') != ''):?>
                                         <div class="col-12 mt-2">
                                             <div class="local-info__info-title">
                                                 Teléfono
@@ -120,6 +126,8 @@
                                                 <?php the_field('telefono');?>
                                             </div>
                                         </div>
+                                        <?php endif;?>
+                                        <?php if(get_field('horarios') != ''):?>
                                         <div class="col-12 mt-2">
                                             <div class="local-info__info-title">
                                                 Horarios
@@ -128,11 +136,14 @@
                                                 <?php the_field('horarios');?><br>
                                             </div>
                                         </div>
+                                        <?php endif;?>
+                                        <?php if(get_field('local') != ''):?>
                                         <div class="col-12 mt-2">
                                             <div class="local-info__info-text">
                                                 Local <?php the_field('local');?><br>
                                             </div>
                                         </div>
+                                        <?php endif;?>
                                     </div>
                                 </div>
                             </li>
@@ -146,11 +157,11 @@
         </div>
     </section>
 
-    <section class="tiendas">
+    <section class="tiendas" id="comidas-anchor">
         <div class="container">
             <div class="tiendas__header-container d-lg-flex flex-lg-column align-items-center align-items-lg-start">
                 <div class="tiendas__header d-flex d-lg-inline justify-content-between justify-content-md-start">
-                    <h1 class="tiendas__titulo" id="comidas">COMIDAS</h1>
+                    <h1 class="tiendas__titulo">COMIDAS</h1>
                     <button name="category_select_button" class="category-select-button category-select-button--2">categorías <img class="tiendas__icono" src="<?php echo get_template_directory_uri(); ?>/img/arrowdown.svg" alt="flecha select"></button>
                 </div>
                 <form id="tienda-category-form-2" method="POST">
@@ -160,22 +171,28 @@
                     <button name="category_2" class="button button--selected" value="all" type="submit">Todo</button>
                 <?php endif;?>
                 <?php 
-                $args_categories_2 = array('numberposts'	=> -1,'post_type' => 'categorias_comidas');
+                $categorias_comidas = [];
+                $args_categories_2 = array('posts_per_page'	=> -1,'post_type' => 'comidas');
                 $query_categories_2 = new WP_Query($args_categories_2);
                             
-                            if ( $query_categories_2->have_posts() ) : while ( $query_categories_2->have_posts() ) : $query_categories_2->the_post(); ?>
-                            <?php $id = get_the_ID(); ?>
-                            <?php if( isset($_POST['category_2']) && $_POST['category_2'] == $id):?>
-                                <button name="category_2" class="button button--selected" value="<?php echo $id;?>" type="submit"><?php the_field('name');?></button>
-                            <?php else: ?>
-                                <button name="category_2" class="button" value="<?php echo $id;?>" type="submit"><?php the_field('name');?></button>
-                            <?php endif;?>
-                            
-                            
+                if ( $query_categories_2->have_posts() ) : while ( $query_categories_2->have_posts() ) : $query_categories_2->the_post();
+                
+                $categoria = get_field('category');
+                if (!in_array($categoria, $categorias_comidas)) {
+                    array_push($categorias_comidas, $categoria);
+                }
 
-                            <?php endwhile; else : ?>
-                            <p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
-                            <?php endif; wp_reset_postdata(); ?>
+                endwhile; else : ?>
+                <p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
+                <?php endif; wp_reset_postdata(); ?>
+                <?php foreach ($categorias_comidas as $categoria): ?>
+                    <?php if( isset($_POST['category_2']) && $_POST['category_2'] == $categoria):?>
+                        <button name="category_2" class="button button--selected" value="<?php echo $categoria;?>" type="submit"><?php echo $categoria;?></button>
+                    <?php else: ?>
+                        <button name="category_2" class="button" value="<?php echo $categoria;?>" type="submit"><?php echo $categoria;?></button>
+                    <?php endif;?>
+                <?php endforeach;?>
+                
                 </form>
             </div>
             <div id="comidas-slider" class="splide">
@@ -196,10 +213,48 @@
 
                             <li class="splide__slide"">
                                 <div class="splide__slide__container">
-                                    <img src="<?php the_field('image'); ?>" alt="<?php echo get_the_title();?> logo">
+                                <?php if (get_field('imagena') != ''): ?>
+                                    <img src="<?php the_field('imagena'); ?>" alt="<?php echo get_the_title();?> logo">
+                                <?php else: ?>
+                                    <span class="marca-default"><?php echo get_the_title();?></span>
+                                    <img src="<?php echo get_template_directory_uri(); ?>/img/default.jpg" alt="<?php echo get_the_title();?> logo">
+                                <?php endif; ?>
                                 </div>
-                                <div class="middle">
-                                    <div class="text">Ver más!<br> <?php echo get_the_title();?></div>
+                                <div class="middle d-flex align-items-center justify-content-center">
+                                    <div class="text local-info row d-flex flex-column">
+                                        <div class="col-12">
+                                            <div class="local-info__main-title">
+                                                <?php echo get_the_title();?>
+                                            </div>                                            
+                                        </div>
+                                        <?php if(get_field('telefono') != ''):?>
+                                        <div class="col-12 mt-2">
+                                            <div class="local-info__info-title">
+                                                Teléfono
+                                            </div>
+                                            <div class="local-info__info-text">
+                                                <?php the_field('telefono');?>
+                                            </div>
+                                        </div>
+                                        <?php endif;?>
+                                        <?php if(get_field('horarios') != ''):?>
+                                        <div class="col-12 mt-2">
+                                            <div class="local-info__info-title">
+                                                Horarios
+                                            </div>
+                                            <div class="local-info__info-text">
+                                                <?php the_field('horarios');?><br>
+                                            </div>
+                                        </div>
+                                        <?php endif;?>
+                                        <?php if(get_field('local') != ''):?>
+                                        <div class="col-12 mt-2">
+                                            <div class="local-info__info-text">
+                                                Local <?php the_field('local');?><br>
+                                            </div>
+                                        </div>
+                                        <?php endif;?>
+                                    </div>
                                 </div>
                             </li>
 
@@ -278,7 +333,7 @@
         </div>
     </section> -->
 
-    <section class="tiendas my-lg-5" >
+    <section class="tiendas my-lg-5" id="cines-anchor">
         <div class="container">
             
             <div class="row">
@@ -414,7 +469,7 @@
         const category1 = ('<?php echo $_POST['category_1']?>' !== '') ? '<?php echo $_POST['category_1']?>' : 'all';
         const category2 = ('<?php echo $_POST['category_2']?>' !== '')  ? '<?php echo $_POST['category_2']?>' : 'all';
         const category3 = ('<?php echo $_POST['category_3']?>' !== '')  ? '<?php echo $_POST['category_3']?>' : 'all';
-        const category4 = ('<?php echo $_POST['category_4']?>' !== '')  ? '<?php echo $_POST['category_4']?>' : 0;
+        const category4 = ('<?php echo $_POST['category_4']?>' !== '')  ? '<?php echo $_POST['category_4']?>' : 'all';
         const currMovie = ('<?php echo $_POST['current_movie']?>' !== '')  ? '<?php echo $_POST['current_movie']?>' : 0;
         console.log(currMovie);
     </script>

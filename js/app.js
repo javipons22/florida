@@ -98,7 +98,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
         },
         autoplay:true,
         pauseOnHover:true,
-        pagination:true,
+        pagination:false,
     });
     // splide4 = new Splide( '#agendas-slider', {
     //     type   :'loop',
@@ -122,7 +122,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
         perPage:1,
         autoplay:false,
         pauseOnHover:true,
-        pagination:true,
+        pagination:false,
     });
 
     if (window.innerWidth < 576) {
@@ -264,8 +264,18 @@ if (window.innerWidth > 576) {
     jQuery(".splide__slide--selected").prependTo(".cartelera__list");
 }
 jQuery(window).on("load", () => {
-    console.log("Ok")
+    console.log("Ok");
     jQuery(".loader-container").fadeOut();
 });
-
+jQuery('.main-nav__link--scroll').on('click', function() {
+    jQuery('.main-nav, .social-nav').slideToggle();
+    jQuery('.hamburger-menu').toggleClass('animate');
+    var scrollTo = this.getAttribute("name");
+    var elmnt = document.getElementById(scrollTo);
+    if (window.innerWidth < 995) {
+        elmnt.scrollIntoView({ block:'center',  behavior: 'smooth', inline: 'center' });
+    } else {
+        elmnt.scrollIntoView({ block:'start',  behavior: 'smooth', inline: 'start' });
+    }
+});
 

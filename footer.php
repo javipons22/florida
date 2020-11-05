@@ -5,7 +5,7 @@
             </div>
             <div class="footer-info d-flex justify-content-center flex-column">
                 <div class="footer-info__contacto">
-                    <p>Florida Parque Comercial 2020 | Calle 71 Nº65 - 150 | Tel: 520 28 80.</p>
+                    <p>Florida Parque Comercial 2020 | Calle 71 Nº65 - 150 | Tel: +57 310 4161045.</p>
                 </div>
                 <div class="footer-info__copyright">
                     <p>Todos los derechos reservados. Sitios web 1por1</p>

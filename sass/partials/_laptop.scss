@@ -5,8 +5,9 @@
     .main-nav {
         &__link {
             font-size:0.75em;
-            font-weight:500;
+            font-weight:bold;
             border-bottom:none;
+            color:$color-menu-item;
         }
         &__link:active,&__link:hover {
             font-weight:bold;
