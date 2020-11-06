@@ -343,28 +343,33 @@
                         <button name="category_select_button" class="category-select-button category-select-button--4">categorías <img class="tiendas__icono" src="<?php echo get_template_directory_uri(); ?>/img/arrowdown.svg" alt="flecha select"></button>
                     </div>
                     <form id="tienda-category-form-4" method="POST">
-                    <?php if( isset($_POST['category_4']) && $_POST['category_4'] != 'all'):?>
-                        <button name="category_4" class="button" value="all" type="submit">Todo</button>
-                    <?php else:?>
-                        <button name="category_4" class="button button--selected" value="all" type="submit">Todo</button>
-                    <?php endif;?>
-                    <?php 
-                    $args_categories_4 = array('numberposts'	=> -1,'post_type' => 'categorias_peliculas');
-                    $query_categories_4 = new WP_Query($args_categories_4);
-                                
-                                if ( $query_categories_4->have_posts() ) : while ( $query_categories_4->have_posts() ) : $query_categories_4->the_post(); ?>
-                                <?php $id = get_the_ID(); ?>
-                                <?php if( isset($_POST['category_4']) && $_POST['category_4'] == $id):?>
-                                    <button name="category_4" class="button button--selected" value="<?php echo $id;?>" type="submit"><?php the_field('name');?></button>
-                                <?php else: ?>
-                                    <button name="category_4" class="button" value="<?php echo $id;?>" type="submit"><?php the_field('name');?></button>
-                                <?php endif;?>
-                                
-                                
+                        <?php if( isset($_POST['category_4']) && $_POST['category_4'] != 'all'):?>
+                            <button name="category_4" class="button" value="all" type="submit">Todo</button>
+                        <?php else:?>
+                            <button name="category_4" class="button button--selected" value="all" type="submit">Todo</button>
+                        <?php endif;?>
+                        <?php 
+                        $categorias_peliculas = [];
+                        $args_categories_3 = array('posts_per_page'	=> -1,'post_type' => 'peliculas');
+                        $query_categories_3 = new WP_Query($args_categories_3);
+                                    
+                        if ( $query_categories_3->have_posts() ) : while ( $query_categories_3->have_posts() ) : $query_categories_3->the_post();
+                        
+                        $categoria = get_field('genero');
+                        if (!in_array($categoria, $categorias_peliculas)) {
+                            array_push($categorias_peliculas, $categoria);
+                        }
 
-                                <?php endwhile; else : ?>
-                                <p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
-                                <?php endif; wp_reset_postdata(); ?>
+                        endwhile; else : ?>
+                        <p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
+                        <?php endif; wp_reset_postdata(); ?>
+                        <?php foreach ($categorias_peliculas as $categoria): ?>
+                            <?php if( isset($_POST['category_4']) && $_POST['category_4'] == $categoria):?>
+                                <button name="category_4" class="button button--selected" value="<?php echo $categoria;?>" type="submit"><?php echo $categoria;?></button>
+                            <?php else: ?>
+                                <button name="category_4" class="button" value="<?php echo $categoria;?>" type="submit"><?php echo $categoria;?></button>
+                            <?php endif;?>
+                        <?php endforeach;?>
                     </form>
                 </div>
                 <div id="cartelera-slider" class="splide col-12 col-lg-12 ">
@@ -402,7 +407,7 @@
                                     <?php else: ?>
                                     <div class="splide__slide__container"> 
                                     <?php endif;?>
-                                        <img class="movie-image" src="<?php the_field('imagen'); ?>" alt="<?php echo get_the_title();?> logo">
+                                        <img class="movie-image" src="<?php the_field('imagena'); ?>" alt="<?php echo get_the_title();?> logo">
                                     </div>
                                     <div class="middle">
                                         <div class="info-pelicula text" id="text">
@@ -414,14 +419,7 @@
                                                     Género
                                                 </div>
                                                 <div class="info-pelicula__value">
-                                                    <?php 
-                                                        $genero = get_field_object('genero'); 
-                                                        foreach( $genero['value'] as $value => $label ):
-                                                            if ($value == 'post_title'):
-                                                                echo $label;
-                                                            endif;
-                                                        endforeach;
-                                                    ?>
+                                                    <?php the_field('genero'); ?>
                                                 </div>
                                             </div>
                                             <div class="info-pelicula__container">
