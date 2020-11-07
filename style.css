@@ -20,49 +20,48 @@ button {
   background: none;
 }
 
-#marcas-slider, #comidas-slider, #agendas-slider, #cartelera-slider {
+#marcas-slider, #comidas-slider, #agenda-slider, #cartelera-slider {
   padding: 3em;
   padding-top: 10px;
   position: relative;
   /*******************/
 }
-#marcas-slider .splide__slide__container, #comidas-slider .splide__slide__container, #agendas-slider .splide__slide__container, #cartelera-slider .splide__slide__container {
+#marcas-slider .splide__slide__container, #comidas-slider .splide__slide__container, #agenda-slider .splide__slide__container, #cartelera-slider .splide__slide__container {
   cursor: pointer;
-  overflow: hidden;
   border-radius: 15px;
   display: flex;
   align-items: center;
   min-height: 180px;
 }
-#marcas-slider .splide__slide__container img, #comidas-slider .splide__slide__container img, #agendas-slider .splide__slide__container img, #cartelera-slider .splide__slide__container img {
+#marcas-slider .splide__slide__container img, #comidas-slider .splide__slide__container img, #agenda-slider .splide__slide__container img, #cartelera-slider .splide__slide__container img {
   width: 100%;
   max-height: 180px;
   object-fit: contain;
 }
-#marcas-slider .splide__pagination__page, #comidas-slider .splide__pagination__page, #agendas-slider .splide__pagination__page, #cartelera-slider .splide__pagination__page {
+#marcas-slider .splide__pagination__page, #comidas-slider .splide__pagination__page, #agenda-slider .splide__pagination__page, #cartelera-slider .splide__pagination__page {
   width: 15px;
   height: 15px;
   border-radius: 50%;
 }
-#marcas-slider .splide__arrow svg, #comidas-slider .splide__arrow svg, #agendas-slider .splide__arrow svg, #cartelera-slider .splide__arrow svg {
+#marcas-slider .splide__arrow svg, #comidas-slider .splide__arrow svg, #agenda-slider .splide__arrow svg, #cartelera-slider .splide__arrow svg {
   fill: #0b7f43;
   width: 25px;
   height: 25px;
 }
-#marcas-slider .splide__arrow--prev, #comidas-slider .splide__arrow--prev, #agendas-slider .splide__arrow--prev, #cartelera-slider .splide__arrow--prev {
+#marcas-slider .splide__arrow--prev, #comidas-slider .splide__arrow--prev, #agenda-slider .splide__arrow--prev, #cartelera-slider .splide__arrow--prev {
   left: 0;
 }
-#marcas-slider .splide__arrow--next, #comidas-slider .splide__arrow--next, #agendas-slider .splide__arrow--next, #cartelera-slider .splide__arrow--next {
+#marcas-slider .splide__arrow--next, #comidas-slider .splide__arrow--next, #agenda-slider .splide__arrow--next, #cartelera-slider .splide__arrow--next {
   right: 0;
 }
-#marcas-slider .splide__pagination li .is-active, #comidas-slider .splide__pagination li .is-active, #agendas-slider .splide__pagination li .is-active, #cartelera-slider .splide__pagination li .is-active {
+#marcas-slider .splide__pagination li .is-active, #comidas-slider .splide__pagination li .is-active, #agenda-slider .splide__pagination li .is-active, #cartelera-slider .splide__pagination li .is-active {
   background: #0b7f43;
 }
-#marcas-slider .splide__slide__container img, #comidas-slider .splide__slide__container img, #agendas-slider .splide__slide__container img, #cartelera-slider .splide__slide__container img {
+#marcas-slider .splide__slide__container img, #comidas-slider .splide__slide__container img, #agenda-slider .splide__slide__container img, #cartelera-slider .splide__slide__container img {
   transition: 0.5s ease-in-out;
   backface-visibility: hidden;
 }
-#marcas-slider .middle, #comidas-slider .middle, #agendas-slider .middle, #cartelera-slider .middle {
+#marcas-slider .middle, #comidas-slider .middle, #agenda-slider .middle, #cartelera-slider .middle {
   width: 100%;
   transition: 0.5s ease;
   opacity: 0;
@@ -74,13 +73,13 @@ button {
   text-align: center;
   border-radius: 20px;
 }
-#marcas-slider .splide__slide__container:hover img, #marcas-slider .splide__slide:hover img, #comidas-slider .splide__slide__container:hover img, #comidas-slider .splide__slide:hover img, #agendas-slider .splide__slide__container:hover img, #agendas-slider .splide__slide:hover img, #cartelera-slider .splide__slide__container:hover img, #cartelera-slider .splide__slide:hover img {
+#marcas-slider .splide__slide__container:hover img, #marcas-slider .splide__slide:hover img, #comidas-slider .splide__slide__container:hover img, #comidas-slider .splide__slide:hover img, #agenda-slider .splide__slide__container:hover img, #agenda-slider .splide__slide:hover img, #cartelera-slider .splide__slide__container:hover img, #cartelera-slider .splide__slide:hover img {
   opacity: 0.3;
 }
-#marcas-slider .splide__slide:hover .middle, #comidas-slider .splide__slide:hover .middle, #agendas-slider .splide__slide:hover .middle, #cartelera-slider .splide__slide:hover .middle {
+#marcas-slider .splide__slide:hover .middle, #comidas-slider .splide__slide:hover .middle, #agenda-slider .splide__slide:hover .middle, #cartelera-slider .splide__slide:hover .middle {
   opacity: 1;
 }
-#marcas-slider .text, #comidas-slider .text, #agendas-slider .text, #cartelera-slider .text {
+#marcas-slider .text, #comidas-slider .text, #agenda-slider .text, #cartelera-slider .text {
   width: 100%;
   font-weight: bold;
   background-color: #0b7f43;
@@ -89,7 +88,7 @@ button {
   cursor: pointer;
 }
 
-#marcas-slider, #comidas-slider, #agendas-slider, #cartelera-slider {
+#marcas-slider, #comidas-slider, #agenda-slider, #cartelera-slider {
   padding-left: 5px;
   padding-right: 5px;
 }
@@ -147,7 +146,7 @@ button {
 }
 
 @media (min-width: 992px) {
-  #marcas-slider .splide__slide__container, #comidas-slider .splide__slide__container, #agendas-slider .splide__slide__container {
+  #marcas-slider .splide__slide__container, #comidas-slider .splide__slide__container, #agenda-slider .splide__slide__container {
     min-height: 180px;
     max-height: 180px;
     min-width: 180px;
@@ -394,6 +393,26 @@ body {
   margin: 0;
 }
 
+.splide__slide__container--agenda {
+  background-color: #333;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.splide__slide__container--agenda img {
+  position: absolute;
+  left: 20%;
+  height: 130px;
+  transform: rotate(3deg);
+}
+.splide__slide__container--agenda span {
+  position: absolute;
+  right: 55%;
+  font-family: "Londrina Outline", cursive;
+  color: white;
+  font-size: 140px;
+}
+
 .loader-container {
   display: flex;
   position: fixed;
@@ -432,7 +451,7 @@ body {
   }
 }
 @media (min-width: 576px) {
-  #marcas-slider, #comidas-slider, #agendas-slider {
+  #marcas-slider, #comidas-slider, #agenda-slider {
     padding: 3em;
     padding-top: 10px;
   }
@@ -479,7 +498,7 @@ body {
     display: block;
   }
 
-  #marcas-slider .splide__slide__container, #comidas-slider .splide__slide__container, #agendas-slider .splide__slide__container {
+  #marcas-slider .splide__slide__container, #comidas-slider .splide__slide__container, #agenda-slider .splide__slide__container {
     margin: 10px;
     border-radius: 5px;
     -webkit-box-shadow: -1px 1px 5px 5px rgba(0, 0, 0, 0.12);

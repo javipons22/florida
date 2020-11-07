@@ -253,6 +253,26 @@ body {
     margin:0;
 }
 
+.splide__slide__container--agenda {
+    background-color: #333;
+    position:relative;
+    display:flex;
+    align-items: center;
+    img {
+        position:absolute;
+        left: 20%;
+        height:130px;
+        transform: rotate(3deg);
+    }
+    span {
+        position: absolute;
+        right:55%;
+        font-family: 'Londrina Outline', cursive;
+        color: white;
+        font-size: 140px;
+    }
+}
+
 .loader-container {
     display:flex;
     position: fixed;

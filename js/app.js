@@ -100,18 +100,18 @@ document.addEventListener( 'DOMContentLoaded', function () {
         pauseOnHover:true,
         pagination:false,
     });
-    // splide4 = new Splide( '#agendas-slider', {
-    //     type   :'loop',
-    //     padding: {
-    //         right:'5rem',
-    //         left :'5rem',
-    //     },
-    //     autoplay:true,
-    //     pauseOnHover:true,
-    //     pagination:true,
-    // });
 
-    splide4 = {};
+    splide4 = new Splide( '#agenda-slider', {
+        type   :'loop',
+        padding: {
+            right:'5rem',
+            left :'5rem',
+        },
+        autoplay:true,
+        pauseOnHover:true,
+        pagination:false,
+    });
+
 
     splide5 = new Splide( '#cartelera-slider', {
         padding: {
@@ -158,15 +158,9 @@ document.addEventListener( 'DOMContentLoaded', function () {
     splide.mount();
     splide2.mount();
     splide3.mount();
-    // splide4.mount();
+    splide4.mount();
     splide5.mount();
     splide6.mount();
-    if (window.innerWidth < 576) {
-        if (currMovie > 0) {
-            splide5.go('+' + currMovie,false);
-        }
-        
-    }
     window.scrollTo(0, initialHeight); 
 });
 
@@ -235,7 +229,7 @@ const changeSize = () => {
         splide4.options = { perPage: 4, gap: '0em'};
         splide4.options.padding = padding;
 
-        splide5.options = { perPage: 3, gap: '1.5em'};
+        splide5.options = { perPage: 4, gap: '1.5em'};
         splide5.options.padding = padding;
     }
 

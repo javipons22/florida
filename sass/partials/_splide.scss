@@ -1,13 +1,12 @@
 
 
-#marcas-slider, #comidas-slider, #agendas-slider ,#cartelera-slider{
+#marcas-slider, #comidas-slider, #agenda-slider ,#cartelera-slider{
     padding: 3em;
     padding-top: 10px;
     position:relative;
 
   .splide__slide__container {
     cursor: pointer;
-    overflow: hidden;
     border-radius: 15px;
     display:flex;
     align-items: center;
@@ -85,7 +84,7 @@
 
 }
 
-#marcas-slider,#comidas-slider,#agendas-slider,#cartelera-slider {
+#marcas-slider,#comidas-slider,#agenda-slider,#cartelera-slider {
   padding-left: 5px;
   padding-right: 5px;
 }
@@ -152,7 +151,7 @@
     }
     
     @media (min-width: 992px) { 
-      #marcas-slider, #comidas-slider,#agendas-slider {
+      #marcas-slider, #comidas-slider,#agenda-slider {
         .splide__slide__container {
           min-height:180px;
           max-height:180px;

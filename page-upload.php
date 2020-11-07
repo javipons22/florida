@@ -190,6 +190,44 @@ function iterador_csv($csv)
         }
 
     }
+
+    if ($campos[1] == "agenda") {
+        $marcas_existentes = array();
+        $imagenes_existentes = array();
+        $args_1 = array(
+            'posts_per_page'	=> -1,
+            'post_type' => 'agendas'
+            );
+        $query_1 = new WP_Query($args_1);
+        if ( $query_1->have_posts() ) : while ( $query_1->have_posts() ) : $query_1->the_post();
+            array_push($marcas_existentes, get_the_title());
+            array_push($imagenes_existentes, get_field('imagen_id'));
+        endwhile; endif;
+
+        borrar_posts_previos('agendas');
+        borrar_imagenes_previas($imagenes_existentes);
+
+        for ($x = 1; $x <= sizeof($csv); $x++) {
+
+            if (!empty(${'orden' . $x})) {
+                // LOCAL	MARCA	TELEFONOS	CATEGORIA	HORARIOS
+                $titulo = ${'agenda' . $x};
+                $descripcion = ${'descripcion' . $x};
+                $orden = ${'orden' . $x};
+                $imagen = ${'imagen' . $x};
+                if (strlen(${'imagen' . $x}) > 0) {
+                    $result = upload_image(${'imagen' . $x},'/home/javier/Imágenes/logos/');
+                    $img_url = strval($result[0]);
+                    $img_id = $result[1];
+                } else {
+                    $img_url = "";
+                    $img_id = "";
+                }
+                crear_agendas($titulo, $descripcion, $orden,$img_url, $img_id);
+            }
+        }
+
+    }
 }
 
 function crear_marca($titulo, $local, $telefonos, $categoria, $horarios, $img_url, $img_id)
@@ -247,6 +285,24 @@ function crear_peliculas($titulo, $clasificacion, $horarios, $genero, $sala,$img
     update_field('genero', $genero, $post_id);
     update_field('sala', $sala, $post_id);
     update_field('horarios', $horarios, $post_id);
+    update_field('imagena', $img_url, $post_id);
+    update_field('imagen_id', $img_id, $post_id);
+     
+}
+
+function crear_agendas($titulo, $descripcion, $orden,$img_url, $img_id)
+{
+    $my_post = array(
+        'post_title' => $titulo,
+        'post_type' => 'agendas',
+        'post_status' => 'publish',
+    );
+
+    // Insert the post into the database
+    $post_id = wp_insert_post($my_post);
+
+    update_field('descripcion', $descripcion, $post_id);
+    update_field('orden', $orden, $post_id);
     update_field('imagena', $img_url, $post_id);
     update_field('imagen_id', $img_id, $post_id);
      

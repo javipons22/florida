@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><?php wp_title(); ?></title>
+        <title>Florida | Parque Comercial</title>
         <?php wp_head(); ?>
     </head>
     <body <?php body_class();?> onresize="changeSize();">
@@ -31,8 +31,7 @@
                             <li class="main-nav__element d-lg-inline-block px-lg-3 px-xl-4"><span class="main-nav__link main-nav__link--scroll" name="marcas-anchor">MARCAS</span></li>
                             <li class="main-nav__element d-lg-inline-block px-lg-3 px-xl-4"><span class="main-nav__link main-nav__link--scroll" name="comidas-anchor">PLAZOLETA DE COMIDAS</span></li>
                             <li class="main-nav__element d-lg-inline-block px-lg-3 px-xl-4"><span class="main-nav__link main-nav__link--scroll" name="cines-anchor">CARTELERA DE CINE</span></li>
-                            <li class="main-nav__element d-lg-inline-block px-lg-3 px-xl-4"><span class="main-nav__link" name="">AGENDA</span></li>
-                            <li class="main-nav__element d-lg-inline-block px-lg-3 px-xl-4"><span class="main-nav__link" name="">HORARIOS Y SERVICIOS</span></li>
+                            <li class="main-nav__element d-lg-inline-block px-lg-3 px-xl-4"><span class="main-nav__link main-nav__link--scroll" name="agenda-anchor">AGENDA</span></li>
                             <li class="main-nav__element d-lg-inline-block pl-lg-3 px-xl-4 pr-lg-0"><span class="main-nav__link">¿CÓMO LLEGAR?</span></li>
                         </ul>
                     </nav>
