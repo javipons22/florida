@@ -6,7 +6,7 @@
         <title>Florida | Parque Comercial</title>
         <?php wp_head(); ?>
     </head>
-    <body <?php body_class();?> onresize="changeSize();">
+    <body <?php body_class();?>>
         <header class="header-container">
             <div class="main-header container">
                 <div class="row justify-content-between align-items-stretch d-lg-flex">

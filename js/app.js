@@ -79,16 +79,59 @@ document.addEventListener( 'DOMContentLoaded', function () {
         pauseOnHover: false,
         interval: 6000
     });
-    splide = new Splide( '#marcas-slider', {
+    let splideObject ={
         type   :'loop',  
         padding: {
             right:'5rem',
             left :'5rem',
         },
-        autoplay:true,
+        perPage: 4,
+        gap: '0.5em',
+        autoplay:false,
         pauseOnHover:true,
         pagination:false,
-    });
+        breakpoints: {
+            // 576
+//splideObject.perPage = 1;
+// splideObject.gap = '1em';
+// splideObject.padding = { right: '1rem', left: '1rem'}
+
+// 768
+// splideObject.perPage = 2;
+// splideObject.gap = '0.5em';
+
+//992
+// splideObject.perPage = 2;
+//         splideObject.gap = '0.5em';
+
+// 1200
+// splideObject.perPage = 3;
+//         splideObject.gap = '0.5em';
+
+// + 1200
+// splideObject.perPage = 4;
+//         splideObject.gap = '0.5em';
+
+
+            '576': {
+                perPage: 1,
+                gap    : '1em',
+                padding: { right: '1rem', left: '1rem'},
+            },
+            '768': {
+                perPage: 1,
+                gap    : '0.5em',
+            },
+            '992': {
+                perPage: 2,
+                gap    : '0.5em',
+            },
+            '1200': {
+                perPage: 3,
+                gap    : '0.5em',
+            },
+        }
+    };
 
     splide3 = new Splide( '#comidas-slider', {
         type   :'loop',
@@ -96,7 +139,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
             right:'5rem',
             left :'5rem',
         },
-        autoplay:true,
+        autoplay:false,
         pauseOnHover:true,
         pagination:false,
     });
@@ -107,7 +150,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
             right:'5rem',
             left :'5rem',
         },
-        autoplay:true,
+        autoplay:false,
         pauseOnHover:true,
         pagination:false,
     });
@@ -125,9 +168,12 @@ document.addEventListener( 'DOMContentLoaded', function () {
         pagination:false,
     });
 
+
+
     if (window.innerWidth < 576) {
-        splide.options = { perPage: 1, gap: '1em'};
-        splide.options.padding = { right: '1rem', left: '1rem'}
+        // splideObject.perPage = 1;
+        // splideObject.gap = '1em';
+        // splideObject.padding = { right: '1rem', left: '1rem'}
         splide3.options = { perPage: 1, gap: '1em'};
         splide3.options.padding = { right: '1rem', left: '1rem'}
         splide4.options = { perPage: 1, gap: '1em'};
@@ -135,27 +181,38 @@ document.addEventListener( 'DOMContentLoaded', function () {
         splide5.options = { perPage: 1, gap: '1em'};
         splide5.options.padding = { right: '1rem', left: '1rem'}
     } else if (window.innerWidth > 576 && window.innerWidth < 768) {
-        splide.options = { perPage: 2, gap: '0.5em'};
+        // // splideObject = { perPage: 2, gap: '0.5em'};
+        // splideObject.perPage = 2;
+        // splideObject.gap = '0.5em';
         splide3.options = { perPage: 2, gap: '0.5em'};
         splide4.options = { perPage: 2, gap: '0.5em'};
         splide5.options = { perPage: 2, gap: '1.2em'};
     } else if (window.innerWidth > 768 && window.innerWidth < 992) {
-        splide.options = { perPage: 2, gap: '0.5em'};
+        // // splideObject = { perPage: 2, gap: '0.5em'};
+        // splideObject.perPage = 2;
+        // splideObject.gap = '0.5em';
         splide3.options = { perPage: 2, gap: '0.5em'};
         splide4.options = { perPage: 3, gap: '0.5em'};
         splide5.options = { perPage: 3, gap: '1.5em'};
     } else if (window.innerWidth > 992 && window.innerWidth < 1200) {
-        splide.options = { perPage: 3, gap: '0.5em'}; 
+        // // splideObject = { perPage: 3, gap: '0.5em'}; 
+        // splideObject.perPage = 3;
+        // splideObject.gap = '0.5em';
         splide3.options = { perPage: 3, gap: '0.5em'};
         splide4.options = { perPage: 3, gap: '0.5em'};
         splide5.options = { perPage: 4, gap: '1.5em'}; 
     } else if (window.innerWidth > 1200) {
-        splide.options = { perPage: 4, gap: '0.5em'};
+        // // splideObject = { perPage: 4, gap: '0.5em'};
+        // splideObject.perPage = 4;
+        // splideObject.gap = '0.5em';
         splide3.options = { perPage: 4, gap: '0.5em'};
         splide4.options = { perPage: 4, gap: '0.5em'};
         splide5.options = { perPage: 4, gap: '1.5em'};
     }
-    splide.mount();
+    var elms = document.getElementsByClassName( 'multiple-splide' );
+    for ( var i = 0, len = elms.length; i < len; i++ ) {
+        new Splide( elms[ i ] ,splideObject).mount();
+    }
     splide2.mount();
     splide3.mount();
     splide4.mount();
@@ -165,75 +222,75 @@ document.addEventListener( 'DOMContentLoaded', function () {
 });
 
 
-const changeSize = () => {
-    if (window.innerWidth < 576) {
-        splide.options.perPage = 1;
-        splide.options.gap = '1em';
-        splide.options.padding = { right: '1rem', left: '1rem'};
+// const changeSize = () => {
+//     if (window.innerWidth < 576) {
+//         splideObject.perPage = 1;
+//         splideObject.gap = '1em';
+//         splideObject.padding = { right: '1rem', left: '1rem'};
 
-        splide3.options.perPage = 1;
-        splide3.options.gap = '1em';
-        splide3.options.padding = { right: '1rem', left: '1rem'};
+//         splide3.options.perPage = 1;
+//         splide3.options.gap = '1em';
+//         splide3.options.padding = { right: '1rem', left: '1rem'};
 
-        splide4.options.perPage = 1;
-        splide4.options.gap = '1em';
-        splide4.options.padding = { right: '1rem', left: '1rem'};
+//         splide4.options.perPage = 1;
+//         splide4.options.gap = '1em';
+//         splide4.options.padding = { right: '1rem', left: '1rem'};
 
-        splide5.options.perPage = 1;
-        splide5.options.gap = '1em';
-        splide5.options.padding = { right: '1rem', left: '1rem'};
-        // splide.options = { perPage: 1, gap: '0.8em',type: 'fade' , padding: {right: '1em',left:'1em'} };
-    } else if (window.innerWidth > 576 && window.innerWidth < 768) {
-        splide.options = { perPage: 2, gap: '0.5em'};
-        splide.options.padding = padding;
+//         splide5.options.perPage = 1;
+//         splide5.options.gap = '1em';
+//         splide5.options.padding = { right: '1rem', left: '1rem'};
+//         // splideObject = { perPage: 1, gap: '0.8em',type: 'fade' , padding: {right: '1em',left:'1em'} };
+//     } else if (window.innerWidth > 576 && window.innerWidth < 768) {
+//         splideObject = { perPage: 2, gap: '0.5em'};
+//         splideObject.padding = padding;
 
-        splide3.options = { perPage: 2, gap: '0.5em'};
-        splide3.options.padding = padding;
+//         splide3.options = { perPage: 2, gap: '0.5em'};
+//         splide3.options.padding = padding;
 
-        splide4.options = { perPage: 2, gap: '0.5em'};
-        splide4.options.padding = padding;
+//         splide4.options = { perPage: 2, gap: '0.5em'};
+//         splide4.options.padding = padding;
 
-        splide5.options = { perPage: 2, gap: '1.5em'};
-        splide5.options.padding = padding;
-    } else if (window.innerWidth > 768 && window.innerWidth < 992) {
-        splide.options = { perPage: 2, gap: '0.5em'};
-        splide.options.padding = padding;
+//         splide5.options = { perPage: 2, gap: '1.5em'};
+//         splide5.options.padding = padding;
+//     } else if (window.innerWidth > 768 && window.innerWidth < 992) {
+//         splideObject = { perPage: 2, gap: '0.5em'};
+//         splideObject.padding = padding;
 
-        splide3.options = { perPage: 2, gap: '0.5em'};
-        splide3.options.padding = padding;
+//         splide3.options = { perPage: 2, gap: '0.5em'};
+//         splide3.options.padding = padding;
 
-        splide4.options = { perPage: 3, gap: '0.5em'};
-        splide4.options.padding = padding;
+//         splide4.options = { perPage: 3, gap: '0.5em'};
+//         splide4.options.padding = padding;
 
-        splide5.options = { perPage: 3, gap: '1.5em'};
-        splide5.options.padding = padding;
-    } else if (window.innerWidth > 992 && window.innerWidth < 1200) {
-        splide.options = { perPage: 3, gap: '0em'};
-        splide.options.padding = padding; 
+//         splide5.options = { perPage: 3, gap: '1.5em'};
+//         splide5.options.padding = padding;
+//     } else if (window.innerWidth > 992 && window.innerWidth < 1200) {
+//         splideObject = { perPage: 3, gap: '0em'};
+//         splideObject.padding = padding; 
 
-        splide3.options = { perPage: 3, gap: '0em'};
-        splide3.options.padding = padding; 
+//         splide3.options = { perPage: 3, gap: '0em'};
+//         splide3.options.padding = padding; 
 
-        splide4.options = { perPage: 3, gap: '0em'};
-        splide4.options.padding = padding; 
+//         splide4.options = { perPage: 3, gap: '0em'};
+//         splide4.options.padding = padding; 
 
-        splide5.options = { perPage: 3, gap: '1.5em'};
-        splide5.options.padding = padding;
-    } else if (window.innerWidth > 1200) {
-        splide.options = { perPage: 4, gap: '0em'};
-        splide.options.padding = padding2;
+//         splide5.options = { perPage: 3, gap: '1.5em'};
+//         splide5.options.padding = padding;
+//     } else if (window.innerWidth > 1200) {
+//         splideObject = { perPage: 4, gap: '0em'};
+//         splideObject.padding = padding2;
 
-        splide3.options = { perPage: 4, gap: '0em'};
-        splide3.options.padding = padding2;
+//         splide3.options = { perPage: 4, gap: '0em'};
+//         splide3.options.padding = padding2;
 
-        splide4.options = { perPage: 4, gap: '0em'};
-        splide4.options.padding = padding;
+//         splide4.options = { perPage: 4, gap: '0em'};
+//         splide4.options.padding = padding;
 
-        splide5.options = { perPage: 4, gap: '1.5em'};
-        splide5.options.padding = padding;
-    }
+//         splide5.options = { perPage: 4, gap: '1.5em'};
+//         splide5.options.padding = padding;
+//     }
 
-};
+// };
 
 
 jQuery('.main-nav, .social-nav').hide();

@@ -95,7 +95,8 @@ body {
         font-size:1.5em;
         display:inline-block;
         font-weight:600;
-        max-width:50%;
+        max-width:95%;
+        text-transform: uppercase;
         &--cartelera {
             max-width:100%;
         }
@@ -244,7 +245,7 @@ body {
 }
 
 .splide__slide {
-    padding:0 25px;
+    padding:0;
     margin:0;
 }
 
@@ -276,7 +277,7 @@ body {
 .loader-container {
     display:flex;
     position: fixed;
-    background:white;
+    background:rgba(255,255,255,0.5);
     top:0;
     left: 0;
     right: 0;

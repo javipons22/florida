@@ -21,8 +21,6 @@ button {
 }
 
 #marcas-slider, #comidas-slider, #agenda-slider, #cartelera-slider {
-  padding: 3em;
-  padding-top: 10px;
   position: relative;
   /*******************/
 }
@@ -89,8 +87,8 @@ button {
 }
 
 #marcas-slider, #comidas-slider, #agenda-slider, #cartelera-slider {
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 35px;
+  padding-right: 35px;
 }
 
 #cartelera-slider .splide__slide__container {
@@ -145,14 +143,6 @@ button {
   }
 }
 
-@media (min-width: 992px) {
-  #marcas-slider .splide__slide__container, #comidas-slider .splide__slide__container, #agenda-slider .splide__slide__container {
-    min-height: 180px;
-    max-height: 180px;
-    min-width: 180px;
-    max-width: 180px;
-  }
-}
 * {
   font-family: "Montserrat";
 }
@@ -242,7 +232,8 @@ body {
   font-size: 1.5em;
   display: inline-block;
   font-weight: 600;
-  max-width: 50%;
+  max-width: 95%;
+  text-transform: uppercase;
 }
 .tiendas__titulo--cartelera, .comidas__titulo--cartelera {
   max-width: 100%;
@@ -384,7 +375,7 @@ body {
 }
 
 .splide__slide {
-  padding: 0 25px;
+  padding: 0;
   margin: 0;
 }
 
@@ -416,7 +407,7 @@ body {
 .loader-container {
   display: flex;
   position: fixed;
-  background: white;
+  background: rgba(255, 255, 255, 0.5);
   top: 0;
   left: 0;
   right: 0;
@@ -451,11 +442,6 @@ body {
   }
 }
 @media (min-width: 576px) {
-  #marcas-slider, #comidas-slider, #agenda-slider {
-    padding: 3em;
-    padding-top: 10px;
-  }
-
   .footer-info {
     font-size: 1.1em;
   }
@@ -558,8 +544,7 @@ body {
 
   .tiendas, .comidas {
     position: relative;
-    margin: 1em;
-    margin-top: 30px;
+    margin: 3em 1em;
     padding: 1em;
     border-radius: 8px;
     background: #fff;
@@ -573,6 +558,10 @@ body {
 
   #comidas {
     font-size: 1.5em;
+  }
+
+  .multiple-splide {
+    padding: 0 3em;
   }
 }
 @media (min-width: 1200px) {

@@ -47,56 +47,37 @@
             </div>
         </div>
     </section>
+    <?php 
+    $categorias_marcas = [];
+    $args_categories_1 = array('posts_per_page'	=> -1,'post_type' => 'marcas');
+    $query_categories_1 = new WP_Query($args_categories_1);
+                
+    if ( $query_categories_1->have_posts() ) : while ( $query_categories_1->have_posts() ) : $query_categories_1->the_post();
+    
+    $categoria = get_field('category');
+    if (!in_array($categoria, $categorias_marcas)) {
+        array_push($categorias_marcas, $categoria);
+    }
+
+    endwhile; else : endif; wp_reset_postdata(); 
+    sort($categorias_marcas);?>
+    <?php foreach ($categorias_marcas as $categoria): ?>
     <section class="tiendas" id="marcas-anchor">
         <div class="container">
             <div class="tiendas__header-container d-lg-flex flex-lg-column align-items-center align-items-lg-start">
                 <div class="tiendas__header d-flex d-lg-inline justify-content-between justify-content-md-start">
-                    <h1 class="tiendas__titulo" id="marcas">MARCAS</h1>
-                    <button name="category_select_button" class="category-select-button category-select-button--1">categorías <img class="tiendas__icono" src="<?php echo get_template_directory_uri(); ?>/img/arrowdown.svg" alt="flecha select"></button>
+                    <h1 class="tiendas__titulo" id="marcas"><?php echo $categoria;?></h1>
                 </div>
-                <form id="tienda-category-form" method="POST">
-                <?php if( isset($_POST['category_1']) && $_POST['category_1'] != 'all'):?>
-                    <button name="category_1" class="button" value="all" type="submit">Todo</button>
-                <?php else:?>
-                    <button name="category_1" class="button button--selected" value="all" type="submit">Todo</button>
-                <?php endif;?>
-                <?php 
-                $categorias_marcas = [];
-                $args_categories_1 = array('posts_per_page'	=> -1,'post_type' => 'marcas');
-                $query_categories_1 = new WP_Query($args_categories_1);
-                            
-                if ( $query_categories_1->have_posts() ) : while ( $query_categories_1->have_posts() ) : $query_categories_1->the_post();
-                
-                $categoria = get_field('category');
-                if (!in_array($categoria, $categorias_marcas)) {
-                    array_push($categorias_marcas, $categoria);
-                }
-
-                endwhile; else : ?>
-                <p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
-                <?php endif; wp_reset_postdata(); ?>
-                <?php foreach ($categorias_marcas as $categoria): ?>
-                    <?php if( isset($_POST['category_1']) && $_POST['category_1'] == $categoria):?>
-                        <button name="category_1" class="button button--selected" value="<?php echo $categoria;?>" type="submit"><?php echo $categoria;?></button>
-                    <?php else: ?>
-                        <button name="category_1" class="button" value="<?php echo $categoria;?>" type="submit"><?php echo $categoria;?></button>
-                    <?php endif;?>
-                <?php endforeach;?>
-                
-                </form>
             </div>
-            <div id="marcas-slider" class="splide">
+            <div id="marcas-slider" class="splide multiple-splide">
                 <div class="splide__track">
                     <ul class="splide__list">
                         <?php $args_slide_1 = array(
                             'posts_per_page'	=> -1,
-                            'post_type' => 'marcas'
+                            'post_type' => 'marcas',
+                            'meta_key'	=> 'category',
+	                        'meta_value' => $categoria
                             );
-                        if( isset($_POST['category_1']) && $_POST['category_1'] != 'all')
-                        {
-                            $args_slide_1['meta_key'] = 'category';
-                            $args_slide_1['meta_value'] = $_POST['category_1'];
-                        }
                         $query_slide_1 = new WP_Query($args_slide_1);
                         
                         if ( $query_slide_1->have_posts() ) : while ( $query_slide_1->have_posts() ) : $query_slide_1->the_post(); ?>
@@ -156,6 +137,8 @@
             </div>
         </div>
     </section>
+        
+    <?php endforeach;?>
 
     <section class="tiendas" id="comidas-anchor">
         <div class="container">
