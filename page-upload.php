@@ -213,7 +213,7 @@ function iterador_csv($csv)
                 // LOCAL	MARCA	TELEFONOS	CATEGORIA	HORARIOS
                 $titulo = ${'agenda' . $x};
                 $descripcion = ${'descripcion' . $x};
-                $orden = ${'orden' . $x};
+                $orden = ${'dia' . $x};
                 $imagen = ${'imagen' . $x};
                 if (strlen(${'imagen' . $x}) > 0) {
                     $result = upload_image(${'imagen' . $x},'/home/javier/Imágenes/logos/');

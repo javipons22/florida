@@ -48,6 +48,12 @@ jQuery( "#tienda-category-form-4" ).submit(function(e) {
     e.currentTarget.submit();
 });
 
+jQuery( ".buscador-form" ).submit(function(e) {
+    e.preventDefault();
+    var val = jQuery(document.activeElement).val();
+    console.log(val);
+});
+
 let splide;
 let padding = {
     right:'1.2rem',
@@ -77,7 +83,8 @@ document.addEventListener( 'DOMContentLoaded', function () {
         perPage:1,
         autoplay:true,
         pauseOnHover: false,
-        interval: 6000
+        interval: 6000,
+        arrows:false,
     });
     let splideObject ={
         type   :'loop',  
@@ -298,6 +305,9 @@ jQuery('.main-header__button').on('click', function() {
     jQuery('.hamburger-menu').toggleClass('animate');
     jQuery('.main-nav, .social-nav').slideToggle();
 });
+jQuery('.search-button').on('click', function() {
+    jQuery('.buscador').slideToggle();
+});
 jQuery('.category-select-button--1').on('click', function() {
     jQuery('#tienda-category-form').slideToggle();
 });
@@ -308,14 +318,12 @@ jQuery('.category-select-button--3').on('click', function() {
     jQuery('#tienda-category-form-3').slideToggle();
 });
 jQuery('.category-select-button--4').on('click', function() {
-    console.log("OK")
     jQuery('#tienda-category-form-4').slideToggle();
 });
 if (window.innerWidth > 576) {
     jQuery(".splide__slide--selected").prependTo(".cartelera__list");
 }
 jQuery(window).on("load", () => {
-    console.log("Ok");
     jQuery(".loader-container").fadeOut();
 });
 jQuery('.main-nav__link--scroll').on('click', function() {

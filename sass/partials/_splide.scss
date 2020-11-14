@@ -85,6 +85,8 @@
 #marcas-slider,#comidas-slider,#agenda-slider,#cartelera-slider {
   padding-left: 35px;
   padding-right: 35px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 #cartelera-slider {
@@ -135,25 +137,5 @@
       width: 45px;
       height: 45px;
     }
-    @media (max-width: 992px) { 
-      margin-top:91px;
-    }
-  }
-  
-    @media (min-width: 576px) { 
-      
-    }
-    
-    @media (min-width: 768px) { 
-      
-    }
-    
-    @media (min-width: 992px) { 
-      #marcas-slider, #comidas-slider,#agenda-slider {
-
-      }
-      
-    }
-    
-    @media (min-width: 1200px) { }
+}
   
