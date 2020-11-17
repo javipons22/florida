@@ -41,10 +41,62 @@
         <div class="buscador">
             <div class="container">
                 <div class="row d-flex justify-content-center">
-                    <form class="col-12 col-lg-6 d-flex justify-content-center buscador-form">
-                        <input type="text" id="fname" name="fname" placeholder="Busca información en el sitio!">
+                    <form class="col-12 col-lg-6 d-flex justify-content-center buscador-form" method="POST">
+                        <input type="text" name="busqueda" placeholder="Busca información en el sitio!">
                         <input type="submit" value="buscar">
                     </form>
                 </div>
             </div>
+        </div>
+        <div class="resultados">
+            <?php if(isset($_POST['busqueda'])): ?>
+            <div class="container resultados__contenedor">
+                <div class="row">
+                    <div class="col-10">
+                        <span class="resultados__texto">Resultados de la búsqueda para "<?php echo $_POST['busqueda'];?>"</span>
+                    </div>  
+                    <div class="col-2">
+                        <span class="resultados__boton-cerrar">x</span>
+                    </div>
+                </div>
+                <?php 
+                $args_busqueda_marcas = array(
+                    'posts_per_page'	=> -1,
+                    'post_type' => 'marcas',
+                    's' => $_POST['busqueda']
+                );
+                    
+                $query_busqueda_marcas = new WP_Query($args_busqueda_marcas);
+                    
+                if ( $query_busqueda_marcas->have_posts() ) : while ( $query_busqueda_marcas->have_posts() ) : $query_busqueda_marcas->the_post(); ?> 
+                    <div class="row resultados__informacion d-flex align-items-center">
+                        <div class="col-4 col-md-3 resultados__imagen">
+                            <img src="<?php the_field('imagena'); ?>" alt="<?php echo get_the_title();?> logo">
+                        </div>
+                        <div class="col-8 col-md-9 resultados__descripcion">
+                            <div class="row d-flex flex-direction-column">
+                                <div class="col-12 resultados__titulo mb-1">
+                                    <?php echo get_the_title();?>
+                                </div>
+                                <div class="col-12 resultados__telefono">
+                                    <strong>Categoría: </strong><?php the_field('category');?>
+                                </div>
+                                <div class="col-12 resultados__telefono">
+                                    <strong>Tel: </strong><?php the_field('telefono'); ?>
+                                </div>
+                                <div class="col-12 resultados__telefono">
+                                    <strong>Horarios: </strong><?php the_field('horarios');?>
+                                </div>
+                                <div class="col-12 resultados__telefono">
+                                    <strong>Local: </strong><?php the_field('local'); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                <?php endwhile; else: ?>
+                <p class="resultados__error"><?php echo "No hay marcas para la búsqueda: '". $_POST['busqueda'] ."'"; ?></p>
+                <?php endif; ?>
+                
+            </div>
+            <?php endif; ?>
         </div>

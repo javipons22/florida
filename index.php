@@ -92,14 +92,14 @@
                                     <?php endif; ?>
                                 </div>
                                 <div class="middle d-flex align-items-center justify-content-center">
-                                    <div class="text local-info row d-flex flex-column">
+                                    <div class="text local-info d-flex row flex-row flex-wrap">
                                         <div class="col-12">
                                             <div class="local-info__main-title">
                                                 <?php echo get_the_title();?>
                                             </div>                                            
                                         </div>
                                         <?php if(get_field('telefono') != ''):?>
-                                        <div class="col-12 mt-2">
+                                        <div class="col-12">
                                             <div class="local-info__info-title">
                                                 Teléfono
                                             </div>
@@ -109,7 +109,7 @@
                                         </div>
                                         <?php endif;?>
                                         <?php if(get_field('horarios') != ''):?>
-                                        <div class="col-12 mt-2">
+                                        <div class="col-12">
                                             <div class="local-info__info-title">
                                                 Horarios
                                             </div>
@@ -119,7 +119,7 @@
                                         </div>
                                         <?php endif;?>
                                         <?php if(get_field('local') != ''):?>
-                                        <div class="col-12 mt-2">
+                                        <div class="col-12">
                                             <div class="local-info__info-text">
                                                 Local <?php the_field('local');?><br>
                                             </div>
@@ -432,6 +432,7 @@
         const category3 = ('<?php echo $_POST['category_3']?>' !== '')  ? '<?php echo $_POST['category_3']?>' : 'all';
         const category4 = ('<?php echo $_POST['category_4']?>' !== '')  ? '<?php echo $_POST['category_4']?>' : 'all';
         const currMovie = ('<?php echo $_POST['current_movie']?>' !== '')  ? '<?php echo $_POST['current_movie']?>' : 0;
+        const busqueda = ('<?php echo $_POST['busqueda']?>' !== '')  ? '<?php echo $_POST['busqueda']?>' : 0;
         console.log(currMovie);
     </script>
 <?php get_footer(); ?>
