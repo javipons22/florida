@@ -2,7 +2,7 @@
 <div class="loader-container align-items-center justify-content-center">
     <div class="loader"></div>
 </div>
-<main>
+<main id="inicio-anchor">
     <section class="banner">
         <div id="banner-slider" class="splide splide--big">
             <div class="splide__track">
@@ -140,78 +140,59 @@
         
     <?php endforeach;?>
 
+    <?php 
+    $categorias_comidas = [];
+    $args_comidas = array('posts_per_page'	=> -1,'post_type' => 'comidas');
+    $query_comidas = new WP_Query($args_comidas);
+                
+    if ( $query_comidas->have_posts() ) : while ( $query_comidas->have_posts() ) : $query_comidas->the_post();
+    
+    $categoria = get_field('category');
+    if (!in_array($categoria, $categorias_comidas)) {
+        array_push($categorias_comidas, $categoria);
+    }
+
+    endwhile; else : endif; wp_reset_postdata(); 
+    sort($categorias_comidas);?>
+    <?php foreach ($categorias_comidas as $categoria): ?>
     <section class="tiendas" id="comidas-anchor">
         <div class="container">
             <div class="tiendas__header-container d-lg-flex flex-lg-column align-items-center align-items-lg-start">
                 <div class="tiendas__header d-flex d-lg-inline justify-content-between justify-content-md-start">
-                    <h1 class="tiendas__titulo">COMIDAS</h1>
-                    <button name="category_select_button" class="category-select-button category-select-button--2">categorías <img class="tiendas__icono" src="<?php echo get_template_directory_uri(); ?>/img/arrowdown.svg" alt="flecha select"></button>
+                    <h1 class="tiendas__titulo" id="marcas">COMIDAS - <?php echo $categoria;?></h1>
                 </div>
-                <form id="tienda-category-form-2" method="POST">
-                <?php if( isset($_POST['category_2']) && $_POST['category_2'] != 'all'):?>
-                    <button name="category_2" class="button" value="all" type="submit">Todo</button>
-                <?php else:?>
-                    <button name="category_2" class="button button--selected" value="all" type="submit">Todo</button>
-                <?php endif;?>
-                <?php 
-                $categorias_comidas = [];
-                $args_categories_2 = array('posts_per_page'	=> -1,'post_type' => 'comidas');
-                $query_categories_2 = new WP_Query($args_categories_2);
-                            
-                if ( $query_categories_2->have_posts() ) : while ( $query_categories_2->have_posts() ) : $query_categories_2->the_post();
-                
-                $categoria = get_field('category');
-                if (!in_array($categoria, $categorias_comidas)) {
-                    array_push($categorias_comidas, $categoria);
-                }
-
-                endwhile; else : ?>
-                <p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
-                <?php endif; wp_reset_postdata(); ?>
-                <?php foreach ($categorias_comidas as $categoria): ?>
-                    <?php if( isset($_POST['category_2']) && $_POST['category_2'] == $categoria):?>
-                        <button name="category_2" class="button button--selected" value="<?php echo $categoria;?>" type="submit"><?php echo $categoria;?></button>
-                    <?php else: ?>
-                        <button name="category_2" class="button" value="<?php echo $categoria;?>" type="submit"><?php echo $categoria;?></button>
-                    <?php endif;?>
-                <?php endforeach;?>
-                
-                </form>
             </div>
-            <div id="comidas-slider" class="splide">
+            <div id="marcas-slider" class="splide multiple-splide">
                 <div class="splide__track">
                     <ul class="splide__list">
-                        <?php $args_slide_2 = array(
+                        <?php $args_slide_55 = array(
                             'posts_per_page'	=> -1,
-                            'post_type' => 'comidas'
+                            'post_type' => 'comidas',
+                            'meta_key'	=> 'category',
+	                        'meta_value' => $categoria
                             );
-                        if( isset($_POST['category_2']) && $_POST['category_2'] != 'all')
-                        {
-                            $args_slide_2['meta_key'] = 'category';
-                            $args_slide_2['meta_value'] = $_POST['category_2'];
-                        }
-                        $query_slide_2 = new WP_Query($args_slide_2);
+                        $query_slide_55 = new WP_Query($args_slide_55);
                         
-                        if ( $query_slide_2->have_posts() ) : while ( $query_slide_2->have_posts() ) : $query_slide_2->the_post(); ?>
+                        if ( $query_slide_55->have_posts() ) : while ( $query_slide_55->have_posts() ) : $query_slide_55->the_post(); ?>
 
-                            <li class="splide__slide"">
+                            <li class="splide__slide">
                                 <div class="splide__slide__container">
-                                <?php if (get_field('imagena') != ''): ?>
-                                    <img src="<?php the_field('imagena'); ?>" alt="<?php echo get_the_title();?> logo">
-                                <?php else: ?>
-                                    <span class="marca-default"><?php echo get_the_title();?></span>
-                                    <img src="<?php echo get_template_directory_uri(); ?>/img/default.jpg" alt="<?php echo get_the_title();?> logo">
-                                <?php endif; ?>
+                                    <?php if (get_field('imagena') != ''): ?>
+                                        <img src="<?php the_field('imagena'); ?>" alt="<?php echo get_the_title();?> logo">
+                                    <?php else: ?>
+                                        <span class="marca-default"><?php echo get_the_title();?></span>
+                                        <img src="<?php echo get_template_directory_uri(); ?>/img/default.jpg" alt="<?php echo get_the_title();?> logo">
+                                    <?php endif; ?>
                                 </div>
                                 <div class="middle d-flex align-items-center justify-content-center">
-                                    <div class="text local-info row d-flex flex-column">
+                                    <div class="text local-info d-flex row flex-row flex-wrap">
                                         <div class="col-12">
                                             <div class="local-info__main-title">
                                                 <?php echo get_the_title();?>
                                             </div>                                            
                                         </div>
                                         <?php if(get_field('telefono') != ''):?>
-                                        <div class="col-12 mt-2">
+                                        <div class="col-12">
                                             <div class="local-info__info-title">
                                                 Teléfono
                                             </div>
@@ -221,7 +202,7 @@
                                         </div>
                                         <?php endif;?>
                                         <?php if(get_field('horarios') != ''):?>
-                                        <div class="col-12 mt-2">
+                                        <div class="col-12">
                                             <div class="local-info__info-title">
                                                 Horarios
                                             </div>
@@ -231,7 +212,7 @@
                                         </div>
                                         <?php endif;?>
                                         <?php if(get_field('local') != ''):?>
-                                        <div class="col-12 mt-2">
+                                        <div class="col-12">
                                             <div class="local-info__info-text">
                                                 Local <?php the_field('local');?><br>
                                             </div>
@@ -241,15 +222,16 @@
                                 </div>
                             </li>
 
-                        <?php endwhile; else : ?>
-                        <p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
+                        <?php endwhile; ?>
                         <?php endif; wp_reset_postdata(); ?>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
-
+        
+    <?php endforeach;?>
+  
     <section class="tiendas" id="agenda-anchor">
         <div class="container">
             <div class="tiendas__header-container d-lg-flex flex-lg-column align-items-center align-items-lg-start">
@@ -257,28 +239,27 @@
                     <h1 class="tiendas__titulo">AGENDA</h1>
                 </div>
             </div>
-            <div id="agenda-slider" class="splide">
+            <div id="agenda-slider" class="splide multiple-splide">
                 <div class="splide__track">
                     <ul class="splide__list">
                         <?php $args_slide_3 = array(
                             'posts_per_page'	=> -1,
                             'post_type' => 'agendas',
-                            'meta_key' => 'orden',
-                            'orderby' => 'meta_value',
+                            'meta_key' => 'dia',
+                            'orderby' => 'meta_value_num',
                             'order'	=> 'ASC'
                             );
                         $query_slide_3 = new WP_Query($args_slide_3);
-                        $i = 1;
                         
                         if ( $query_slide_3->have_posts() ) : while ( $query_slide_3->have_posts() ) : $query_slide_3->the_post(); ?>
 
                         <li class="splide__slide"">
                             <div class="splide__slide__container splide__slide__container--agenda">
-                                <span class="agenda-dia"><?php echo $i; ?></span>
+                                <span class="agenda-dia"><?php the_field('dia');?></span>
                                 <img src="<?php the_field('imagena');?>" alt="agenda <?php echo $i;?>">
                             </div>
                             <div class="middle d-flex align-items-center justify-content-center">
-                                <div class="text local-info row d-flex flex-column">
+                                <div class="text local-info row d-flex flex-row flex-wrap">
                                     <div class="col-12 mb-2">
                                         <?php echo get_the_title();?>
                                     </div>
@@ -288,7 +269,7 @@
                                 </div>
                             </div>
                         </li>
-                        <?php $i++; endwhile; else : ?>
+                        <?php endwhile; else : ?>
                         <p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
                         <?php endif; wp_reset_postdata(); ?>
                     </ul>
@@ -422,7 +403,10 @@
             </div>
         </div>
     </section> -->
-    
+    <div class="container boton-volver">
+            <div class="boton-volver__boton d-inline-block d-lg-none"><span class="main-nav__link--scroll-up" name="inicio-anchor"><i class="fas fa-arrow-up"></i></span></div>
+            <div class="boton-volver__boton d-none d-lg-inline-block"><span class="main-nav__link--scroll-up" name="inicio-anchor"><i class="fas fa-arrow-up"></i>     Volver Arriba!</span></div>
+    </div>
 </main>
 
     <script type="text/javascript"> 

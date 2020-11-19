@@ -100,8 +100,8 @@ document.addEventListener( 'DOMContentLoaded', function () {
         breakpoints: {
             '576': {
                 perPage: 1,
-                gap    : '1em',
-                padding: { right: '1rem', left: '1rem'},
+                gap    : '0em',
+                padding: { right: '0rem', left: '0rem'},
             },
             '768': {
                 perPage: 2,
@@ -118,27 +118,9 @@ document.addEventListener( 'DOMContentLoaded', function () {
         }
     };
 
-    splide3 = new Splide( '#comidas-slider', {
-        type   :'loop',
-        padding: {
-            right:'5rem',
-            left :'5rem',
-        },
-        autoplay:false,
-        pauseOnHover:true,
-        pagination:false,
-    });
+    splide3 = {};
 
-    splide4 = new Splide( '#agenda-slider', {
-        type   :'loop',
-        padding: {
-            right:'5rem',
-            left :'5rem',
-        },
-        autoplay:false,
-        pauseOnHover:true,
-        pagination:false,
-    });
+    splide4 = {};
 
 
     // splide5 = new Splide( '#cartelera-slider', {
@@ -201,8 +183,8 @@ document.addEventListener( 'DOMContentLoaded', function () {
         new Splide( elms[ i ] ,splideObject).mount();
     }
     splide2.mount();
-    splide3.mount();
-    splide4.mount();
+    // splide3.mount();
+    // splide4.mount();
     // splide5.mount();
     splide6.mount();
     window.scrollTo(0, initialHeight); 
@@ -212,6 +194,15 @@ if (busqueda) {
     jQuery('.resultados').slideDown();
     let resultsAmount = jQuery('.resultados-comidas, .resultados-marcas').children().length;
     if (resultsAmount == 0) jQuery('.resultados__error').css("display", "block");
+}
+
+var agendaSlides = document.getElementsByClassName( 'agenda-dia' );
+for ( var i = 0, len = agendaSlides.length; i < len; i++ ) {
+    if(jQuery(agendaSlides[i]).text().length == 1) {
+        jQuery(agendaSlides[i]).css("left","25px");
+    } else {
+        jQuery(agendaSlides[i]).css("font-size","120px");
+    }
 }
 
 
@@ -261,6 +252,17 @@ jQuery('.main-nav__link--scroll').on('click', function() {
         elmnt.scrollIntoView({ block:'center',  behavior: 'smooth', inline: 'center' });
     } else {
         elmnt.scrollIntoView({ block:'start',  behavior: 'smooth', inline: 'start' });
+    }
+});
+
+jQuery('.main-nav__link--scroll-up').on('click', function() {
+    let scrollTo = this.getAttribute("name");
+    let elmnt = document.getElementById(scrollTo);
+    console.log(elmnt);
+    if (window.innerWidth < 995) {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    } else {
+        window.scrollTo({top: 0, behavior: 'smooth'});
     }
 });
 
