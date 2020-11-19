@@ -73,5 +73,41 @@
             width:50%;
         }
     }
+    .resultados {
+        margin: 0 auto;
+        z-index:9999;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width:65vw;
+        height:80vh;
+        border-radius:20px;
+        border: 1px solid #999;
+        &__contenedor {
+            height:90%;
+            padding: 50px 50px;
+            overflow-x: hidden;
+        }
+        &__boton-cerrar {
+            display:none;
+        }
+        &__boton-cerrar--laptop {
+            position:absolute;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            top:0;
+            right:0;
+            background:red;
+            color:white;
+            font-weight:bold;
+            font-size: 30px;
+            padding:10px 0;
+            width: 50px;
+            border-radius: 0 20px 0 0;
+            cursor:pointer;
+        }
+    }
 }
     

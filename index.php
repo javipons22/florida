@@ -274,7 +274,7 @@
 
                         <li class="splide__slide"">
                             <div class="splide__slide__container splide__slide__container--agenda">
-                                <span><?php echo $i; ?></span>
+                                <span class="agenda-dia"><?php echo $i; ?></span>
                                 <img src="<?php the_field('imagena');?>" alt="agenda <?php echo $i;?>">
                             </div>
                             <div class="middle d-flex align-items-center justify-content-center">
@@ -296,7 +296,7 @@
             </div>
         </div>
     </section>
-    <section class="tiendas my-lg-5" id="cines-anchor">
+    <!-- <section class="tiendas my-lg-5" id="cines-anchor">
         <div class="container">
             
             <div class="row">
@@ -421,7 +421,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     
 </main>
 

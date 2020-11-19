@@ -141,17 +141,19 @@ document.addEventListener( 'DOMContentLoaded', function () {
     });
 
 
-    splide5 = new Splide( '#cartelera-slider', {
-        padding: {
-            right:'1.2rem',
-            left :'1.2rem',
-        },
-        rewind : true,
-        perPage:1,
-        autoplay:false,
-        pauseOnHover:true,
-        pagination:false,
-    });
+    // splide5 = new Splide( '#cartelera-slider', {
+    //     padding: {
+    //         right:'1.2rem',
+    //         left :'1.2rem',
+    //     },
+    //     rewind : true,
+    //     perPage:1,
+    //     autoplay:false,
+    //     pauseOnHover:true,
+    //     pagination:false,
+    // });
+
+    splide5= {};
 
 
 
@@ -201,14 +203,17 @@ document.addEventListener( 'DOMContentLoaded', function () {
     splide2.mount();
     splide3.mount();
     splide4.mount();
-    splide5.mount();
+    // splide5.mount();
     splide6.mount();
     window.scrollTo(0, initialHeight); 
 });
 
 if (busqueda) {
     jQuery('.resultados').slideDown();
+    let resultsAmount = jQuery('.resultados-comidas, .resultados-marcas').children().length;
+    if (resultsAmount == 0) jQuery('.resultados__error').css("display", "block");
 }
+
 
 jQuery('.main-header__button').on('click', function() {
     jQuery('.hamburger-menu').toggleClass('animate');
@@ -218,6 +223,10 @@ jQuery('.main-header__button').on('click', function() {
 });
 jQuery('.resultados__boton-cerrar').on('click', function() {
     jQuery('.resultados').slideUp();
+});
+
+jQuery('.resultados__boton-cerrar--laptop').on('click', function() {
+    jQuery('.resultados').fadeOut();
 });
 
 jQuery('.search-button').on('click', function() {

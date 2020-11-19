@@ -304,6 +304,7 @@ body {
 }
 .footer .logo-footer__imagen {
   max-width: 150px;
+  max-height: 110px;
 }
 .footer .footer-info {
   text-align: center;
@@ -322,6 +323,11 @@ body {
 }
 .footer .footer-info__contacto {
   padding-top: 25px;
+}
+.footer .footer-info__habeas {
+  color: white !important;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .splide__slide__container {
@@ -403,13 +409,14 @@ body {
 }
 .splide__slide__container--agenda img {
   position: absolute;
-  left: 20%;
+  right: 1px;
   height: 130px;
+  width: 85px !important;
   transform: rotate(3deg);
 }
 .splide__slide__container--agenda span {
   position: absolute;
-  right: 55%;
+  left: 5px;
   font-family: "Londrina Outline", cursive;
   color: white;
   font-size: 140px;
@@ -418,12 +425,12 @@ body {
 .loader-container {
   display: flex;
   position: fixed;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.7);
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1000;
+  z-index: 10000;
 }
 
 .loader {
@@ -456,7 +463,7 @@ body {
   display: none;
   width: 100%;
   position: fixed;
-  z-index: 10000;
+  z-index: 9000;
   padding: 15px 2px;
   top: 90px;
   left: 0;
@@ -534,12 +541,30 @@ body {
   cursor: pointer;
 }
 .resultados__error {
+  display: none;
   border-radius: 5px;
   margin: 16px 0;
   padding: 10px 15px;
   color: red;
   background: rgba(255, 0, 0, 0.2);
   font-size: 14px;
+}
+
+.g-map {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+
+.g-map-wrapper {
+  width: 100%;
+  height: 300px;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  margin-top: 50px;
 }
 
 @media (min-width: 576px) {
@@ -688,6 +713,43 @@ body {
   }
   .buscador form {
     width: 50%;
+  }
+
+  .resultados {
+    margin: 0 auto;
+    z-index: 9999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 65vw;
+    height: 80vh;
+    border-radius: 20px;
+    border: 1px solid #999;
+  }
+  .resultados__contenedor {
+    height: 90%;
+    padding: 50px 50px;
+    overflow-x: hidden;
+  }
+  .resultados__boton-cerrar {
+    display: none;
+  }
+  .resultados__boton-cerrar--laptop {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    top: 0;
+    right: 0;
+    background: red;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    padding: 10px 0;
+    width: 50px;
+    border-radius: 0 20px 0 0;
+    cursor: pointer;
   }
 }
 @media (min-width: 1200px) {

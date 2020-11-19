@@ -167,6 +167,7 @@ body {
     .logo-footer {
         &__imagen {
             max-width:150px;
+            max-height: 110px;
         }
     }
     .footer-info {
@@ -186,6 +187,12 @@ body {
         &__contacto {
             padding-top:25px;
         }
+        &__habeas {
+            color:white !important;
+            font-size:15px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
     }
      
 }
@@ -267,13 +274,14 @@ body {
     align-items: center;
     img {
         position:absolute;
-        left: 20%;
+        right: 1px;
         height:130px;
+        width:85px !important;
         transform: rotate(3deg);
     }
     span {
         position: absolute;
-        right:55%;
+        left:5px;
         font-family: 'Londrina Outline', cursive;
         color: white;
         font-size: 140px;
@@ -283,12 +291,12 @@ body {
 .loader-container {
     display:flex;
     position: fixed;
-    background:rgba(255,255,255,0.5);
+    background:rgba(255,255,255,0.7);
     top:0;
     left: 0;
     right: 0;
     bottom: 0;
-    z-index:1000;
+    z-index:10000;
 }
 
 .loader {
@@ -316,7 +324,7 @@ body {
     display:none;
     width:100%;
     position:fixed;
-    z-index: 10000;
+    z-index: 9000;
     padding: 15px 2px;
     top: 90px;
     left:0;
@@ -395,6 +403,7 @@ body {
         cursor:pointer;
     }
     &__error {
+        display:none;
         border-radius:5px;
         margin: 16px 0;
         padding: 10px 15px;
@@ -403,4 +412,21 @@ body {
         font-size:14px;
     }
 
+}
+
+.g-map {
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+    line-height: 0; 
+}
+
+.g-map-wrapper {
+    width:100%;
+    height:300px;
+    margin:0;
+    padding:0;
+    line-height: 0;
+    margin-top:50px;
 }
