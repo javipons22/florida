@@ -67,6 +67,8 @@ let padding2 = {
 
 document.addEventListener( 'DOMContentLoaded', function () {
     
+    jQuery('.mobile-info').hide();
+
     let splide2 = new Splide( '#banner-slider', {
         width : '100vw',
         type:'loop',
@@ -97,23 +99,27 @@ document.addEventListener( 'DOMContentLoaded', function () {
         autoplay:false,
         pauseOnHover:true,
         pagination:false,
+        heightRatio: 0.225,
         breakpoints: {
             '576': {
-                perPage: 1,
+                perPage: 3,
                 gap    : '0em',
                 padding: { right: '0rem', left: '0rem'},
+                heightRatio: 0.30,
             },
             '768': {
-                perPage: 2,
+                perPage: 3,
                 gap    : '0.5em',
+                heightRatio: 0.30,
             },
             '992': {
-                perPage: 2,
+                perPage: 3,
                 gap    : '0.5em',
             },
             '1200': {
                 perPage: 3,
                 gap    : '0.5em',
+                
             },
         }
     };
@@ -180,7 +186,14 @@ document.addEventListener( 'DOMContentLoaded', function () {
     }
     var elms = document.getElementsByClassName( 'multiple-splide' );
     for ( var i = 0, len = elms.length; i < len; i++ ) {
-        new Splide( elms[ i ] ,splideObject).mount();
+        let amountOfSlides = jQuery(elms[i]).children("div.amount").attr("valor");
+        let objectCopy = JSON.parse(JSON.stringify(splideObject));
+        if (amountOfSlides <= 3) {
+            objectCopy.breakpoints['576'].clones = 0.1;
+            objectCopy.breakpoints['768'].clones = 0.1;
+            objectCopy.drag = false;
+        }
+        new Splide( elms[ i ] ,objectCopy).mount();
     }
     splide2.mount();
     // splide3.mount();
@@ -265,4 +278,44 @@ jQuery('.main-nav__link--scroll-up').on('click', function() {
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
 });
+
+jQuery('.splide__slide--info').on('click', function() {
+    
+    let titulo = this.getAttribute("titulo");
+    let telefono = this.getAttribute("telefono");
+    let horarios = this.getAttribute("horarios");
+    let local = this.getAttribute("local");
+    let elementosArray = [
+        {name: 'titulo', value: titulo},
+        {name: 'telefono', value: telefono},
+        {name: 'horarios', value: horarios},
+        {name: 'local', value: local}
+    ];
+    elementosArray.forEach((elemento)=>{
+        console.log(elemento.name+": ", elemento.value.length);
+        if (elemento.value.length == 0) {
+            jQuery(`.mobile-info__${elemento.name}`).text(elemento.value);
+            jQuery(`.mobile-info__${elemento.name}`).css("display", "none");
+            jQuery(`.mobile-info__${elemento.name}-titulo`).css("display", "none");
+        } else {
+            jQuery(`.mobile-info__${elemento.name}`).css("display", "block");
+            jQuery(`.mobile-info__${elemento.name}`).text(elemento.value);
+            jQuery(`.mobile-info__${elemento.name}-titulo`).css("display", "block");
+        }
+        
+    })
+    // jQuery('.mobile-info__main-titulo').text(titulo);
+    // jQuery('.mobile-info__telefono').text(telefono);
+    // jQuery('.mobile-info__horarios').text(horarios);
+    // jQuery('.mobile-info__local').text(local);
+    if (window.innerWidth <= 768) {
+        jQuery('.mobile-info').fadeIn();
+        jQuery('.mobile-info').css("display","flex");
+    }
+});
+
+jQuery('.mobile-info').on('click', function() {
+    jQuery('.mobile-info').fadeOut();
+});
+
 

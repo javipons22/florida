@@ -5,7 +5,6 @@
 }
 
 body {
-    background: #eee;
     color:#777;
 }
 
@@ -21,7 +20,7 @@ body {
     -moz-box-shadow: -1px 11px 8px -6px rgba(0,0,0,0.11);
     box-shadow: -1px 11px 8px -6px rgba(0,0,0,0.11);
     align-items: center;
-    z-index:110;
+    z-index:11000;
     
 }
 
@@ -200,9 +199,10 @@ body {
 .splide__slide__container {
     margin: 10px;
     border-radius: 5px;
-    -webkit-box-shadow: -1px 1px 5px 5px rgba(0,0,0,0.12);
-    -moz-box-shadow: -1px 1px 5px 5px rgba(0,0,0,0.12);
-    box-shadow: -1px 1px 5px 5px rgba(0,0,0,0.12);
+    // -webkit-box-shadow: -1px 1px 5px 5px rgba(0,0,0,0.12);
+    // -moz-box-shadow: -1px 1px 5px 5px rgba(0,0,0,0.12);
+    // box-shadow: -1px 1px 5px 5px rgba(0,0,0,0.12);
+    border: 1px solid #ddd;
     position:relative;
     .marca-default {
         font-weight:bold;
@@ -296,7 +296,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index:10000;
+    z-index:12000;
 }
 
 .loader {
@@ -434,7 +434,19 @@ body {
     position:sticky;
     bottom:0;
     height:55px;
-    
+    z-index:10000;
+    img {
+        position:absolute;
+        height:100px;
+        right:90px;
+        bottom:15px;
+        -webkit-animation:linear infinite;
+        -webkit-animation-name: run;
+        -webkit-animation-duration: 2s;
+        animation:linear infinite;
+        animation-name: run;
+        animation-duration: 2s;
+    }
     &__boton {
         background:$verde;
         font-weight:bold;
@@ -442,8 +454,95 @@ body {
         border-radius: 15px 15px 0 0;
         padding: 15px 30px;
         position:absolute;
-        right:0;
+        right:8px;
         color:white;
         cursor:pointer;
     }
 }
+@keyframes run {
+    0% { right: 90px;}
+    95% {opacity:1;}
+    100%{ right : 80%;opacity:0}
+}
+@-webkit-keyframes run {
+    0% { right: 90px; }
+    90% {opacity:1}
+    100%{ right : 80%;opacity:0}
+}
+
+.mobile-info {
+    position: fixed;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+    z-index:9999;
+    background: rgba(255,255,255,0.5);
+    &__text {
+        position:relative;
+        font-size:0.9em;
+        max-width: 300px;
+        min-width: 300px;
+        max-height:300px;
+        min-height: 300px;
+        border-radius:10px;
+        background: $verde;
+        color:white;
+        text-align:center;
+    }
+    &__boton-cerrar {
+        position:absolute;
+        width:40px;
+        height:40px;
+        font-size:25px;
+        border-radius: 50%;
+        font-weight:bold;
+        margin:0;
+        padding:0;
+        top:-15px;
+        right:-15px;
+        background: #ddd;
+        -webkit-box-shadow: -1px 11px 8px -6px rgba(0,0,0,0.11);
+        -moz-box-shadow: -1px 11px 8px -6px rgba(0,0,0,0.11);
+        box-shadow: -1px 11px 8px -6px rgba(0,0,0,0.11);
+        color:#777;
+    }
+}
+
+@media (max-width: 768px) {
+    .tiendas {
+        padding:0;
+        margin:50px 8px;
+        #marcas-slider ,#agenda-slider {
+            padding:0;
+        }
+        .container {
+            padding:0;
+        }
+        .splide__slide__container {
+            height:100%;
+            margin:5px;
+        }
+        .splide__arrows {
+            display:none;
+        }
+    }
+    #marcas-slider .splide__slide .middle {
+        opacity:0;
+    }
+    .middle {
+        display:none;
+    }
+    .splide__slide__container .marca-default {
+        padding-left: 2px;
+        padding-right: 2px;
+        font-size:12px;
+    }
+    .tiendas__titulo {
+        font-size:19px;
+    }
+
+}
+
+
+    

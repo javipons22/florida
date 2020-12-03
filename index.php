@@ -61,7 +61,9 @@
 
     endwhile; else : endif; wp_reset_postdata(); 
     sort($categorias_marcas);?>
-    <?php foreach ($categorias_marcas as $categoria): ?>
+    <?php foreach ($categorias_marcas as $categoria): 
+    if($categoria != ''):    
+    ?>
     <section class="tiendas" id="marcas-anchor">
         <div class="container">
             <div class="tiendas__header-container d-lg-flex flex-lg-column align-items-center align-items-lg-start">
@@ -79,10 +81,10 @@
 	                        'meta_value' => $categoria
                             );
                         $query_slide_1 = new WP_Query($args_slide_1);
-                        
+                        $amount = 0;
                         if ( $query_slide_1->have_posts() ) : while ( $query_slide_1->have_posts() ) : $query_slide_1->the_post(); ?>
-
-                            <li class="splide__slide">
+                            <?php $amount++;?>
+                            <li class="splide__slide splide__slide--info" titulo="<?php echo get_the_title();?>" telefono="<?php the_field('telefono');?>" horarios="<?php the_field('horarios');?>" local="<?php the_field('local');?>">
                                 <div class="splide__slide__container">
                                     <?php if (get_field('imagena') != ''): ?>
                                         <img src="<?php the_field('imagena'); ?>" alt="<?php echo get_the_title();?> logo">
@@ -134,11 +136,12 @@
                         <?php endif; wp_reset_postdata(); ?>
                     </ul>
                 </div>
+                <div class="amount" valor="<?php echo $amount; ?>"></div>
             </div>
         </div>
     </section>
         
-    <?php endforeach;?>
+    <?php endif;endforeach;?>
 
     <?php 
     $categorias_comidas = [];
@@ -175,7 +178,7 @@
                         
                         if ( $query_slide_55->have_posts() ) : while ( $query_slide_55->have_posts() ) : $query_slide_55->the_post(); ?>
 
-                            <li class="splide__slide">
+                            <li class="splide__slide splide__slide--info" titulo="<?php echo get_the_title();?>" telefono="<?php the_field('telefono');?>" horarios="<?php the_field('horarios');?>" local="<?php the_field('local');?>">
                                 <div class="splide__slide__container">
                                     <?php if (get_field('imagena') != ''): ?>
                                         <img src="<?php the_field('imagena'); ?>" alt="<?php echo get_the_title();?> logo">
@@ -229,9 +232,8 @@
             </div>
         </div>
     </section>
-        
     <?php endforeach;?>
-  
+
     <section class="tiendas" id="agenda-anchor">
         <div class="container">
             <div class="tiendas__header-container d-lg-flex flex-lg-column align-items-center align-items-lg-start">
@@ -404,8 +406,34 @@
         </div>
     </section> -->
     <div class="container boton-volver">
+            <!-- <img class="d-inline-block d-md-none" src="<?php echo get_template_directory_uri(); ?>/img/hand.png" alt="slide"> -->
             <div class="boton-volver__boton d-inline-block d-lg-none"><span class="main-nav__link--scroll-up" name="inicio-anchor"><i class="fas fa-arrow-up"></i></span></div>
             <div class="boton-volver__boton d-none d-lg-inline-block"><span class="main-nav__link--scroll-up" name="inicio-anchor"><i class="fas fa-arrow-up"></i>     Volver Arriba!</span></div>
+    </div>
+    <div class="mobile-info d-md-none justify-content-center align-items-center">
+        <div class="mobile-info__text local-info d-flex row flex-column flex-wrap justify-content-center">
+            <div class="mobile-info__boton-cerrar d-flex align-items-center justify-content-center">x</div>
+            <div class="col-12">
+                <div class="mobile-info__titulo font-weight-bold">
+                </div>                                            
+            </div>
+            <div class="col-12 mt-3">
+                <div class="mobile-info__telefono-titulo font-weight-bold">
+                    Teléfono
+                </div>
+                <div class="mobile-info__telefono"></div>
+            </div>
+            <div class="col-12 mt-3">
+                <div class="mobile-info__horarios-titulo font-weight-bold">
+                    Horarios
+                </div>
+                <div class="mobile-info__horarios"></div>
+            </div>
+            <div class="col-12 mt-3">
+                <span class="font-weight-bold mobile-info__local-titulo">Local</span>  
+                <div class="mobile-info__local"></div>
+            </div>
+        </div>
     </div>
 </main>
 

@@ -8,7 +8,7 @@
     border-radius: 20px;
     display:flex;
     align-items: center;
-    height: 195px;
+    // height: 195px;
     overflow: hidden;
 }
 
@@ -69,10 +69,11 @@
     opacity: 0.3;
   }
   
-  .splide__slide:hover .middle {
-    opacity: 1;
+  @media (min-width: 768px){
+    .splide__slide:hover .middle {
+      opacity: 1;
+    }
   }
-  
   .text {
     width:100%;
     height:100%;
