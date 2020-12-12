@@ -191,7 +191,7 @@ function iterador_csv($csv)
 
     }
 
-    if ($campos[1] == "agenda") {
+    if ($campos[2] == "agenda") {
         $marcas_existentes = array();
         $imagenes_existentes = array();
         $args_1 = array(
@@ -213,7 +213,8 @@ function iterador_csv($csv)
                 // LOCAL	MARCA	TELEFONOS	CATEGORIA	HORARIOS
                 $titulo = ${'agenda' . $x};
                 $descripcion = ${'descripcion' . $x};
-                $orden = ${'dia' . $x};
+                $dia = ${'dia' . $x};
+                $mes = ${'mes' . $x};
                 $imagen = ${'imagen' . $x};
                 if (strlen(${'imagen' . $x}) > 0) {
                     $result = upload_image(${'imagen' . $x},'/home/javier/Imágenes/logos/');
@@ -223,7 +224,7 @@ function iterador_csv($csv)
                     $img_url = "";
                     $img_id = "";
                 }
-                crear_agendas($titulo, $descripcion, $orden,$img_url, $img_id);
+                crear_agendas($titulo, $descripcion, $dia, $mes,$img_url, $img_id);
             }
         }
 
@@ -290,7 +291,7 @@ function crear_peliculas($titulo, $clasificacion, $horarios, $genero, $sala,$img
      
 }
 
-function crear_agendas($titulo, $descripcion, $orden,$img_url, $img_id)
+function crear_agendas($titulo, $descripcion, $dia, $mes,$img_url, $img_id)
 {
     $my_post = array(
         'post_title' => $titulo,
@@ -302,7 +303,8 @@ function crear_agendas($titulo, $descripcion, $orden,$img_url, $img_id)
     $post_id = wp_insert_post($my_post);
 
     update_field('descripcion', $descripcion, $post_id);
-    update_field('dia', $orden, $post_id);
+    update_field('dia', $dia, $post_id);
+    update_field('mes', $mes, $post_id);
     update_field('imagena', $img_url, $post_id);
     update_field('imagen_id', $img_id, $post_id);
      

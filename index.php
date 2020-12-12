@@ -158,6 +158,7 @@
     endwhile; else : endif; wp_reset_postdata(); 
     sort($categorias_comidas);?>
     <?php foreach ($categorias_comidas as $categoria): ?>
+    <?php if($categoria != ''): ?>
     <section class="tiendas" id="comidas-anchor">
         <div class="container">
             <div class="tiendas__header-container d-lg-flex flex-lg-column align-items-center align-items-lg-start">
@@ -232,7 +233,8 @@
             </div>
         </div>
     </section>
-    <?php endforeach;?>
+
+    <?php endif; endforeach;?>
 
     <section class="tiendas" id="agenda-anchor">
         <div class="container">
@@ -255,8 +257,9 @@
                         
                         if ( $query_slide_3->have_posts() ) : while ( $query_slide_3->have_posts() ) : $query_slide_3->the_post(); ?>
 
-                        <li class="splide__slide"">
+                        <li class="splide__slide splide__slide--info" titulo="<?php echo get_the_title();?>" descripcion="<?php the_field('descripcion');?>">
                             <div class="splide__slide__container splide__slide__container--agenda">
+                                <span class="agenda-mes"><?php the_field('mes');?></span>
                                 <span class="agenda-dia"><?php the_field('dia');?></span>
                                 <img src="<?php the_field('imagena');?>" alt="agenda <?php echo $i;?>">
                             </div>
@@ -432,6 +435,9 @@
             <div class="col-12 mt-3">
                 <span class="font-weight-bold mobile-info__local-titulo">Local</span>  
                 <div class="mobile-info__local"></div>
+            </div>
+            <div class="col-12 mt-3">
+                <div class="mobile-info__descripcion"></div>
             </div>
         </div>
     </div>

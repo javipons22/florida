@@ -20,3 +20,23 @@
         }
     }
 }
+@media (min-width: 375px) {
+    .splide__slide__container--agenda {
+        .agenda-dia {
+            text-align: center;
+            position:absolute;
+            top:10px;
+            font-size: 90px;
+            width:100%;
+            height:50%;
+        }
+        .agenda-mes {
+            text-align: center;
+            position:absolute;
+            top:5px;
+            font-size:25px;
+            width:100%;
+            height:15%;
+        }
+    }
+}

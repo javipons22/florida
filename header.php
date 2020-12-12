@@ -17,9 +17,24 @@
                         </a>
                     </div>
                     <div class="col-3 d-flex d-lg-none main-header__menu-icon justify-content-end align-items-center">
-                        <span class="search-button" style="font-size: 22px; color: #777;">
+                        <!-- <span class="search-button" style="font-size: 22px; color: #777;">
                             <i class="fas fa-search"></i>
-                        </span>
+                        </span> -->
+                        <a href="https://www.facebook.com/FloridaPQOficial/" target="_blank">
+                            <span style="font-size: 2em; color: #777; padding: 0 10px;">
+                                <i class="fab fa-facebook-square"></i>
+                            </span> 
+                        </a>
+                        <a href="https://www.instagram.com/floridapqoficial/" target="_blank">
+                            <span style="font-size: 2em; color: #777; padding: 0 10px;">
+                                <i class="fab fa-instagram"></i>
+                            </span> 
+                        </a>
+                        <a href="https://wa.link/q1ripz" target="_blank">
+                            <span style="font-size: 2em; color: #777; padding: 0  0 0 15px;">
+                                <i class="fab fa-whatsapp"></i>
+                            </span> 
+                        </a>
                         <button class="main-header__button p-2">
                             <div class="menu-wrapper">
                                 <div class="hamburger-menu"></div>

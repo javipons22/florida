@@ -202,6 +202,9 @@ body {
   text-decoration: none;
   color: black;
 }
+.main-nav__element--rrss {
+  display: none;
+}
 
 .social-nav {
   display: none;
@@ -402,8 +405,6 @@ body {
 .splide__slide__container--agenda {
   background-color: #333;
   position: relative;
-  display: flex;
-  align-items: center;
 }
 .splide__slide__container--agenda img {
   position: absolute;
@@ -413,11 +414,26 @@ body {
   transform: rotate(3deg);
 }
 .splide__slide__container--agenda span {
-  position: absolute;
-  left: 5px;
+  position: relative;
   font-family: "Londrina Outline", cursive;
   color: white;
-  font-size: 140px;
+}
+.splide__slide__container--agenda .agenda-dia {
+  text-align: center;
+  position: absolute;
+  top: 10px;
+  font-size: 70px;
+  width: 100%;
+  height: 50%;
+}
+.splide__slide__container--agenda .agenda-mes {
+  text-align: center;
+  position: absolute;
+  text-transform: uppercase;
+  top: 5px;
+  font-size: 20px;
+  width: 100%;
+  height: 15%;
 }
 
 .loader-container {
@@ -458,10 +474,8 @@ body {
   }
 }
 .buscador {
-  display: none;
-  width: 100%;
   position: fixed;
-  z-index: 9000;
+  z-index: 11100;
   padding: 15px 2px;
   top: 90px;
   left: 0;
@@ -489,7 +503,7 @@ body {
 }
 
 #banner-slider-2 {
-  padding-top: 90px;
+  padding-top: 152px;
 }
 
 .resultados {
@@ -624,7 +638,7 @@ body {
   bottom: 0;
   right: 0;
   left: 0;
-  z-index: 9999;
+  z-index: 11200;
   background: rgba(255, 255, 255, 0.5);
 }
 .mobile-info__text {
@@ -660,7 +674,7 @@ body {
 @media (max-width: 768px) {
   .tiendas {
     padding: 0;
-    margin: 50px 8px;
+    margin: 30px 8px;
   }
   .tiendas #marcas-slider, .tiendas #agenda-slider {
     padding: 0;
@@ -694,6 +708,11 @@ body {
     font-size: 19px;
   }
 }
+@media (max-width: 992px) {
+  .splide__slide__container--agenda img {
+    display: none;
+  }
+}
 @media (min-width: 576px) {
   .footer-info {
     font-size: 1.1em;
@@ -714,6 +733,24 @@ body {
   }
   .info-pelicula__value {
     font-size: 1em;
+  }
+}
+@media (min-width: 375px) {
+  .splide__slide__container--agenda .agenda-dia {
+    text-align: center;
+    position: absolute;
+    top: 10px;
+    font-size: 90px;
+    width: 100%;
+    height: 50%;
+  }
+  .splide__slide__container--agenda .agenda-mes {
+    text-align: center;
+    position: absolute;
+    top: 5px;
+    font-size: 25px;
+    width: 100%;
+    height: 15%;
   }
 }
 @media (min-width: 768px) {
@@ -759,7 +796,7 @@ body {
   }
 
   #banner-slider {
-    margin-top: 90px;
+    margin-top: 152px;
   }
 }
 @media (min-width: 992px) {
@@ -776,6 +813,9 @@ body {
   .main-nav__link:active, .main-nav__link:hover {
     font-weight: bold;
     padding: 0 -5px;
+  }
+  .main-nav__element--rrss {
+    display: inline-block;
   }
 
   .main-header__logo {
@@ -809,7 +849,7 @@ body {
 
   .tiendas, .comidas {
     position: relative;
-    margin: 4.5em 1em;
+    margin: 2em 1em;
     padding: 1em;
     border-radius: 8px;
     background: #fff;
@@ -877,6 +917,41 @@ body {
     width: 50px;
     border-radius: 0 20px 0 0;
     cursor: pointer;
+  }
+
+  .splide__slide__container--agenda {
+    background-color: #333;
+    position: relative;
+  }
+  .splide__slide__container--agenda img {
+    display: inline-block;
+    position: absolute;
+    right: 2px;
+    height: 130px;
+    top: 25%;
+    width: 85px !important;
+    transform: rotate(3deg);
+  }
+  .splide__slide__container--agenda span {
+    font-family: "Londrina Outline", cursive;
+    color: white;
+  }
+  .splide__slide__container--agenda .agenda-dia {
+    position: absolute;
+    text-align: left;
+    top: 10px;
+    left: 10px;
+    font-size: 110px;
+    width: 100%;
+    height: 50%;
+  }
+  .splide__slide__container--agenda .agenda-mes {
+    position: absolute;
+    text-align: center;
+    top: 5px;
+    font-size: 30px;
+    width: 100%;
+    height: 15%;
   }
 }
 @media (min-width: 1200px) {
