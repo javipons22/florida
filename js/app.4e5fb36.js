@@ -1,5 +1,5 @@
 
-
+jQuery('.mobile-info').hide();
 jQuery( "#tienda-category-form" ).submit(function(e) {
     e.preventDefault();
     var val = jQuery(document.activeElement).val();
@@ -65,9 +65,10 @@ let padding2 = {
     left :'5rem',
 }
 
+
 document.addEventListener( 'DOMContentLoaded', function () {
     
-    jQuery('.mobile-info').hide();
+    
 
     let splide2 = new Splide( '#banner-slider', {
         width : '100vw',
@@ -89,22 +90,23 @@ document.addEventListener( 'DOMContentLoaded', function () {
         heightRatio:1
     });
     let splideObject ={
-        type   :'loop',  
+        // type   :'loop',  
         padding: {
             right:'5rem',
             left :'5rem',
         },
-        perPage: 4,
+        perPage: 5,
+        rewind: true,
         gap: '0.5em',
         autoplay:true,
         pauseOnHover:true,
         pagination:false,
-        heightRatio: 0.210,
+        heightRatio: 0.170,
+        padding: { right: '0rem', left: '0rem'},
         breakpoints: {
             '576': {
                 perPage: 3,
                 gap    : '0em',
-                padding: { right: '0rem', left: '0rem'},
                 heightRatio: 0.30,
             },
             '768': {
@@ -115,12 +117,12 @@ document.addEventListener( 'DOMContentLoaded', function () {
             '992': {
                 perPage: 3,
                 gap    : '0.5em',
-                heightRatio: 0.30,
+                heightRatio: 0.280,
             },
             '1200': {
-                perPage: 3,
+                perPage: 4,
                 gap    : '0.5em',
-                heightRatio: 0.30,
+                heightRatio: 0.220,
             },
         }
     };
@@ -187,13 +189,13 @@ document.addEventListener( 'DOMContentLoaded', function () {
     }
     var elms = document.getElementsByClassName( 'multiple-splide' );
     for ( var i = 0, len = elms.length; i < len; i++ ) {
-        let amountOfSlides = jQuery(elms[i]).children("div.amount").attr("valor");
+        // let amountOfSlides = jQuery(elms[i]).children("div.amount").attr("valor");
         let objectCopy = JSON.parse(JSON.stringify(splideObject));
-        if (amountOfSlides <= 3) {
-            objectCopy.breakpoints['576'].clones = 0.1;
-            objectCopy.breakpoints['768'].clones = 0.1;
-            objectCopy.drag = false;
-        }
+        // if (amountOfSlides <= 3) {
+        //     objectCopy.breakpoints['576'].clones = 0.1;
+        //     objectCopy.breakpoints['768'].clones = 0.1;
+        //     objectCopy.drag = false;
+        // }
         new Splide( elms[ i ] ,objectCopy).mount();
     }
     splide2.mount();
@@ -298,10 +300,12 @@ jQuery('.splide__slide--info').on('click', function() {
             jQuery(`.mobile-info__${elemento.name}`).text(elemento.value);
             jQuery(`.mobile-info__${elemento.name}`).css("display", "none");
             jQuery(`.mobile-info__${elemento.name}-titulo`).css("display", "none");
+            jQuery(`.mobile-info__${elemento.name}-titulo`).css("margin-top", "0px");
         } else {
             jQuery(`.mobile-info__${elemento.name}`).css("display", "block");
             jQuery(`.mobile-info__${elemento.name}`).text(elemento.value);
             jQuery(`.mobile-info__${elemento.name}-titulo`).css("display", "block");
+            jQuery(`.mobile-info__${elemento.name}-titulo`).css("margin-top", "10px");
         }
         
     })

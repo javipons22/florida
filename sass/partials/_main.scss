@@ -50,6 +50,12 @@ body {
         border-bottom: 1px solid $gris;
         line-height:100%;
         cursor:pointer;
+        &--scroll-up {
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     }
     &__link--selected {
         background:#add5db;
@@ -174,9 +180,12 @@ body {
     }
     .footer-info {
         text-align:center;
-        border-top:1px solid #fff;
-        margin-top:30px;
-        &__contacto, &__copyright {
+        &--horarios {
+            text-align:center;
+            border-top:1px solid #fff;
+            margin-top:30px;
+        }
+        &__contacto, &__copyright , &__horarios{
             display:block;
             margin:0;
             padding:0;
@@ -184,7 +193,11 @@ body {
                 color: #fff;
                 margin-bottom:3px;
                 font-size: 0.7em;
-            }     
+            }  
+            h6 {
+                color: #fff;
+                font-size: 0.75em;
+            }   
         }
         &__contacto {
             padding-top:25px;
@@ -221,6 +234,27 @@ body {
         left:0;
         bottom:0;
     }
+    &--servicios {
+        background: $verde;
+        position:relative;
+        .img-servicio {
+            padding:25px;
+            top:0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            position:absolute;
+        }
+        .img-fondo {
+            top:0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            position:absolute;
+            width:100%;
+            height:100%;
+        }
+    }
 } 
 
 .info-pelicula {
@@ -240,7 +274,7 @@ body {
 }
 
 .local-info {
-    font-size:0.7em;
+    font-size:0.65em;
     padding:15px 0;
     &__main-title {
         font-size:1.3em;
@@ -312,7 +346,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index:12000;
+    z-index:14000;
 }
 
 .loader {
@@ -372,8 +406,8 @@ body {
 .resultados {
     position:fixed;
     background:#eee;
-    z-index: 100;
-    top:90px;
+    z-index: 13000;
+    top:151px;
     width: 100%;
     padding-bottom:25px;
     border-bottom: 1px solid #999;
@@ -391,8 +425,22 @@ body {
         font-size:14px;
     }
     &__imagen {
+        position:relative;
         img {
             width:100%;
+        }
+        &--marca {
+            position:absolute;
+            top:0;
+            right:0;
+            left:0;
+            bottom:0;
+            width:100%;
+            padding: 0 17px;
+            text-align: center;
+            color: #fff;
+            font-size:11px;
+            font-weight:bold;
         }
     }
     &__descripcion {
@@ -447,7 +495,7 @@ body {
 .boton-volver {
     position:sticky;
     bottom:0;
-    height:55px;
+    height:45px;
     z-index:10000;
     img {
         position:absolute;
@@ -466,11 +514,13 @@ body {
         font-weight:bold;
         height:100%;
         border-radius: 15px 15px 0 0;
-        padding: 15px 30px;
         position:absolute;
         right:8px;
         color:white;
         cursor:pointer;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
     }
 }
 @keyframes run {
@@ -485,6 +535,7 @@ body {
 }
 
 .mobile-info {
+    display:none;
     position: fixed;
     top:0;
     bottom:0;
@@ -527,7 +578,7 @@ body {
     .tiendas {
         padding:0;
         margin:30px 8px;
-        #marcas-slider ,#agenda-slider {
+        #marcas-slider ,#agenda-slider, #servicios-slider {
             padding:0;
         }
         .container {
@@ -563,6 +614,10 @@ body {
             display:none;
         }
     }
+}
+
+.text--servicios {
+    font-size:0.9em;
 }
 
     

@@ -7,7 +7,20 @@
             <div class="logo-footer d-flex justify-content-center">
                 <img class="logo-footer__imagen" src="<?php echo get_template_directory_uri(); ?>/img/logoblanco.png" alt="Logo Florida"/>
             </div>
+            <div class="row footer-info--horarios d-flex justify-content-center" id="horarios-anchor"><?php
+                $args_horarios = array('posts_per_page'	=> -1,'post_type' => 'horarios', 'order' => 'ASC');
+                $query_horarios = new WP_Query($args_horarios);
+                            
+                if ( $query_horarios->have_posts() ) : while ( $query_horarios->have_posts() ) : $query_horarios->the_post();?>
+                <div class="footer-info__horarios mt-4 col-lg-4">
+                    <h6>Horario <?php echo get_the_title();?></h6>
+                    <p>De lunes a sábado de <?php the_field('desde_am_semana');?> a.m. a <?php the_field('hasta_pm_semana');?> p.m.</p>
+                    <p>Domingos y festivos de <?php the_field('desde_am_no_semana');?> a.m. a <?php the_field('hasta_pm_no_semana');?> p.m.</p>
+                </div>
+                <?php endwhile; endif;?>
+            </div>
             <div class="footer-info d-flex justify-content-center flex-column">
+                
                 <div class="footer-info__contacto">
                     <p>Florida Parque Comercial 2020 | Calle 71 Nº65 - 150 | Tel: 520 28 80.</p>
                 </div>

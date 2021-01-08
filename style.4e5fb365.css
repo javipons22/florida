@@ -20,46 +20,46 @@ button {
   background: none;
 }
 
-#marcas-slider, #comidas-slider, #agenda-slider, #cartelera-slider, #servicios-slider {
+#marcas-slider, #comidas-slider, #agenda-slider, #cartelera-slider {
   position: relative;
   /*******************/
 }
-#marcas-slider .splide__slide__container, #comidas-slider .splide__slide__container, #agenda-slider .splide__slide__container, #cartelera-slider .splide__slide__container, #servicios-slider .splide__slide__container {
+#marcas-slider .splide__slide__container, #comidas-slider .splide__slide__container, #agenda-slider .splide__slide__container, #cartelera-slider .splide__slide__container {
   cursor: pointer;
   border-radius: 20px;
   display: flex;
   align-items: center;
   overflow: hidden;
 }
-#marcas-slider .splide__slide__container img, #comidas-slider .splide__slide__container img, #agenda-slider .splide__slide__container img, #cartelera-slider .splide__slide__container img, #servicios-slider .splide__slide__container img {
+#marcas-slider .splide__slide__container img, #comidas-slider .splide__slide__container img, #agenda-slider .splide__slide__container img, #cartelera-slider .splide__slide__container img {
   width: 100%;
   object-fit: cover;
   border-radius: 5px;
 }
-#marcas-slider .splide__pagination__page, #comidas-slider .splide__pagination__page, #agenda-slider .splide__pagination__page, #cartelera-slider .splide__pagination__page, #servicios-slider .splide__pagination__page {
+#marcas-slider .splide__pagination__page, #comidas-slider .splide__pagination__page, #agenda-slider .splide__pagination__page, #cartelera-slider .splide__pagination__page {
   width: 15px;
   height: 15px;
   border-radius: 50%;
 }
-#marcas-slider .splide__arrow svg, #comidas-slider .splide__arrow svg, #agenda-slider .splide__arrow svg, #cartelera-slider .splide__arrow svg, #servicios-slider .splide__arrow svg {
+#marcas-slider .splide__arrow svg, #comidas-slider .splide__arrow svg, #agenda-slider .splide__arrow svg, #cartelera-slider .splide__arrow svg {
   fill: #0b7f43;
   width: 25px;
   height: 25px;
 }
-#marcas-slider .splide__arrow--prev, #comidas-slider .splide__arrow--prev, #agenda-slider .splide__arrow--prev, #cartelera-slider .splide__arrow--prev, #servicios-slider .splide__arrow--prev {
+#marcas-slider .splide__arrow--prev, #comidas-slider .splide__arrow--prev, #agenda-slider .splide__arrow--prev, #cartelera-slider .splide__arrow--prev {
   left: 0;
 }
-#marcas-slider .splide__arrow--next, #comidas-slider .splide__arrow--next, #agenda-slider .splide__arrow--next, #cartelera-slider .splide__arrow--next, #servicios-slider .splide__arrow--next {
+#marcas-slider .splide__arrow--next, #comidas-slider .splide__arrow--next, #agenda-slider .splide__arrow--next, #cartelera-slider .splide__arrow--next {
   right: 0;
 }
-#marcas-slider .splide__pagination li .is-active, #comidas-slider .splide__pagination li .is-active, #agenda-slider .splide__pagination li .is-active, #cartelera-slider .splide__pagination li .is-active, #servicios-slider .splide__pagination li .is-active {
+#marcas-slider .splide__pagination li .is-active, #comidas-slider .splide__pagination li .is-active, #agenda-slider .splide__pagination li .is-active, #cartelera-slider .splide__pagination li .is-active {
   background: #0b7f43;
 }
-#marcas-slider .splide__slide__container img, #comidas-slider .splide__slide__container img, #agenda-slider .splide__slide__container img, #cartelera-slider .splide__slide__container img, #servicios-slider .splide__slide__container img {
+#marcas-slider .splide__slide__container img, #comidas-slider .splide__slide__container img, #agenda-slider .splide__slide__container img, #cartelera-slider .splide__slide__container img {
   transition: 0.5s ease-in-out;
   backface-visibility: hidden;
 }
-#marcas-slider .middle, #comidas-slider .middle, #agenda-slider .middle, #cartelera-slider .middle, #servicios-slider .middle {
+#marcas-slider .middle, #comidas-slider .middle, #agenda-slider .middle, #cartelera-slider .middle {
   width: 100%;
   height: 100%;
   transition: 0.5s ease;
@@ -72,15 +72,15 @@ button {
   text-align: center;
   border-radius: 20px;
 }
-#marcas-slider .splide__slide__container:hover img, #marcas-slider .splide__slide:hover img, #comidas-slider .splide__slide__container:hover img, #comidas-slider .splide__slide:hover img, #agenda-slider .splide__slide__container:hover img, #agenda-slider .splide__slide:hover img, #cartelera-slider .splide__slide__container:hover img, #cartelera-slider .splide__slide:hover img, #servicios-slider .splide__slide__container:hover img, #servicios-slider .splide__slide:hover img {
+#marcas-slider .splide__slide__container:hover img, #marcas-slider .splide__slide:hover img, #comidas-slider .splide__slide__container:hover img, #comidas-slider .splide__slide:hover img, #agenda-slider .splide__slide__container:hover img, #agenda-slider .splide__slide:hover img, #cartelera-slider .splide__slide__container:hover img, #cartelera-slider .splide__slide:hover img {
   opacity: 0.3;
 }
 @media (min-width: 768px) {
-  #marcas-slider .splide__slide:hover .middle, #comidas-slider .splide__slide:hover .middle, #agenda-slider .splide__slide:hover .middle, #cartelera-slider .splide__slide:hover .middle, #servicios-slider .splide__slide:hover .middle {
+  #marcas-slider .splide__slide:hover .middle, #comidas-slider .splide__slide:hover .middle, #agenda-slider .splide__slide:hover .middle, #cartelera-slider .splide__slide:hover .middle {
     opacity: 1;
   }
 }
-#marcas-slider .text, #comidas-slider .text, #agenda-slider .text, #cartelera-slider .text, #servicios-slider .text {
+#marcas-slider .text, #comidas-slider .text, #agenda-slider .text, #cartelera-slider .text {
   width: 100%;
   height: 100%;
   font-weight: bold;
@@ -91,7 +91,7 @@ button {
   padding: 25px 0;
 }
 
-#marcas-slider, #comidas-slider, #agenda-slider, #cartelera-slider, #servicios-slider {
+#marcas-slider, #comidas-slider, #agenda-slider, #cartelera-slider {
   padding-left: 35px;
   padding-right: 35px;
   padding-top: 0;
@@ -193,12 +193,6 @@ body {
   border-bottom: 1px solid #ccc;
   line-height: 100%;
   cursor: pointer;
-}
-.main-nav__link--scroll-up {
-  padding: 15px 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .main-nav__link--selected {
   background: #add5db;
@@ -317,25 +311,18 @@ body {
 }
 .footer .footer-info {
   text-align: center;
-}
-.footer .footer-info--horarios {
-  text-align: center;
   border-top: 1px solid #fff;
   margin-top: 30px;
 }
-.footer .footer-info__contacto, .footer .footer-info__copyright, .footer .footer-info__horarios {
+.footer .footer-info__contacto, .footer .footer-info__copyright {
   display: block;
   margin: 0;
   padding: 0;
 }
-.footer .footer-info__contacto p, .footer .footer-info__copyright p, .footer .footer-info__horarios p {
+.footer .footer-info__contacto p, .footer .footer-info__copyright p {
   color: #fff;
   margin-bottom: 3px;
   font-size: 0.7em;
-}
-.footer .footer-info__contacto h6, .footer .footer-info__copyright h6, .footer .footer-info__horarios h6 {
-  color: #fff;
-  font-size: 0.75em;
 }
 .footer .footer-info__contacto {
   padding-top: 25px;
@@ -366,27 +353,6 @@ body {
   left: 0;
   bottom: 0;
 }
-.splide__slide__container--servicios {
-  background: #0b7f43;
-  position: relative;
-}
-.splide__slide__container--servicios .img-servicio {
-  padding: 25px;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  position: absolute;
-}
-.splide__slide__container--servicios .img-fondo {
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
 
 .info-pelicula {
   color: #fff;
@@ -405,7 +371,7 @@ body {
 }
 
 .local-info {
-  font-size: 0.65em;
+  font-size: 0.7em;
   padding: 15px 0;
 }
 .local-info__main-title {
@@ -478,7 +444,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 14000;
+  z-index: 12000;
 }
 
 .loader {
@@ -543,8 +509,8 @@ body {
 .resultados {
   position: fixed;
   background: #eee;
-  z-index: 13000;
-  top: 151px;
+  z-index: 100;
+  top: 90px;
   width: 100%;
   padding-bottom: 25px;
   border-bottom: 1px solid #999;
@@ -562,24 +528,8 @@ body {
   padding-top: 16px;
   font-size: 14px;
 }
-.resultados__imagen {
-  position: relative;
-}
 .resultados__imagen img {
   width: 100%;
-}
-.resultados__imagen--marca {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  padding: 0 17px;
-  text-align: center;
-  color: #fff;
-  font-size: 11px;
-  font-weight: bold;
 }
 .resultados__descripcion {
   font-size: 13px;
@@ -631,7 +581,7 @@ body {
 .boton-volver {
   position: sticky;
   bottom: 0;
-  height: 45px;
+  height: 55px;
   z-index: 10000;
 }
 .boton-volver img {
@@ -651,13 +601,11 @@ body {
   font-weight: bold;
   height: 100%;
   border-radius: 15px 15px 0 0;
+  padding: 15px 30px;
   position: absolute;
   right: 8px;
   color: white;
   cursor: pointer;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
 }
 
 @keyframes run {
@@ -685,7 +633,6 @@ body {
   }
 }
 .mobile-info {
-  display: none;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -729,7 +676,7 @@ body {
     padding: 0;
     margin: 30px 8px;
   }
-  .tiendas #marcas-slider, .tiendas #agenda-slider, .tiendas #servicios-slider {
+  .tiendas #marcas-slider, .tiendas #agenda-slider {
     padding: 0;
   }
   .tiendas .container {
@@ -766,10 +713,6 @@ body {
     display: none;
   }
 }
-.text--servicios {
-  font-size: 0.9em;
-}
-
 @media (min-width: 576px) {
   .footer-info {
     font-size: 1.1em;
@@ -831,11 +774,7 @@ body {
     display: block;
   }
 
-  .splide__slide__container--servicios .img-servicio {
-    padding: 65px;
-  }
-
-  #marcas-slider .splide__slide__container, #comidas-slider .splide__slide__container, #agenda-slider .splide__slide__container, #servicios-slider .splide__slide__container {
+  #marcas-slider .splide__slide__container, #comidas-slider .splide__slide__container, #agenda-slider .splide__slide__container {
     margin: 10px;
     border-radius: 5px;
     -webkit-box-shadow: -1px 1px 5px 5px rgba(0, 0, 0, 0.12);
@@ -945,18 +884,17 @@ body {
 
   .resultados {
     margin: 0 auto;
-    padding-top: 25px;
-    z-index: 12000;
+    z-index: 9999;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 75vw;
+    width: 65vw;
     height: 80vh;
     border-radius: 20px;
     border: 1px solid #999;
   }
   .resultados__contenedor {
-    height: 100%;
+    height: 90%;
     padding: 50px 50px;
     overflow-x: hidden;
   }
@@ -979,10 +917,6 @@ body {
     width: 50px;
     border-radius: 0 20px 0 0;
     cursor: pointer;
-  }
-
-  .splide__slide__container--servicios .img-servicio {
-    padding: 50px;
   }
 
   .splide__slide__container--agenda {
@@ -1018,10 +952,6 @@ body {
     font-size: 30px;
     width: 100%;
     height: 15%;
-  }
-
-  .boton-volver {
-    height: 55px;
   }
 }
 @media (min-width: 1200px) {

@@ -48,82 +48,98 @@
         </div>
     </section>
     <?php 
-    $categorias_marcas = [];
+    $marcas = array();
     $args_categories_1 = array('posts_per_page'	=> -1,'post_type' => 'marcas');
     $query_categories_1 = new WP_Query($args_categories_1);
                 
     if ( $query_categories_1->have_posts() ) : while ( $query_categories_1->have_posts() ) : $query_categories_1->the_post();
-    
     $categoria = get_field('category');
-    if (!in_array($categoria, $categorias_marcas)) {
-        array_push($categorias_marcas, $categoria);
+    $titulo = get_the_title();
+    $imagen = get_field('imagena');
+    $telefono = get_field('telefono');
+    $horarios = get_field('horarios');
+    $local = get_field('local');
+    $elemento = array(
+        'titulo'=> $titulo,
+        'imagen' => $imagen,
+        'telefono' => $telefono,
+        'horarios' => $horarios,
+        'local' => $local
+    );
+    if(!array_key_exists($categoria, $marcas)) {
+        $marcas[$categoria] = array('categoria' => $categoria, 'marcas'=> array());
+        array_push ($marcas[$categoria]['marcas'], $elemento);
+    } else {
+        array_push ($marcas[$categoria]['marcas'], $elemento);
     }
+    
+    // $categoria = get_field('category');
+    // if (!in_array($categoria, $categorias_marcas)) {
+    //     array_push($categorias_marcas, $categoria);
+    // }
 
     endwhile; else : endif; wp_reset_postdata(); 
-    sort($categorias_marcas);?>
-    <?php foreach ($categorias_marcas as $categoria): 
-    if($categoria != ''):    
+    ksort($marcas);
+    $categorias_marcas = array('uno');
+    // var_dump($marcas);
+    ?>
+    <?php foreach ($marcas as $categoria):
+    if($categoria['categoria'] != ''):    
     ?>
     <section class="tiendas" id="marcas-anchor">
         <div class="container">
             <div class="tiendas__header-container d-lg-flex flex-lg-column align-items-center align-items-lg-start">
                 <div class="tiendas__header d-flex d-lg-inline justify-content-between justify-content-md-start">
-                    <h1 class="tiendas__titulo" id="marcas"><?php echo $categoria;?></h1>
+                    <h1 class="tiendas__titulo" id="marcas"><?php echo $categoria['categoria'];?></h1>
                 </div>
             </div>
             <div id="marcas-slider" class="splide multiple-splide">
                 <div class="splide__track">
                     <ul class="splide__list">
-                        <?php $args_slide_1 = array(
-                            'posts_per_page'	=> -1,
-                            'post_type' => 'marcas',
-                            'meta_key'	=> 'category',
-	                        'meta_value' => $categoria
-                            );
-                        $query_slide_1 = new WP_Query($args_slide_1);
+                        <?php
                         $amount = 0;
-                        if ( $query_slide_1->have_posts() ) : while ( $query_slide_1->have_posts() ) : $query_slide_1->the_post(); ?>
-                            <?php $amount++;?>
-                            <li class="splide__slide splide__slide--info" titulo="<?php echo get_the_title();?>" telefono="<?php the_field('telefono');?>" horarios="<?php the_field('horarios');?>" local="<?php the_field('local');?>">
+                        foreach($categoria['marcas'] as $marca):
+                            $amount++;?>
+                            <li class="splide__slide splide__slide--info" titulo="<?php echo $marca['titulo'];?>" telefono="<?php echo $marca['telefono'];?>" horarios="<?php echo $marca['horarios'];?>" local="<?php echo $marca['local'];?>">
                                 <div class="splide__slide__container">
-                                    <?php if (get_field('imagena') != ''): ?>
-                                        <img src="<?php the_field('imagena'); ?>" alt="<?php echo get_the_title();?> logo">
+                                    <?php if ($marca['imagen'] != ''): ?>
+                                        <img src="<?php echo $marca['imagen']; ?>" alt="<?php echo $marca['titulo'];?> logo">
                                     <?php else: ?>
-                                        <span class="marca-default"><?php echo get_the_title();?></span>
-                                        <img src="<?php echo get_template_directory_uri(); ?>/img/default.jpg" alt="<?php echo get_the_title();?> logo">
+                                        <span class="marca-default"><?php echo $marca['titulo'];?></span>
+                                        <img src="<?php echo get_template_directory_uri(); ?>/img/default.jpg" alt="<?php echo $marca['titulo'];?> logo">
                                     <?php endif; ?>
                                 </div>
                                 <div class="middle d-flex align-items-center justify-content-center">
                                     <div class="text local-info d-flex row flex-row flex-wrap">
                                         <div class="col-12">
                                             <div class="local-info__main-title">
-                                                <?php echo get_the_title();?>
+                                                <?php echo $marca['titulo'];?>
                                             </div>                                            
                                         </div>
-                                        <?php if(get_field('telefono') != ''):?>
+                                        <?php if($marca['telefono'] != ''):?>
                                         <div class="col-12">
                                             <div class="local-info__info-title">
                                                 Teléfono
                                             </div>
                                             <div class="local-info__info-text">
-                                                <?php the_field('telefono');?>
+                                                <?php echo $marca['telefono'];;?>
                                             </div>
                                         </div>
                                         <?php endif;?>
-                                        <?php if(get_field('horarios') != ''):?>
+                                        <?php if($marca['horarios'] != ''):?>
                                         <div class="col-12">
                                             <div class="local-info__info-title">
                                                 Horarios
                                             </div>
                                             <div class="local-info__info-text">
-                                                <?php the_field('horarios');?><br>
+                                                <?php echo $marca['horarios'];?><br>
                                             </div>
                                         </div>
                                         <?php endif;?>
-                                        <?php if(get_field('local') != ''):?>
+                                        <?php if($marca['local'] != ''):?>
                                         <div class="col-12">
                                             <div class="local-info__info-text">
-                                                Local <?php the_field('local');?><br>
+                                                Local <?php echo $marca['local'];?><br>
                                             </div>
                                         </div>
                                         <?php endif;?>
@@ -131,9 +147,7 @@
                                 </div>
                             </li>
 
-                        <?php endwhile; else : ?>
-                        <p><?php esc_html_e( 'No existen Marcas aún.' ); ?></p>
-                        <?php endif; wp_reset_postdata(); ?>
+                        <?php endforeach;?>
                     </ul>
                 </div>
                 <div class="amount" valor="<?php echo $amount; ?>"></div>
@@ -235,7 +249,48 @@
     </section>
 
     <?php endif; endforeach;?>
+    <section class="tiendas" id="agenda-anchor">
+        <div class="container">
+            <div class="tiendas__header-container d-lg-flex flex-lg-column align-items-center align-items-lg-start">
+                <div class="tiendas__header d-flex d-lg-inline justify-content-between justify-content-md-start">
+                    <h1 class="tiendas__titulo">SERVICIOS</h1>
+                </div>
+            </div>
+            <div id="servicios-slider" class="splide multiple-splide">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <?php $args_slide_6 = array(
+                            'posts_per_page'	=> -1,
+                            'post_type' => 'servicios',
+                            'orderby'        => 'title',
+                            'order'          => 'ASC'
+                            );
+                        $query_slide_6 = new WP_Query($args_slide_6);
+                        $i = 1;
+                        
+                        if ( $query_slide_6->have_posts() ) : while ( $query_slide_6->have_posts() ) : $query_slide_6->the_post(); ?>
 
+                        <li class="splide__slide splide__slide--info" descripcion="<?php the_field('descripcion');?>">
+                            <div class="splide__slide__container splide__slide__container--servicios">
+                                <img class="img-servicio" src="<?php echo get_template_directory_uri(); ?>/img/iconos/<?php the_field('imagena');?>" alt="servicio <?php echo $i;?>">
+                                <!-- <img class="img-fondo" src="<?php echo get_template_directory_uri(); ?>/img/default.jpg" alt="<?php echo get_the_title();?> logo"> -->
+                            </div>
+                            <div class="middle d-flex align-items-center justify-content-center">
+                                <div class="text text--servicios local-info row d-flex align-items-center justify-content-center">
+                                    <div class="col-12">
+                                        <?php the_field('descripcion');?>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <?php $i++; endwhile; else : ?>
+                        <p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
+                        <?php endif; wp_reset_postdata(); ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="tiendas" id="agenda-anchor">
         <div class="container">
             <div class="tiendas__header-container d-lg-flex flex-lg-column align-items-center align-items-lg-start">
@@ -408,10 +463,11 @@
             </div>
         </div>
     </section> -->
+    
     <div class="container boton-volver">
             <!-- <img class="d-inline-block d-md-none" src="<?php echo get_template_directory_uri(); ?>/img/hand.png" alt="slide"> -->
             <div class="boton-volver__boton d-inline-block d-lg-none"><span class="main-nav__link--scroll-up" name="inicio-anchor"><i class="fas fa-arrow-up"></i></span></div>
-            <div class="boton-volver__boton d-none d-lg-inline-block"><span class="main-nav__link--scroll-up" name="inicio-anchor"><i class="fas fa-arrow-up"></i>     Volver Arriba!</span></div>
+            <div class="boton-volver__boton d-none d-lg-inline-block"><span class="main-nav__link--scroll-up" name="inicio-anchor"><i class="fas fa-arrow-up mr-2"></i>     Volver Arriba!</span></div>
     </div>
     <div class="mobile-info d-md-none justify-content-center align-items-center">
         <div class="mobile-info__text local-info d-flex row flex-column flex-wrap justify-content-center">
@@ -420,23 +476,23 @@
                 <div class="mobile-info__titulo font-weight-bold">
                 </div>                                            
             </div>
-            <div class="col-12 mt-3">
+            <div class="col-12">
                 <div class="mobile-info__telefono-titulo font-weight-bold">
                     Teléfono
                 </div>
                 <div class="mobile-info__telefono"></div>
             </div>
-            <div class="col-12 mt-3">
+            <div class="col-12">
                 <div class="mobile-info__horarios-titulo font-weight-bold">
                     Horarios
                 </div>
                 <div class="mobile-info__horarios"></div>
             </div>
-            <div class="col-12 mt-3">
+            <div class="col-12">
                 <span class="font-weight-bold mobile-info__local-titulo">Local</span>  
                 <div class="mobile-info__local"></div>
             </div>
-            <div class="col-12 mt-3">
+            <div class="col-12">
                 <div class="mobile-info__descripcion"></div>
             </div>
         </div>

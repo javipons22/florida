@@ -18,7 +18,12 @@
   .splide--big {
       display:block;
   }
-  #marcas-slider, #comidas-slider,#agenda-slider {
+  .splide__slide__container--servicios {
+    .img-servicio {
+        padding: 65px;
+    }
+  }
+  #marcas-slider, #comidas-slider,#agenda-slider, #servicios-slider {
     .splide__slide__container {
         margin: 10px;
         border-radius: 5px;

@@ -48,6 +48,7 @@
                             <!-- <li class="main-nav__element d-lg-inline-block px-lg-3 px-xl-4"><span class="main-nav__link main-nav__link--scroll" name="cines-anchor">CARTELERA DE CINE</span></li> -->
                             <li class="main-nav__element d-lg-inline-block px-lg-3 px-xl-4"><span class="main-nav__link main-nav__link--scroll" name="agenda-anchor">AGENDA</span></li>
                             <li class="main-nav__element d-lg-inline-block pl-lg-3 px-xl-4 pr-lg-0"><span class="main-nav__link main-nav__link--scroll" name="gmaps-anchor">¿CÓMO LLEGAR?</span></li>
+                            <li class="main-nav__element d-lg-inline-block pl-lg-3 px-xl-4 pr-lg-0"><span class="main-nav__link main-nav__link--scroll" name="horarios-anchor">HORARIOS</span></li>
                             <li class="main-nav__element main-nav__element--rrss d-lg-flex pl-lg-3 px-xl-4 pr-lg-0">
                                 <a href="https://www.facebook.com/FloridaPQOficial/" target="_blank" class="main-nav__link">
                                     <span style="font-size: 2.35em; color: #777; padding: 0 15px;">
@@ -105,10 +106,15 @@
                         
                     if ( $query_busqueda_marcas->have_posts() ) : while ( $query_busqueda_marcas->have_posts() ) : $query_busqueda_marcas->the_post(); ?> 
                         <div class="row col-11 col-lg-6 resultados__informacion d-flex align-items-center">
-                            <div class="col-4 col-md-3 resultados__imagen">
+                            <div class="col-4 resultados__imagen ">
+                            <?php if (get_field('imagena') != ''): ?>
                                 <img src="<?php the_field('imagena'); ?>" alt="<?php echo get_the_title();?> logo">
+                            <?php else: ?>
+                                <span class="resultados__imagen--marca d-flex align-items-center justify-content-center "><?php echo get_the_title();?></span>
+                                <img src="<?php echo get_template_directory_uri(); ?>/img/default.jpg" alt="<?php echo get_the_title();?> logo">
+                            <?php endif; ?>
                             </div>
-                            <div class="col-8 col-md-9 resultados__descripcion">
+                            <div class="col-8 resultados__descripcion">
                                 <div class="row d-flex flex-direction-column">
                                     <div class="col-12 resultados__titulo mb-1">
                                         <?php echo get_the_title();?>
