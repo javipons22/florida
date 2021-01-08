@@ -47,6 +47,7 @@
                             <li class="main-nav__element d-lg-inline-block px-lg-3 px-xl-4"><span class="main-nav__link main-nav__link--scroll" name="comidas-anchor">COMIDAS</span></li>
                             <!-- <li class="main-nav__element d-lg-inline-block px-lg-3 px-xl-4"><span class="main-nav__link main-nav__link--scroll" name="cines-anchor">CARTELERA DE CINE</span></li> -->
                             <li class="main-nav__element d-lg-inline-block px-lg-3 px-xl-4"><span class="main-nav__link main-nav__link--scroll" name="agenda-anchor">AGENDA</span></li>
+                            <li class="main-nav__element d-lg-inline-block px-lg-3 px-xl-4"><span class="main-nav__link main-nav__link--scroll" name="servicios-anchor">SERVICIOS</span></li>
                             <li class="main-nav__element d-lg-inline-block pl-lg-3 px-xl-4 pr-lg-0"><span class="main-nav__link main-nav__link--scroll" name="gmaps-anchor">¿CÓMO LLEGAR?</span></li>
                             <li class="main-nav__element d-lg-inline-block pl-lg-3 px-xl-4 pr-lg-0"><span class="main-nav__link main-nav__link--scroll" name="horarios-anchor">HORARIOS</span></li>
                             <li class="main-nav__element main-nav__element--rrss d-lg-flex pl-lg-3 px-xl-4 pr-lg-0">

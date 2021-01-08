@@ -80,7 +80,6 @@
 
     endwhile; else : endif; wp_reset_postdata(); 
     ksort($marcas);
-    $categorias_marcas = array('uno');
     // var_dump($marcas);
     ?>
     <?php foreach ($marcas as $categoria):
@@ -158,90 +157,101 @@
     <?php endif;endforeach;?>
 
     <?php 
-    $categorias_comidas = [];
-    $args_comidas = array('posts_per_page'	=> -1,'post_type' => 'comidas');
-    $query_comidas = new WP_Query($args_comidas);
+    $comidas = array();
+    $args_categories_2 = array('posts_per_page'	=> -1,'post_type' => 'comidas');
+    $query_categories_2 = new WP_Query($args_categories_2);
                 
-    if ( $query_comidas->have_posts() ) : while ( $query_comidas->have_posts() ) : $query_comidas->the_post();
-    
+    if ( $query_categories_2->have_posts() ) : while ( $query_categories_2->have_posts() ) : $query_categories_2->the_post();
     $categoria = get_field('category');
-    if (!in_array($categoria, $categorias_comidas)) {
-        array_push($categorias_comidas, $categoria);
+    $titulo = get_the_title();
+    $imagen = get_field('imagena');
+    $telefono = get_field('telefono');
+    $horarios = get_field('horarios');
+    $local = get_field('local');
+    $elemento = array(
+        'titulo'=> $titulo,
+        'imagen' => $imagen,
+        'telefono' => $telefono,
+        'horarios' => $horarios,
+        'local' => $local
+    );
+    if(!array_key_exists($categoria, $comidas)) {
+        $comidas[$categoria] = array('categoria' => $categoria, 'comidas'=> array());
+        array_push ($comidas[$categoria]['comidas'], $elemento);
+    } else {
+        array_push ($comidas[$categoria]['comidas'], $elemento);
     }
+    
+    // $categoria = get_field('category');
+    // if (!in_array($categoria, $categorias_marcas)) {
+    //     array_push($categorias_marcas, $categoria);
+    // }
 
     endwhile; else : endif; wp_reset_postdata(); 
-    sort($categorias_comidas);?>
-    <?php foreach ($categorias_comidas as $categoria): ?>
-    <?php if($categoria != ''): ?>
+    ksort($comidas);
+    // var_dump($marcas);
+    ?>
+    <?php foreach ($comidas as $categoria):
+    if($categoria['categoria'] != ''):    
+    ?>
     <section class="tiendas" id="comidas-anchor">
         <div class="container">
             <div class="tiendas__header-container d-lg-flex flex-lg-column align-items-center align-items-lg-start">
                 <div class="tiendas__header d-flex d-lg-inline justify-content-between justify-content-md-start">
-                    <h1 class="tiendas__titulo" id="marcas">COMIDAS - <?php echo $categoria;?></h1>
+                    <h1 class="tiendas__titulo" id="marcas">COMIDAS - <?php echo $categoria['categoria'];?></h1>
                 </div>
             </div>
             <div id="marcas-slider" class="splide multiple-splide">
                 <div class="splide__track">
                     <ul class="splide__list">
-                        <?php $args_slide_55 = array(
-                            'posts_per_page'	=> -1,
-                            'post_type' => 'comidas',
-                            'meta_key'	=> 'category',
-	                        'meta_value' => $categoria
-                            );
-                        $query_slide_55 = new WP_Query($args_slide_55);
-                        
-                        if ( $query_slide_55->have_posts() ) : while ( $query_slide_55->have_posts() ) : $query_slide_55->the_post(); ?>
-
-                            <li class="splide__slide splide__slide--info" titulo="<?php echo get_the_title();?>" telefono="<?php the_field('telefono');?>" horarios="<?php the_field('horarios');?>" local="<?php the_field('local');?>">
+                        <?php foreach($categoria['comidas'] as $marca_comida):?>
+                            <li class="splide__slide splide__slide--info" titulo="<?php echo $marca_comida['titulo'];?>" telefono="<?php echo $marca_comida['telefono'];?>" horarios="<?php echo $marca_comida['horarios'];?>" local="<?php echo $marca_comida['local'];?>">
                                 <div class="splide__slide__container">
-                                    <?php if (get_field('imagena') != ''): ?>
-                                        <img src="<?php the_field('imagena'); ?>" alt="<?php echo get_the_title();?> logo">
+                                    <?php if ($marca_comida['imagen'] != ''): ?>
+                                        <img src="<?php echo $marca_comida['imagen']; ?>" alt="<?php echo $marca_comida['titulo'];?> logo">
                                     <?php else: ?>
-                                        <span class="marca-default"><?php echo get_the_title();?></span>
-                                        <img src="<?php echo get_template_directory_uri(); ?>/img/default.jpg" alt="<?php echo get_the_title();?> logo">
+                                        <span class="marca-default"><?php echo $marca_comida['titulo'];?></span>
+                                        <img src="<?php echo get_template_directory_uri(); ?>/img/default.jpg" alt="<?php echo $marca_comida['titulo'];?> logo">
                                     <?php endif; ?>
                                 </div>
                                 <div class="middle d-flex align-items-center justify-content-center">
                                     <div class="text local-info d-flex row flex-row flex-wrap">
                                         <div class="col-12">
                                             <div class="local-info__main-title">
-                                                <?php echo get_the_title();?>
+                                                <?php echo $marca_comida['titulo'];?>
                                             </div>                                            
                                         </div>
-                                        <?php if(get_field('telefono') != ''):?>
+                                        <?php if($marca_comida['telefono'] != ''):?>
                                         <div class="col-12">
                                             <div class="local-info__info-title">
                                                 Teléfono
                                             </div>
                                             <div class="local-info__info-text">
-                                                <?php the_field('telefono');?>
+                                                <?php echo $marca_comida['telefono'];?>
                                             </div>
                                         </div>
                                         <?php endif;?>
-                                        <?php if(get_field('horarios') != ''):?>
+                                        <?php if($marca_comida['horarios'] != ''):?>
                                         <div class="col-12">
                                             <div class="local-info__info-title">
                                                 Horarios
                                             </div>
                                             <div class="local-info__info-text">
-                                                <?php the_field('horarios');?><br>
+                                                <?php echo $marca_comida['horarios'];?><br>
                                             </div>
                                         </div>
                                         <?php endif;?>
-                                        <?php if(get_field('local') != ''):?>
+                                        <?php if($marca_comida['local'] != ''):?>
                                         <div class="col-12">
                                             <div class="local-info__info-text">
-                                                Local <?php the_field('local');?><br>
+                                                Local <?php echo $marca_comida['local'];?><br>
                                             </div>
                                         </div>
                                         <?php endif;?>
                                     </div>
                                 </div>
                             </li>
-
-                        <?php endwhile; ?>
-                        <?php endif; wp_reset_postdata(); ?>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>
@@ -249,7 +259,7 @@
     </section>
 
     <?php endif; endforeach;?>
-    <section class="tiendas" id="agenda-anchor">
+    <section class="tiendas" id="servicios-anchor">
         <div class="container">
             <div class="tiendas__header-container d-lg-flex flex-lg-column align-items-center align-items-lg-start">
                 <div class="tiendas__header d-flex d-lg-inline justify-content-between justify-content-md-start">
