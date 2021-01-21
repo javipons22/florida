@@ -8,6 +8,11 @@
     .splide__slide__container {
       max-width:100%;
     }
+    .middle {
+      display:flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
   .hand-image {
     display:none;
@@ -47,5 +52,20 @@
   }
   #banner-slider {
     margin-top:152px;
+  }
+  .titulo-cartelera {
+    margin-bottom:15px;
+    position:relative;
+  }
+  .agenda-mes {
+    position:absolute;
+    top:120px;
+    text-align: center;
+    width:100%;
+  }
+  .agenda-dia {
+    position:absolute;
+    text-align: center;
+    width:100%;
   }
 }

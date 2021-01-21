@@ -32,12 +32,12 @@
     height: 25px;
 }
 
-.splide__arrow--prev {
-  left:0;
-}
-.splide__arrow--next {
-  right:0;
-}
+// .splide__arrow--prev {
+//   left:0;
+// }
+// .splide__arrow--next {
+//   right:0;
+// }
 
 
 .splide__pagination li .is-active {
@@ -111,9 +111,9 @@
     position:relative;
   }
   .splide__slide__container .movie-image {
-    width:100%;
+    height:100%;
     max-height: none;
-    object-fit: contain;
+    object-fit: cover;
   }
 }
 
@@ -142,5 +142,15 @@
       width: 45px;
       height: 45px;
     }
+}
+
+.splide__link {
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  width:100%;
+  height:100%;
 }
   

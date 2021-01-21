@@ -153,6 +153,15 @@ body {
 
 }
 
+#cartelera-slider {
+    .middle {
+      height:100%;
+      width:101%;
+      background: $verde;
+      cursor:pointer;
+      font-weight:bold;
+    }
+  }
 .button--selected {
     background: $verde;
     font-weight:bold;
@@ -325,7 +334,6 @@ body {
         top:10px;
         font-size: 70px;
         width:100%;
-        height:50%;
     }
     .agenda-mes {
         text-align: center;
@@ -334,7 +342,6 @@ body {
         top:5px;
         font-size:20px;
         width:100%;
-        height:15%;
     }
 }
 
@@ -593,6 +600,11 @@ body {
             display:none;
         }
     }
+    #cartelera-slider {
+        .splide__arrows {
+            display:inline-block;
+        }
+    }
     #marcas-slider .splide__slide .middle {
         opacity:0;
     }
@@ -621,4 +633,27 @@ body {
     font-size:0.9em;
 }
 
-    
+.titulo-cartelera {
+    margin-bottom:15px;
+    position:absolute;
+}
+
+#cartelera-slider {
+    padding-top:12px;
+}
+
+.agenda-info {
+    font-size:1em;
+    color:white;
+    font-weight: bold;
+    a {
+        display:inline-block;
+        color:black;
+        background: white;
+        border-radius: 7px;
+        padding: 10px 5px;
+    }
+    a:hover {
+        text-decoration:none;
+    }
+}

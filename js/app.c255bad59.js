@@ -132,19 +132,42 @@ document.addEventListener( 'DOMContentLoaded', function () {
     splide4 = {};
 
 
-    // splide5 = new Splide( '#cartelera-slider', {
-    //     padding: {
-    //         right:'1.2rem',
-    //         left :'1.2rem',
-    //     },
-    //     rewind : true,
-    //     perPage:1,
-    //     autoplay:false,
-    //     pauseOnHover:true,
-    //     pagination:false,
-    // });
+    splide5 = new Splide( '#cartelera-slider', {
+        padding: {
+            right:'1.2rem',
+            left :'1.2rem'
+        },
+        rewind : true,
+        autoplay:false,
+        pauseOnHover:true,
+        pagination:false,
+        perPage: 4, 
+        gap: '1.5em',
+        heightRatio: 0.35,
+        breakpoints: {
+            '576': {
+                perPage: 1,
+                gap    : '0em',
+                heightRatio: 1.05
+            },
+            '768': {
+                perPage: 2,
+                gap    : '1.2em',
+            },
+            '992': {
+                perPage: 3, 
+                gap: '1.5em',
+                heightRatio: 0.45
+            },
+            '1200': {
+                perPage: 4, 
+                gap: '1.5em', 
+                heightRatio: 0.35
+            },
+        }
+        
+    });
 
-    splide5= {};
 
 
 
@@ -156,36 +179,36 @@ document.addEventListener( 'DOMContentLoaded', function () {
         splide3.options.padding = { right: '1rem', left: '1rem'}
         splide4.options = { perPage: 1, gap: '1em'};
         splide4.options.padding = { right: '1rem', left: '1rem'}
-        splide5.options = { perPage: 1, gap: '1em'};
-        splide5.options.padding = { right: '1rem', left: '1rem'}
+        // splide5.options = { perPage: 1, gap: '1em'};
+        // splide5.options.padding = { right: '1rem', left: '1rem'}
     } else if (window.innerWidth > 576 && window.innerWidth < 768) {
         // // splideObject = { perPage: 2, gap: '0.5em'};
         // splideObject.perPage = 2;
         // splideObject.gap = '0.5em';
         splide3.options = { perPage: 2, gap: '0.5em'};
         splide4.options = { perPage: 2, gap: '0.5em'};
-        splide5.options = { perPage: 2, gap: '1.2em'};
+        // splide5.options = { perPage: 2, gap: '1.2em'};
     } else if (window.innerWidth > 768 && window.innerWidth < 992) {
         // // splideObject = { perPage: 2, gap: '0.5em'};
         // splideObject.perPage = 2;
         // splideObject.gap = '0.5em';
         splide3.options = { perPage: 2, gap: '0.5em'};
         splide4.options = { perPage: 3, gap: '0.5em'};
-        splide5.options = { perPage: 3, gap: '1.5em'};
+        // splide5.options = { perPage: 3, gap: '1.5em',heightRatio: 0.45};
     } else if (window.innerWidth > 992 && window.innerWidth < 1200) {
         // // splideObject = { perPage: 3, gap: '0.5em'}; 
         // splideObject.perPage = 3;
         // splideObject.gap = '0.5em';
         splide3.options = { perPage: 3, gap: '0.5em'};
         splide4.options = { perPage: 3, gap: '0.5em'};
-        splide5.options = { perPage: 4, gap: '1.5em'}; 
+        // splide5.options = { perPage: 4, gap: '1.5em',heightRatio: 0.35}; 
     } else if (window.innerWidth > 1200) {
         // // splideObject = { perPage: 4, gap: '0.5em'};
         // splideObject.perPage = 4;
         // splideObject.gap = '0.5em';
         splide3.options = { perPage: 4, gap: '0.5em'};
         splide4.options = { perPage: 4, gap: '0.5em'};
-        splide5.options = { perPage: 4, gap: '1.5em'};
+        // splide5.options = { perPage: 4, gap: '1.5em', heightRatio: 0.35};
     }
     var elms = document.getElementsByClassName( 'multiple-splide' );
     for ( var i = 0, len = elms.length; i < len; i++ ) {
@@ -201,7 +224,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
     splide2.mount();
     // splide3.mount();
     // splide4.mount();
-    // splide5.mount();
+    splide5.mount();
     splide6.mount();
     window.scrollTo(0, initialHeight); 
 });
@@ -215,8 +238,27 @@ if (busqueda) {
 if (window.innerWidth > 992) {
     var agendaSlides = document.getElementsByClassName( 'agenda-dia' );
     for ( var i = 0, len = agendaSlides.length; i < len; i++ ) {
-        if(jQuery(agendaSlides[i]).text().length == 1) {
-            jQuery(agendaSlides[i]).css("left","30px");
+        if(jQuery(agendaSlides[i]).text().length > 2) {
+            jQuery(agendaSlides[i]).css("font-size","60px");
+            jQuery(agendaSlides[i]).css("top","61px");
+        }
+    }
+}
+if (window.innerWidth < 768) {
+    var agendaSlides = document.getElementsByClassName( 'agenda-dia' );
+    for ( var i = 0, len = agendaSlides.length; i < len; i++ ) {
+        if(jQuery(agendaSlides[i]).text().length > 2) {
+            jQuery(agendaSlides[i]).css("font-size","45px");
+            jQuery(agendaSlides[i]).css("top","40px");
+        }
+    }
+}
+if (window.innerWidth > 768 && window.innerWidth < 992) {
+    var agendaSlides = document.getElementsByClassName( 'agenda-dia' );
+    for ( var i = 0, len = agendaSlides.length; i < len; i++ ) {
+        if(jQuery(agendaSlides[i]).text().length > 2) {
+            jQuery(agendaSlides[i]).css("font-size","60px");
+            jQuery(agendaSlides[i]).css("top","50px");
         }
     }
 }
@@ -288,12 +330,16 @@ jQuery('.splide__slide--info').on('click', function() {
     let horarios = this.getAttribute("horarios");
     let local = this.getAttribute("local");
     let descripcion = this.getAttribute("descripcion");
+    let genero = this.getAttribute("genero");
+    let clasificacion = this.getAttribute("clasificacion");
     let elementosArray = [
         {name: 'titulo', value: titulo},
         {name: 'telefono', value: telefono},
         {name: 'horarios', value: horarios},
         {name: 'local', value: local},
-        {name: 'descripcion', value: descripcion}
+        {name: 'descripcion', value: descripcion},
+        {name: 'genero', value: genero},
+        {name: 'clasificacion', value: clasificacion}
     ];
     elementosArray.forEach((elemento)=>{
         if (!elemento.value) {
