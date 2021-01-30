@@ -98,7 +98,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
         perPage: 5,
         rewind: true,
         gap: '0.5em',
-        autoplay:true,
+        autoplay:false,
         pauseOnHover:true,
         pagination:false,
         heightRatio: 0.170,
