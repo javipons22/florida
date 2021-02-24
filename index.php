@@ -315,58 +315,7 @@
             </div>
         </div>
     </section>
-    <section class="tiendas" id="agenda-anchor">
-        <div class="container">
-            <div class="tiendas__header-container d-lg-flex flex-lg-column align-items-center align-items-lg-start">
-                <div class="tiendas__header d-flex d-lg-inline justify-content-between justify-content-md-start">
-                    <h1 class="tiendas__titulo">AGENDA</h1>
-                </div>
-            </div>
-            <div id="agenda-slider" class="splide multiple-splide">
-                <div class="splide__track">
-                    <ul class="splide__list">
-                        <?php $args_slide_3 = array(
-                            'posts_per_page'	=> -1,
-                            'post_type' => 'agendas',
-                            'meta_key' => 'dia',
-                            'orderby' => 'meta_value_num',
-                            'order'	=> 'ASC'
-                            );
-                        $query_slide_3 = new WP_Query($args_slide_3);
-                        
-                        if ( $query_slide_3->have_posts() ) : while ( $query_slide_3->have_posts() ) : $query_slide_3->the_post(); ?>
-
-                        <!-- <li class="splide__slide splide__slide--info" titulo="<?php echo get_the_title();?>" descripcion="<?php the_field('descripcion');?>"> -->
-                        <li class="splide__slide splide__slide--info"  descripcion="<?php the_field('descripcion');?>" archivo="<?php the_field('archivo');?>">
-                            <div class="splide__slide__container splide__slide__container--agenda">
-                                <span class="agenda-mes"><?php the_field('mes');?></span>
-                                <span class="agenda-dia"><?php the_field('dia');?></span>
-                                <!-- <img src="<?php the_field('imagena');?>" alt="agenda <?php echo $i;?>"> -->
-                            </div>
-                            <div class="middle d-flex align-items-center justify-content-center">
-                                <div class="text local-info agenda-info row d-flex flex-row flex-wrap align-items-center justify-content-center">
-                                    <!-- <div class="col-12 mb-2">
-                                        <?php echo get_the_title();?>
-                                    </div> -->
-                                    <div class="col-12">
-                                        <?php the_field('descripcion');?>
-                                    </div>
-                                    <?php if(get_field('archivo')): ?>
-                                        <a class="col-8" href="<?php the_field('archivo');?>" target="_blank">
-                                            Ver más
-                                        </a>
-                                    <?php endif;?>
-                                </div>
-                            </div>
-                        </li>
-                        <?php endwhile; else : ?>
-                        <p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
-                        <?php endif; wp_reset_postdata(); ?>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+   
     <section class="tiendas my-lg-5" id="cines-anchor">
         <div class="container">
                 <div class="tiendas__header-container d-lg-flex flex-lg-column align-items-center align-items-lg-start mb-lg-2">
@@ -505,14 +454,11 @@
     </div>
 </main>
 
-    <script type="text/javascript"> 
-        const initialHeight = '<?php echo $_POST['scroll']?>';
-        const category1 = ('<?php echo $_POST['category_1']?>' !== '') ? '<?php echo $_POST['category_1']?>' : 'all';
-        const category2 = ('<?php echo $_POST['category_2']?>' !== '')  ? '<?php echo $_POST['category_2']?>' : 'all';
-        const category3 = ('<?php echo $_POST['category_3']?>' !== '')  ? '<?php echo $_POST['category_3']?>' : 'all';
-        const category4 = ('<?php echo $_POST['category_4']?>' !== '')  ? '<?php echo $_POST['category_4']?>' : 'all';
-        const currMovie = ('<?php echo $_POST['current_movie']?>' !== '')  ? '<?php echo $_POST['current_movie']?>' : 0;
-        const busqueda = ('<?php echo $_POST['busqueda']?>' !== '')  ? '<?php echo $_POST['busqueda']?>' : 0;
-        console.log(currMovie);
+    <script type="text/javascript">
+    <?php if(isset($_POST['busqueda'])): ?>
+        var busqueda = '<?php echo $_POST["busqueda"];?>';
+    <?php else: ?>
+        var busqueda = 0;
+    <?php endif;?>
     </script>
 <?php get_footer(); ?>

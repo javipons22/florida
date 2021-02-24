@@ -346,8 +346,8 @@ body {
 }
 
 .loader-container {
-    // display:none;
-    display:flex;
+    display:none;
+    // display:flex;
     position: fixed;
     background:rgba(255,255,255,0.7);
     top:0;
@@ -582,7 +582,7 @@ body {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 766px) {
     .tiendas {
         padding:0;
         margin:30px 8px;

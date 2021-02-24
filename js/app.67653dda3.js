@@ -109,7 +109,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
                 gap    : '0em',
                 heightRatio: 0.30,
             },
-            '768': {
+            '767': {
                 perPage: 3,
                 gap    : '0.5em',
                 heightRatio: 0.28,
@@ -150,7 +150,8 @@ document.addEventListener( 'DOMContentLoaded', function () {
                 gap    : '0em',
                 heightRatio: 1.05
             },
-            '768': {
+            '767': {
+                heightRatio: 0.75,
                 perPage: 2,
                 gap    : '1.2em',
             },
@@ -168,48 +169,6 @@ document.addEventListener( 'DOMContentLoaded', function () {
         
     });
 
-
-
-
-    if (window.innerWidth < 576) {
-        // splideObject.perPage = 1;
-        // splideObject.gap = '1em';
-        // splideObject.padding = { right: '1rem', left: '1rem'}
-        splide3.options = { perPage: 1, gap: '1em'};
-        splide3.options.padding = { right: '1rem', left: '1rem'}
-        splide4.options = { perPage: 1, gap: '1em'};
-        splide4.options.padding = { right: '1rem', left: '1rem'}
-        // splide5.options = { perPage: 1, gap: '1em'};
-        // splide5.options.padding = { right: '1rem', left: '1rem'}
-    } else if (window.innerWidth > 576 && window.innerWidth < 768) {
-        // // splideObject = { perPage: 2, gap: '0.5em'};
-        // splideObject.perPage = 2;
-        // splideObject.gap = '0.5em';
-        splide3.options = { perPage: 2, gap: '0.5em'};
-        splide4.options = { perPage: 2, gap: '0.5em'};
-        // splide5.options = { perPage: 2, gap: '1.2em'};
-    } else if (window.innerWidth > 768 && window.innerWidth < 992) {
-        // // splideObject = { perPage: 2, gap: '0.5em'};
-        // splideObject.perPage = 2;
-        // splideObject.gap = '0.5em';
-        splide3.options = { perPage: 2, gap: '0.5em'};
-        splide4.options = { perPage: 3, gap: '0.5em'};
-        // splide5.options = { perPage: 3, gap: '1.5em',heightRatio: 0.45};
-    } else if (window.innerWidth > 992 && window.innerWidth < 1200) {
-        // // splideObject = { perPage: 3, gap: '0.5em'}; 
-        // splideObject.perPage = 3;
-        // splideObject.gap = '0.5em';
-        splide3.options = { perPage: 3, gap: '0.5em'};
-        splide4.options = { perPage: 3, gap: '0.5em'};
-        // splide5.options = { perPage: 4, gap: '1.5em',heightRatio: 0.35}; 
-    } else if (window.innerWidth > 1200) {
-        // // splideObject = { perPage: 4, gap: '0.5em'};
-        // splideObject.perPage = 4;
-        // splideObject.gap = '0.5em';
-        splide3.options = { perPage: 4, gap: '0.5em'};
-        splide4.options = { perPage: 4, gap: '0.5em'};
-        // splide5.options = { perPage: 4, gap: '1.5em', heightRatio: 0.35};
-    }
     var elms = document.getElementsByClassName( 'multiple-splide' );
     for ( var i = 0, len = elms.length; i < len; i++ ) {
         // let amountOfSlides = jQuery(elms[i]).children("div.amount").attr("valor");
@@ -226,7 +185,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
     // splide4.mount();
     splide5.mount();
     splide6.mount();
-    window.scrollTo(0, initialHeight); 
+    // window.scrollTo(0, initialHeight); 
 });
 
 if (busqueda) {
@@ -324,7 +283,6 @@ jQuery('.main-nav__link--scroll-up').on('click', function() {
 });
 
 jQuery('.splide__slide--info').on('click', function() {
-    
     let titulo = this.getAttribute("titulo");
     let telefono = this.getAttribute("telefono");
     let horarios = this.getAttribute("horarios");
@@ -359,7 +317,7 @@ jQuery('.splide__slide--info').on('click', function() {
     // jQuery('.mobile-info__telefono').text(telefono);
     // jQuery('.mobile-info__horarios').text(horarios);
     // jQuery('.mobile-info__local').text(local);
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth < 768) {
         jQuery('.mobile-info').fadeIn();
         jQuery('.mobile-info').css("display","flex");
     }
