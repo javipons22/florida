@@ -666,6 +666,10 @@ body {
   .agenda-info a:hover {
     text-decoration: none; }
 
+.enlaces {
+  margin-top: 200px;
+  margin-bottom: 90px; }
+
 @media (min-width: 576px) {
   .footer-info {
     font-size: 1.1em; }
@@ -887,7 +891,11 @@ body {
       height: 15%; }
 
   .boton-volver {
-    height: 55px; } }
+    height: 55px; }
+
+  .enlaces {
+    margin-top: 0;
+    margin-bottom: 0; } }
 @media (min-width: 1200px) {
   .main-nav__link {
     font-size: 0.85em; } }
