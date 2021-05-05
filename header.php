@@ -5,6 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Florida | Parque Comercial</title>
         <?php wp_head(); ?>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-96117920-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'UA-96117920-1');
+        </script>
         <script src="https://kit.fontawesome.com/47c1c98052.js" crossorigin="anonymous"></script>
     </head>
     <body <?php body_class();?>>
@@ -30,11 +39,11 @@
                                 <i class="fab fa-instagram"></i>
                             </span> 
                         </a>
-                        <a href="https://wa.link/q1ripz" target="_blank">
+                        <!--<a href="https://wa.link/q1ripz" target="_blank">
                             <span style="font-size: 2em; color: #777; padding: 0  0 0 15px;">
                                 <i class="fab fa-whatsapp"></i>
                             </span> 
-                        </a>
+                        </a>-->
                         <button class="main-header__button p-2">
                             <div class="menu-wrapper">
                                 <div class="hamburger-menu"></div>
@@ -62,11 +71,11 @@
                                         <i class="fab fa-instagram"></i>
                                     </span> 
                                 </a>
-                                <a href="https://wa.link/q1ripz" target="_blank" class="main-nav__link">
+                                <!--<a href="https://wa.link/q1ripz" target="_blank" class="main-nav__link">
                                     <span style="font-size: 2.35em; color: #777; padding: 0 15px;">
                                         <i class="fab fa-whatsapp"></i>
                                     </span> 
-                                </a>
+                                </a> -->
                             </li>
                         </ul>
                     </nav>
